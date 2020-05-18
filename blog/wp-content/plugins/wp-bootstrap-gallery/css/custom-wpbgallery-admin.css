@@ -1,0 +1,145 @@
+#wpbgallery_thumbs li {
+    margin: 4px;
+    padding: 0;
+    display: block;
+    float: left;
+    position: relative;
+    background: #eee;
+    padding: 5px;
+    border: 1px solid #DFDFDF;
+    width: 389px;
+    height: 115px;
+}
+#wpbgallery_thumbs li img {
+    cursor: move;
+    width: 109px;
+    height: 109px;
+    padding: 0;
+    margin: 0;
+ /*   border: 1px solid #000000;*/
+
+}
+#wpbgallery_add_attachments_button {
+    display: none !important;
+}
+#wpbgallery_thumbs li .wpbgallery_remove {
+    display: block;
+    text-indent: -9999px;
+    outline: 0;
+    background: url(../img/delete.png) no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: -2px;
+    right: -2px;
+}
+.wpbgallery_placeholder {
+    border: 1px dashed #ccc !important
+}
+.ui-sortable-helper {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+#wpbgallery_container .clearfix:before,
+#wpbgallery_container .clearfix:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+#wpbgallery_container .clearfix:after {
+    clear: both
+}
+#wpbgallery_container .clearfix {
+    zoom: 1
+}
+#optionsframework .controls .of-radio-img-img {
+    margin: 10px;
+    border: 3px solid #eee;
+}
+#optionsframework .controls .of-radio-img-selected {
+    border: 3px solid #921d26;
+}
+#optionsframework .section .controls {
+    float: none;
+    width: 95%;
+}
+#optionsframework .section .explain {
+    float: none;
+    clear:both;
+}
+#wpbgallery_spinner {
+    width: 103px;
+    padding-left: 24px;
+}
+#wpbgallery_spinner_update {
+    width: auto;
+    padding-left: 24px;
+}
+
+.updatespinner {
+    background: url("../img/loading.gif") no-repeat 0 0;
+    -webkit-background-size: 20px 20px;
+    /* float: right; */
+    vertical-align: top;
+    filter: alpha(opacity=70);
+    width: 20px;
+    height: 20px;
+    margin: 4px 10px 0;
+    position: relative;
+    z-index: 999999;
+    left: 66%; position: absolute; top: 8px;
+}
+
+.updatespinner.show {display: block;}
+.updatespinner.hide {display: none;}
+
+.updatebutton{
+    color: #555;
+    border-color: #ccc;
+    background: #f7f7f7;
+    -webkit-box-shadow: 0 1px 0 #ccc;
+    box-shadow: 0 1px 0 #ccc;
+    vertical-align: bottom;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    height: 28px;
+    margin: 0;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1
+}
+
+.updatebutton:hover {
+    background: #fafafa;
+    border-color: #999;
+    color: #23282d;
+}
+
+#wpbgallery_thumbs li label {
+    cursor: pointer;
+    vertical-align:top;
+    text-align:right;
+    padding: 5px 5px 5px 5px;
+    min-height:100%;
+}
+
+
+
+
+
+

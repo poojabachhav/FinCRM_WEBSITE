@@ -1,0 +1,102 @@
+<style type="text/css">
+        .sign_demo .form-group .material-icons-outlined{
+             height: 0;
+              float: left;
+             position: relative;
+            top: -29px;
+             left: 10px;
+             color: #6c757d;
+      }
+
+   .sign_demo .form-group input{
+          padding: 0px 35px;
+    }
+
+    .become_a_partner .material-icons-outlined{
+        font-size: 19px;
+    }
+
+    .sign_demo .form-group .material-icons{
+             height: 0;
+              float: right;
+             position: relative;
+            top: -29px;
+             right: 10px;
+             color: #6c757d;
+      }
+
+    .gj-textbox-md{
+        border-bottom: none;
+        border:1px solid #ced4da;
+    }
+
+    .gj-icon{
+        font-size: 19px !important;
+    }
+
+
+     .nice-select{
+        width:100% !important;
+        border:1px solid #ced4da;
+        height: 38px;
+        line-height: 36px;
+    }
+
+     .nice-select .list{
+        width:100% !important;
+         border: 1px solid #ced4da;
+    }
+
+    .nice-select:after {
+    border-bottom: 2px solid #403e3e;
+    border-right: 2px solid #403e3e;
+    }
+
+    .become_a_partner .form-group .nice-select{
+          padding: 0px 35px;
+    }
+
+    .nice-select.open .list{
+        overflow-y: scroll;
+        height: 200px;
+    }
+
+    .sign_up_DN{
+      display: none;
+    }
+
+    .sign_up_active{
+      display: block;
+    }
+
+
+    #wrapper #dialog #form {
+      max-width: 240px;
+      margin:0 auto;
+    }
+    #wrapper #dialog #form input {
+      margin: 0 5px;
+      text-align: center;
+      line-height: 40px;
+      color:#E56500;
+      font-size: 18px;
+      border: solid 2px #000;
+      outline: none;
+      width: 20%;
+      transition: all 0.2s ease-in-out;
+      padding: 0px;
+      border-top-style: hidden;
+      border-right-style: hidden;
+      border-left-style: hidden;
+    }
+
+    #wrapper #dialog #form input::-moz-selection {
+      background: transparent;
+    }
+    #wrapper #dialog #form input::selection {
+      background: transparent;
+    }
+
+  
+    </style>
+    

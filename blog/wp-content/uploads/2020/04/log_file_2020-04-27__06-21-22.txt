@@ -1,0 +1,35 @@
+
+---Downloaded files---
+The import files for: Demo Content were successfully downloaded!
+Initial max execution time = 120
+Files info:
+Site URL = http://localhost:8080/FinCRM_WEBSITE/blog
+Data file = C:\xampp\htdocs\FinCRM_WEBSITE\blog/wp-content/uploads/2020/04/demo-content-import-file_2020-04-27__06-21-22.xml
+Widget file = C:\xampp\htdocs\FinCRM_WEBSITE\blog/wp-content/uploads/2020/04/demo-widgets-import-file_2020-04-27__06-21-22.json
+Customizer file = not defined!
+Redux files:
+not defined!
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+------
+New AJAX call!
+
+
+---Importing widgets---
+Default Sidebar : 
+
+Featured Posts - Featured Posts - Imported
+Featured Posts - Recent Posts - Imported
+Categories - Categories - Imported
+
+
+
+---pt-ocdi/after_import---
+

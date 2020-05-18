@@ -1,0 +1,62 @@
+
+    /*career css start*/
+         .nice-select{
+        width:100% !important;
+        border:1px solid #ced4da;
+        height: 38px;
+        line-height: 36px;
+    }
+
+     .nice-select .list{
+        width:100% !important;
+         border: 1px solid #ced4da;
+    }
+
+    .nice-select:after {
+    border-bottom: 2px solid #403e3e;
+    border-right: 2px solid #403e3e;
+    }
+
+    .career_demo .form-group .nice-select{
+          padding: 0px 13px;
+    }
+
+    .nice-select.open .list{
+        overflow-y: scroll;
+        height: 200px;
+    }
+
+    .career_demo .form-control {
+    font-size: 14px !important;
+    font-family: 'Arial' !important;
+}
+
+.career_demo .form-control:focus{
+    box-shadow: unset;
+    border-color:#ced4da;
+}
+
+.career_demo label{
+    color: #000;
+    font-weight: 600;
+}
+
+.bg-color{
+    background-color:#0D5BB9 !important;
+}
+
+.career_demo .request_btn{
+  background-color:#0D5BB9; 
+  border-color: #0D5BB9;
+  color: #fff;
+  /*text-transform: capitalize;*/
+}
+
+.career_description .description{
+ border-right:2px solid #0D5BB9;
+ padding: 8px;
+}
+
+
+
+/*career css end*/

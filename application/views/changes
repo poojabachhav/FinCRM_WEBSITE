@@ -1,0 +1,28 @@
+changes
+
+
+forms
+sign_up form 
+ 1 change in config/email.php 
+ time = 100
+
+ change in controller 
+ function proceesverification
+ change in sign_up form for loader
+ also change validation of website
+ add validation for password
+ add validation for domain name fincrm 
+ in processverification and in jquery ajax also
+
+add autocomplite off in all form 
+
+change success mesg and position of success mesg in request-for-demo and contact-us form
+
+change in request-for-demo function of controller 
+in that change add post data call innitialy before call email library
+change array pass to send mail from data to email_body
+
+change domain exist function in controller 
+
+change in candidate_info function of controller 
+ 

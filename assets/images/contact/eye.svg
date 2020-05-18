@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_432" data-name="Group 432" transform="translate(-771 -4152)">
+    <g id="baseline-remove_red_eye-24px" transform="translate(771 4152)">
+      <path id="Path_1745" data-name="Path 1745" d="M0,0H24V24H0Z" fill="none"/>
+      <path id="Path_1746" data-name="Path 1746" d="M12,4.5A11.827,11.827,0,0,0,1,12a11.817,11.817,0,0,0,22,0A11.827,11.827,0,0,0,12,4.5ZM12,17a5,5,0,1,1,5-5A5,5,0,0,1,12,17Zm0-8a3,3,0,1,0,3,3A3,3,0,0,0,12,9Z"/>
+    </g>
+    <g id="Group_431" data-name="Group 431" transform="translate(-22 2)">
+      <path id="baseline-hdr_off-24px" d="M9.5,9.5l-7-7-1.1,1L6.9,9,8,10.1l1.5,1.5L12.9,15l7.6,7.6,1.1-1.1Z" transform="translate(792.6 4149.5)"/>
+      <path id="baseline-hdr_off-24px-2" data-name="baseline-hdr_off-24px" d="M9.5,9.5l-7-7-1.1,1L6.9,9,8,10.1l1.5,1.5L12.9,15l7.6,7.6,1.1-1.1Z" transform="translate(793.6 4148.5)" fill="#e4e4e4"/>
+    </g>
+  </g>
+</svg>

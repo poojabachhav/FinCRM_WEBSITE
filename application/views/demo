@@ -1,0 +1,165 @@
+<section class="footer-content">
+  <div class="container-fluid">
+      <div class="row footer-top">
+      	   <div class="col-lg-12 text-center pt-5 pb-5 ">
+                <div class="header_section_demo pt-5 pb-5">
+                	<h3 class="heading_1 text-white">Try FinCRM for yourself!</h3>
+                	<p class="heading_2 text-white mt-4">Free with no long-term commitments for up to 15 Days</p>
+                	<a href="<?php echo base_url();?>request-for-demo" class="btn btn-footer mt-4">Request for demo</a>
+	           </div>
+	       </div>
+      </div>
+  </div>
+  </section>
+<footer class="footer-container">
+		<div class="container" id="footer-container_desktop">
+			<div class="row  footer_inner ">
+				    <div class="col-lg-2 col-6 align-item-center">
+						<aside class="f_widget news_widget">
+							<div class="row ">
+								<div class="col-lg-12">
+									<div class="Features">
+		                               <h5 >Company</h5>
+			                               <ul class="list">
+			                               		<li><a href="<?php echo base_url();?>career">Career</a></li>
+													<li><a href="<?php echo base_url();?>pricing">Pricing</a></li>
+													<li><a href="<?php echo base_url();?>partner">Become Partner</a></li>
+													<li><a href="<?php echo base_url();?>contact-us">Contact Us</i></a></li>
+													<li><a href="<?php echo base_url();?>">Blogs</a></li>
+													<li><a href="<?php echo base_url();?>">FAQ</a></li>
+										   </ul>
+									</div>
+								</div>
+							</div>
+						</aside>
+				    </div>
+
+		<div class="col-lg-5 col-6">
+						<aside class="f_widget news_widget">
+							<div class=" row ">
+								<div class="col-lg-12">
+								  <h5>Features</h5>
+								  <ul class="list">
+										<div class="features_row">
+										<div class="col-md-6 feature_margin ">
+											<div>
+												<li class=""><a class="" href="http://fincrm.net/Account-and-Contact-Management">Account and Contact </a></li>
+<li class=""><a class="" href="http://fincrm.net/Account-and-Contact-Management">Management</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Lead-Management">Leads Management</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Opportunity-Management">Opportunity Management</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Revenue-Forecasting">Revenue Forecasting</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Dynamic-Entity-Creation">Dynamic Entity Creation</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Sales-Pipeline-Visualizaton">Sales Pipeline Visualizaton</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Tasks-Management">Tasks Management</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Daily-Time-Sheet">Daily Time Sheet</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Third-Party-Lead-Capture">Third Party Lead Capture</a></li>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div>
+												<li class=""><a class="" href="http://fincrm.net/Data-Import-and-Export">Data Import and Export</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Marketing-Campaign-Management">Marketing Campaign Management</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Email-And-SMS-Reminders">Email & SMS Reminders</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Reports-And-Dashboards">Reports & Dashboards</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Meetings-And-Calendar">Meetings & Calendar
+												</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Client-Portal">Client Portal</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Estimates-And-Invoices">Estimates and Invoices </a></li>
+												<li class=""><a class="" href="http://fincrm.net/Knowledge-Base">Knowledge Base</a></li>
+												<li class=""><a class="" href="http://fincrm.net/Document-Manager">Document Manager</a></li>
+											</div>
+										</div>
+									</div>
+									</ul>
+								</div>
+							</div>
+						</aside>
+				    </div>
+
+      			    <div class="col-lg-3 col-6">
+					<aside class="f_widget news_widget">
+						<div class="row address">
+							<div class="col-md-12">
+								<div class="visiting_address">
+									<h5>Industry</h5>
+										<ul class="list">
+													<li><a href="#">Insurance Companies</a></li>
+													<li><a href="#">Banking/NBFC/DSA</a></li>
+													<li><a href="#">Consultancy Advisory</a></li>
+													<li><a href="#">Real Estate</a></li>
+													<li><a href="#">Financial consultant</a></li>
+													<li><a href="#">Travel & Tourism</a></li>
+													<li><a href="#">Recruitment Consultant</a></li>
+													<li><a href="#">Health & Lifesciences</a></li>
+													<li><a href="#">Automobile Dealerships</a></li>
+										</ul>
+								</div>
+							</div>
+						</div>
+					</aside>
+				    </div>
+				
+					<div class="col-lg-3 col-6 last_footer">
+						<aside class="f_widget social_widget">
+							<div class="contact">
+			                        	<div class="col-lg-12 follow">
+			 								<h5 class="ml-0">Follow us on</h5>
+			 								<div class="images">
+			 								<a href="https://www.facebook.com/fincrmofficial/" target="_blank" class="mr-2"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>
+				 							<a href="https://twitter.com/Fincrm1" target="_blank" class="mr-2"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i></a>
+				 							<a href="https://www.linkedin.com/company/fincrmofficial" target="_blank" class=""><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></a>
+			 								</div>
+			 							</div>
+
+			 							<div class="col-lg-12 follow1 mt-4">
+			 								<h5>Stay Connected</h5>
+			 								<div class="input-group Search_icon mt-3">
+											    <input type="email" name="news_letter_email" id="news_letter_email" class="form-control form-control1 rounded-pill" placeholder="Enter email">
+											   
+											    <div class="input-group-append">
+											      <button class="btn btn-footer" type="button" id="newsletter" onclick="send_news_letter_email()">
+											        Sign Up
+											      </button>
+											    </div>
+
+										  </div>
+										  <div class="ajax_mesg">
+											    	
+											    </div>
+			 				   			</div>
+							</div>
+						</aside>
+					</div>
+			 <div class="col-lg-12 border-bottom">
+			</div> 
+
+           		<div class="row policy ">
+		          	<div class="col-lg-6 offset-lg-3">
+		          		<div class="text-center policy_type">
+		          			<a href="#" class="border-right " >Privacy Policy</a>
+		          			<a href="#"  class="mt-4 border-right" >Cookie Policy</a>
+		          			<a href="#"  class="ml-4" >Terms of Services</a>
+		          		</div>
+		          	</div>
+                </div>
+
+            <div class="row footer-bottom mt-2">
+          	  	<div class="col-lg-12 text-center">
+          	  	    <p>
+					© <script>document.write(new Date().getFullYear());</script> All Rights Reserved 
+					</p>
+          	  	</div>
+          	</div> 
+		</div>
+
+
+
+		
+	</footer>
+
+
+
+
+<!--================End Footer Area =================-->
+
+
