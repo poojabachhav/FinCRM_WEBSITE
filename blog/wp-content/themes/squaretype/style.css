@@ -3665,12 +3665,13 @@ body {
 ## Off-Canvas Area
 --------------------------------------------------------------*/
 .offcanvas {
-	overflow: hidden;
+	overflow: auto;
+	position: relative;
 	position: fixed;
-	height: 100%;
-	top: 0;
-	left: -320px;
-	width: 320px;
+	height: 400px;
+	top: 0px;
+/* 	left: -320px; */
+	width: 100%;
 	background: white;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -3680,30 +3681,33 @@ body {
 	-ms-flex-direction: column;
 	flex-direction: column;
 	-webkit-overflow-scrolling: touch;
-	z-index: 100;
-	-webkit-transform: translate3d(0, 0, 0);
-	transform: translate3d(0, 0, 0);
+	z-index: 99;
+/* 	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0); */
+	transform: translateY(0);
+	
 }
-
 .admin-bar .offcanvas {
-	top: 46px;
-	height: calc( 100% - 46px);
+/* 	top: 46px; */
+/* 	height: calc( 100% - 46px); */
 }
 
 @media screen and (min-width: 783px) {
 	.admin-bar .offcanvas {
-		top: 32px;
-		height: calc( 100% - 32px);
+/* 		top: 32px; */
+/* 		height: calc( 100% - 32px); */
 	}
 }
 
 .offcanvas-active {
-	overflow: hidden;
+	overflow: auto;
 }
 
 .offcanvas-active .offcanvas {
-	-webkit-transform: translate3d(320px, 0, 0);
-	transform: translate3d(320px, 0, 0);
+		
+	transform: translateY(40px);
+/* 	-webkit-transform: translate3d(320px, 0, 0);
+	transform: translate3d(320px, 0, 0); */
 }
 
 .offcanvas-active .site {
@@ -3716,8 +3720,10 @@ body {
 .offcanvas-active .site-inner > span,
 .offcanvas-active .site-inner > div,
 .offcanvas-active .site-inner > p {
-	-webkit-transform: translate3d(320px, 0, 0) !important;
-	transform: translate3d(320px, 0, 0) !important;
+	-webkit-transform: translateY(0px) !important;
+	transform: translateY(355px) !important;
+/* 	-webkit-transform: translate3d(320px, 0, 0) !important;
+	transform: translate3d(320px, 0, 0) !important; */
 }
 
 .offcanvas-header {
@@ -3731,7 +3737,7 @@ body {
 	-ms-flex-align: center;
 	align-items: center;
 	padding: 20px;
-	border-bottom: 1px #e9ecef solid;
+/* 	border-bottom: 1px #e9ecef solid; */
 }
 
 .offcanvas-header .navbar-brand {
@@ -3765,7 +3771,7 @@ body {
 }
 
 .offcanvas-inner {
-	padding: 20px;
+	padding: 0px;
 }
 
 .offcanvas {
@@ -3782,24 +3788,36 @@ body {
 	transition: all 0.4s ease;
 }
 
-.site-overlay {
+.site-overlay , .offcanvas{
 	display: none;
+	
 }
 
+.offcanvas-active  .offcanvas{
+	top: -40px;
+	display:inline-block;
+	padding-left: 15px;
+    padding-right: 15px;
+	-webkit-animation: fade 0.5s;
+	animation: fade 0.5s;
+}
 .offcanvas-active .site-overlay {
 	display: block;
 	position: fixed;
+/* 	position: relative; */
 	top: 0;
+/* 	top: 0px; */
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-color: rgba(0, 0, 0, 0.15);
+/* 	background-color: rgba(0, 0, 0, 0.15); */
+/*     background-color: white !important ; */
 	-webkit-animation: fade 0.5s;
 	animation: fade 0.5s;
 	z-index: 99;
 }
-.overlay {
-  position: absolute;
+/*.overlay {
+  position: relative;
   bottom: 100%;
   left: 0;
   right: 0;
@@ -3810,7 +3828,7 @@ body {
   transition: .5s ease;
 	
 	
-}
+}*/
 
 @-webkit-keyframes fade {
 	0% {
@@ -3829,6 +3847,7 @@ body {
 		opacity: 1;
 	}
 }
+
 
 /*--------------------------------------------------------------
 ## Post Archive
@@ -4882,7 +4901,7 @@ body {
 
 .navbar-brand img {
 	max-width: inherit;
-	max-height: 40px;
+	max-height: 45px;
 	width: auto;
 }
 
@@ -7814,7 +7833,8 @@ body {
 }
 
 .widget ul {
-	padding-left: 0;
+	padding-left: 30px;
+	padding-right:30px;
 	list-style: none;
 	margin-bottom: 0;
 }
@@ -10883,4 +10903,18 @@ div.wpcf7 input[type="file"]:disabled {
 --------------------------------------------------------------*/
 .wpb_video_wrapper .cs-embed-responsive:before {
 	display: none;
+}
+/*custom css*/
+
+.widget_nav_menu .menu > li > a{
+	line-height: 24px;
+    margin-right: 0px;
+    display: block;
+    border-bottom: 1px solid #ededed33;
+    border-radius: 0px;
+    color: #000;
+	font: 600 14px/27px 'Poppins', sans-serif;
+    text-transform: capitalize;
+    padding: 10px;
+    display: inline-block;
 }

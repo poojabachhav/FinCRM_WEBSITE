@@ -21,12 +21,13 @@ if ( csco_offcanvas_exists() ) {
 
 				<?php
 				$logo_id = get_theme_mod( 'logo' );
-
-				if ( $logo_id ) {
+                $logo_id = 1;
+				if ( $logo_id == 1) {
 					?>
-					<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+<!-- 					<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 						<?php csco_get_retina_image( $logo_id, array( 'alt' => get_bloginfo( 'name' ) ) ); ?>
-					</a>
+					</a> -->
+				<a class="navbar-brand navbar-brand logo_h" href="http://fincrm.net/"><img src="http://fincrm.net/assets/images/logo2.png" alt="" height="45"></a>
 					<?php
 				} else {
 					?>
