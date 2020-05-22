@@ -10,14 +10,14 @@ $scheme = csco_light_or_dark( get_theme_mod( 'color_navbar_bg', '#FFFFFF' ), nul
 if ( csco_offcanvas_exists() ) {
 ?>
 	<div class="site-overlay"></div>
-
-	<div class="offcanvas">
+	<div class="offcanvas ">
+    <div class="container">
 
 		<div class="offcanvas-header<?php echo esc_attr( $scheme ); ?>">
 
 			<?php do_action( 'csco_offcanvas_header_start' ); ?>
 
-			<nav class="navbar navbar-offcanvas">
+			<nav class="navbar-offcanvas">
 
 				<?php
 				$logo_id = get_theme_mod( 'logo' );
@@ -72,5 +72,6 @@ if ( csco_offcanvas_exists() ) {
 			</div>
 		</aside>
 	</div>
+ </div>
 <?php
 }

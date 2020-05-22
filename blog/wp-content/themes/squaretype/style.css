@@ -3668,7 +3668,7 @@ body {
 	overflow: auto;
 	position: relative;
 	position: fixed;
-	height: 400px;
+	height: 345px;
 	top: 0px;
 /* 	left: -320px; */
 	width: 100%;
@@ -3721,7 +3721,7 @@ body {
 .offcanvas-active .site-inner > div,
 .offcanvas-active .site-inner > p {
 	-webkit-transform: translateY(0px) !important;
-	transform: translateY(355px) !important;
+	transform: translateY(330px) !important;
 /* 	-webkit-transform: translate3d(320px, 0, 0) !important;
 	transform: translate3d(320px, 0, 0) !important; */
 }
@@ -3736,7 +3736,7 @@ body {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	padding: 20px;
+	padding: 5px;
 /* 	border-bottom: 1px #e9ecef solid; */
 }
 
@@ -5100,7 +5100,7 @@ body {
 	display: flex;
 	white-space: nowrap;
 	min-width: 220px;
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 0rem;
 	color: #000000;
 	-webkit-transition: padding, opacity, color 0.2s ease;
 	transition: padding, opacity, color 0.2s ease;
@@ -7833,10 +7833,14 @@ body {
 }
 
 .widget ul {
-	padding-left: 30px;
-	padding-right:30px;
+	padding-left: 0px;
+	padding-right:0px;
 	list-style: none;
 	margin-bottom: 0;
+}
+.widget > ul > li{
+	padding-left:30px;
+	padding-right:30px
 }
 
 .widget .button {
@@ -7853,10 +7857,14 @@ body {
 }
 
 .widget_nav_menu .menu > .menu-item:not(:first-child) {
-	border-top: 1px #e9ecef solid;
+	border-top: 1px solid #ededed33;
 }
-
+.widget_nav_menu .menu-item{
+	padding-left:10px;
+	padding-right:10px;
+}
 .widget_nav_menu .menu-item-has-children {
+	
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
