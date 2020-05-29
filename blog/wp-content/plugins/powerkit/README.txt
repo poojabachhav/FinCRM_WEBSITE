@@ -83,6 +83,16 @@ Sure! Powerkit is developer-friendly. There're numerous hooks and filters, so ex
 
 == Changelog ==
 
+= 2.1.1 =
+* Improve Twitter module
+
+= 2.2.0 =
+* Integration Socials App for Instagram, Facebook and Twitter
+* Added Manual Count Override to Social Links
+* Improved Post Views module
+* Updated instructions on Post Views
+* Fixed minor Adobe fonts
+
 = 2.1.3 =
 * Improve Opt-In Form
 

@@ -27,7 +27,7 @@ class Powerkit_Social_Follow extends Powerkit_Module {
 	 * Transient Prefix
 	 *
 	 * @since 1.0.0
-	 * @var   string $cache_timeout    Cache Timeout (minutes).
+	 * @var   string $cache_timeout Cache Timeout (minutes).
 	 */
 	private $trans_prefix = 'powerkit_social_follow_';
 
@@ -36,7 +36,8 @@ class Powerkit_Social_Follow extends Powerkit_Module {
 	 */
 	public function initialize() {
 		// Reset cache.
-		add_action( 'powerkit_ajax_reset_cache', array( $this, 'ajax_reset_cache' ) );
+		add_filter( 'powerkit_reset_cache', array( $this, 'register_reset_cache' ) );
+		add_filter( 'powerkit_ajax_reset_cache', array( $this, 'register_reset_cache' ) );
 	}
 
 	/**
@@ -46,7 +47,7 @@ class Powerkit_Social_Follow extends Powerkit_Module {
 	 * @param    array $list Change list reset cache.
 	 * @access   private
 	 */
-	public function ajax_reset_cache( $list ) {
+	public function register_reset_cache( $list ) {
 		$slug = powerkit_get_page_slug( $this->slug );
 
 		$list[ $slug ] = array(
@@ -180,7 +181,7 @@ class Powerkit_Social_Follow extends Powerkit_Module {
 		// Get data for social network.
 		$counter = new Powerkit_Links_Social_Counter();
 
-		$counter->trans_prefix = $this->trans_prefix . md5( $username ) . powerkit_connect( 'instagram_token' );
+		$counter->trans_prefix = $this->trans_prefix . md5( ( $username ) . powerkit_connect( 'instagram_app_access_token' ) );
 
 		$counter->users['instagram_user'] = $username;
 
@@ -209,6 +210,20 @@ class Powerkit_Social_Follow extends Powerkit_Module {
 		}
 		if ( isset( $data['data'] ) && is_array( $data['data'] ) && isset( $data['data']['entry_data']['ProfilePage'][0]['graphql']['user']['profile_pic_url_hd'] ) ) {
 			$result['avatar_2x'] = $data['data']['entry_data']['ProfilePage'][0]['graphql']['user']['profile_pic_url_hd'];
+		}
+
+		/* Manual Override */
+
+		if ( get_option( 'powerkit_connect_instagram_custom_followers' ) ) {
+			$result['followers'] = (int) get_option( 'powerkit_connect_instagram_custom_followers' );
+		}
+
+		if ( get_option( 'powerkit_connect_instagram_custom_avatar' ) ) {
+			$result['avatar_1x'] = get_option( 'powerkit_connect_instagram_custom_avatar' );
+		}
+
+		if ( get_option( 'powerkit_connect_instagram_custom_avatar' ) ) {
+			$result['avatar_2x'] = get_option( 'powerkit_connect_instagram_custom_avatar' );
 		}
 
 		// Link.

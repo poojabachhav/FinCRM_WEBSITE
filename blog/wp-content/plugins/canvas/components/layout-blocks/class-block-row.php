@@ -104,18 +104,18 @@ class CNVS_Block_Row {
 					'key'     => 'columns',
 					'type'    => 'number',
 					'label'   => esc_html__( 'Columns', 'canvas' ),
-					'min'     => 2,
+					'min'     => 1,
 					'max'     => 6,
 					'default' => 2,
 				),
 				array(
-					'key'            => 'gap',
-					'type'           => 'number',
-					'label'          => esc_html__( 'Gap', 'canvas' ),
-					'min'            => 0,
-					'max'            => 100,
-					'default'        => 30,
-					'responsive'     => true,
+					'key'        => 'gap',
+					'type'       => 'number',
+					'label'      => esc_html__( 'Gap', 'canvas' ),
+					'min'        => 0,
+					'max'        => 100,
+					'default'    => 30,
+					'responsive' => true,
 				),
 			),
 			'template'      => dirname( __FILE__ ) . '/block-row/render.php',
@@ -194,7 +194,7 @@ class CNVS_Block_Row {
 					'responsive' => true,
 				),
 
-				// Colors
+				// Colors.
 				array(
 					'key'     => 'textColor',
 					'label'   => esc_html__( 'Text Color', 'canvas' ),
@@ -241,14 +241,14 @@ class CNVS_Block_Row {
 	 * @return string
 	 */
 	public function row_dynamic_styles( $return, $block ) {
-		$attributes = $block['attrs'];
+		$attributes        = $block['attrs'];
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 
 		// prepare defaults.
 		if ( isset( $registered_blocks['canvas/row'] ) && isset( $registered_blocks['canvas/row']->attributes ) ) {
 			foreach ( $registered_blocks['canvas/row']->attributes as $k => $attrs ) {
-				if ( isset( $attrs['default'] ) && ! isset( $attributes[$k] ) ) {
-					$attributes[$k] = $attrs['default'];
+				if ( isset( $attrs['default'] ) && ! isset( $attributes[ $k ] ) ) {
+					$attributes[ $k ] = $attrs['default'];
 				}
 			}
 		}
@@ -272,14 +272,14 @@ class CNVS_Block_Row {
 	 * @return string
 	 */
 	public function column_dynamic_styles( $return, $block ) {
-		$attributes = $block['attrs'];
+		$attributes        = $block['attrs'];
 		$registered_blocks = WP_Block_Type_Registry::get_instance()->get_all_registered();
 
 		// prepare defaults.
 		if ( isset( $registered_blocks['canvas/column'] ) && isset( $registered_blocks['canvas/column']->attributes ) ) {
 			foreach ( $registered_blocks['canvas/column']->attributes as $k => $attrs ) {
-				if ( isset( $attrs['default'] ) && ! isset( $attributes[$k] ) ) {
-					$attributes[$k] = $attrs['default'];
+				if ( isset( $attrs['default'] ) && ! isset( $attributes[ $k ] ) ) {
+					$attributes[ $k ] = $attrs['default'];
 				}
 			}
 		}

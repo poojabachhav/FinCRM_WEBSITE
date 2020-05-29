@@ -81,26 +81,26 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 180);
+/******/ 	return __webpack_require__(__webpack_require__.s = 142);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 180:
+/***/ 142:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(181);
+module.exports = __webpack_require__(143);
 
 
 /***/ }),
 
-/***/ 181:
+/***/ 143:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(182);
-/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(183);
+/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(144);
+/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(145);
 /**
  * WordPress dependencies
  */
@@ -149,7 +149,7 @@ addFilter('canvas.customBlock.registerData', 'canvas/tabs/registerData', registe
 
 /***/ }),
 
-/***/ 182:
+/***/ 144:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -321,7 +321,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 183:
+/***/ 145:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -81,12 +81,12 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 126);
+/******/ 	return __webpack_require__(__webpack_require__.s = 157);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 123:
+/***/ 127:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -190,22 +190,22 @@ function replaceClass(className, namespace, newClass) {
 
 /***/ }),
 
-/***/ 126:
+/***/ 157:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(127);
+module.exports = __webpack_require__(158);
 
 
 /***/ }),
 
-/***/ 127:
+/***/ 158:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "name", function() { return name; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "settings", function() { return settings; });
-/* harmony import */ var _gutenberg_utils_classes_replacer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(123);
+/* harmony import */ var _gutenberg_utils_classes_replacer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(127);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }

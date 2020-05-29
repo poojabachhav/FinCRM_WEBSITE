@@ -33,7 +33,8 @@
 				<div class="col-lg-2 navbar-col">
 					<button class="sign_btn sign_color">
 						Sign In
-					</button><?php do_action( 'csco_navbar_content_right' ); ?>
+					</button>
+					<?php do_action( 'csco_navbar_content_right' ); ?>
 					<?php do_action( 'csco_navbar_content_left' ); ?>
 				</div>
 
@@ -56,7 +57,9 @@
 				<div class="col-lg-2 navbar-col">
 					<button class="sign_btn sign_color">
 						Sign In
-					</button><?php do_action( 'csco_navbar_content_right' ); ?>
+					</button><br>
+	           
+				<?php do_action( 'csco_navbar_content_right' ); ?>
 					<?php do_action( 'csco_navbar_content_left' ); ?>
 					
 				</div>

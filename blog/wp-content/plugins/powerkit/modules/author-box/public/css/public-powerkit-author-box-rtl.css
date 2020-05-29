@@ -59,6 +59,10 @@
 	font-size: var(--pk-author-description-font-size);
 }
 
+.pk-widget-author .pk-author-footer {
+	margin-top: 1rem;
+}
+
 .pk-widget-author .pk-author-button {
 	margin-top: 1rem;
 }

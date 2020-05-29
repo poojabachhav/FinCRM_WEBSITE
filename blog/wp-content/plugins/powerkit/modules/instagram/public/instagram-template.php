@@ -45,22 +45,31 @@ function powerkit_instagram_default_template( $feed, $instagram, $params ) {
 						</<?php echo esc_html( $tag ); ?>>
 					<?php } ?>
 
-					<span class="pk-instagram-name pk-color-secondary">
-						<a href="<?php echo esc_url( sprintf( 'https://www.instagram.com/%s/', $feed['username'] ) ); ?>" target="<?php echo esc_attr( $params['target'] ); ?>">
-							<?php echo esc_html( $feed['name'] ); ?>
-						</a>
-					</span>
+					<?php if ( $feed['name'] ) { ?>
+						<span class="pk-instagram-name pk-color-secondary">
+							<a href="<?php echo esc_url( sprintf( 'https://www.instagram.com/%s/', $feed['username'] ) ); ?>" target="<?php echo esc_attr( $params['target'] ); ?>">
+								<?php echo esc_html( $feed['name'] ); ?>
+							</a>
+						</span>
+					<?php } ?>
 				</div>
 			</div>
 
-			<div class="pk-instagram-counters pk-color-secondary">
-				<div class="counter following">
-					<span class="number"><?php echo esc_html( powerkit_abridged_number( $feed['following'], 0 ) ); ?></span> <?php esc_html_e( 'Following', 'powerkit' ); ?>
+			<?php if ( is_int( $feed['following'] ) || is_int( $feed['followers'] ) ) { ?>
+				<div class="pk-instagram-counters pk-color-secondary">
+					<?php if ( is_int( $feed['following'] ) ) { ?>
+						<div class="counter following">
+							<span class="number"><?php echo esc_html( powerkit_abridged_number( $feed['following'], 0 ) ); ?></span> <?php esc_html_e( 'Following', 'powerkit' ); ?>
+						</div>
+					<?php } ?>
+
+					<?php if ( is_int( $feed['followers'] ) ) { ?>
+						<div class="counter followers">
+							<span class="number"><?php echo esc_html( powerkit_abridged_number( $feed['followers'], 0 ) ); ?></span> <?php esc_html_e( 'Followers', 'powerkit' ); ?>
+						</div>
+					<?php } ?>
 				</div>
-				<div class="counter followers">
-					<span class="number"><?php echo esc_html( powerkit_abridged_number( $feed['followers'], 0 ) ); ?></span> <?php esc_html_e( 'Followers', 'powerkit' ); ?>
-				</div>
-			</div>
+			<?php } ?>
 		</div>
 	<?php } ?>
 
@@ -71,12 +80,18 @@ function powerkit_instagram_default_template( $feed, $instagram, $params ) {
 					<a class="pk-instagram-link" href="<?php echo esc_url( $item['user_link'] ); ?>" target="<?php echo esc_attr( $params['target'] ); ?>">
 						<img src="<?php echo esc_attr( $item['user_image'] ); ?>" class="<?php echo esc_attr( $item['class'] ); ?>" alt="<?php echo esc_html( $item['description'] ); ?>" srcset="<?php echo esc_attr( $item['srcset'] ); ?>" sizes="<?php echo esc_attr( $item['sizes'] ); ?>">
 
-						<span class="pk-instagram-data">
-							<span class="pk-instagram-meta">
-								<span class="pk-meta pk-meta-likes"><i class="pk-icon pk-icon-like"></i> <?php echo esc_attr( powerkit_abridged_number( $item['likes'], 0 ) ); ?></span>
-								<span class="pk-meta pk-meta-comments"><i class="pk-icon pk-icon-comment"></i> <?php echo esc_attr( powerkit_abridged_number( $item['comments'], 0 ) ); ?></span>
+						<?php if ( is_int( $item['likes'] ) || is_int( $item['comments'] ) ) { ?>
+							<span class="pk-instagram-data">
+								<span class="pk-instagram-meta">
+									<?php if ( is_int( $item['likes'] ) ) { ?>
+										<span class="pk-meta pk-meta-likes"><i class="pk-icon pk-icon-like"></i> <?php echo esc_attr( powerkit_abridged_number( $item['likes'], 0 ) ); ?></span>
+									<?php } ?>
+									<?php if ( is_int( $item['comments'] ) ) { ?>
+										<span class="pk-meta pk-meta-comments"><i class="pk-icon pk-icon-comment"></i> <?php echo esc_attr( powerkit_abridged_number( $item['comments'], 0 ) ); ?></span>
+									<?php } ?>
+								</span>
 							</span>
-						</span>
+						<?php } ?>
 					</a>
 				</div>
 			<?php } ?>
@@ -90,10 +105,10 @@ function powerkit_instagram_default_template( $feed, $instagram, $params ) {
 		$href = sprintf( 'https://www.instagram.com/%s/', $feed['username'] );
 		$text = apply_filters( 'powerkit_instagram_follow', esc_html__( 'Follow', 'powerkit' ) );
 
-		if ( isset( $params[ 'is_block' ] ) && isset( $params[ 'block_attrs' ] ) && $params[ 'is_block' ] ) {
+		if ( isset( $params['is_block'] ) && isset( $params['block_attrs'] ) && $params['is_block'] ) {
 			?>
 			<div class="pk-instagram-footer">
-				<?php powerkit_print_gutenberg_blocks_button( $text, $href, $params['target'], 'button', $params[ 'block_attrs' ] ); ?>
+				<?php powerkit_print_gutenberg_blocks_button( $text, $href, $params['target'], 'button', $params['block_attrs'] ); ?>
 			</div>
 			<?php
 		} else {

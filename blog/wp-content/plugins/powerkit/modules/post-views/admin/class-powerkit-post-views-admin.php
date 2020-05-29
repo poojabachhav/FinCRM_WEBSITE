@@ -33,11 +33,9 @@ class Powerkit_Post_Views_Admin extends Powerkit_Module_Admin {
 			foreach ( $post_types as $post_type ) {
 				add_filter( "manage_{$post_type}_posts_columns", array( $this, 'column_views' ) );
 				add_action( "manage_{$post_type}_posts_custom_column", array( $this, 'custom_column_views' ), 6, 2 );
-				add_filter( "manage_edit-{$post_type}_sortable_columns", array( $this, 'manage_sortable_columns' ) );
 			}
-		});
+		} );
 
-		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ), 1 );
 		add_action( 'admin_menu', array( $this, 'register_options_page' ) );
 		add_action( 'admin_head', array( $this, 'column_style' ) );
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
@@ -74,12 +72,17 @@ class Powerkit_Post_Views_Admin extends Powerkit_Module_Admin {
 								if ( empty( $options['token'] ) ) {
 
 									if ( empty( $options['clientid'] ) || empty( $options['psecret'] ) ) {
-									?>
-										<p><?php echo wp_kses( __( 'In order to connect to your Google Analytics Account, you need to create a new project in the <a href="https://console.developers.google.com/project" target="_blank">Google API Console</a> and activate the Analytics API in "APIs &amp; auth &gt; APIs"', 'powerkit' ), 'post' ); ?></p>
+										?>
 
-										<p><?php echo wp_kses( __( 'Then, create an OAuth Client ID in "APIs &amp; auth &gt; Credentials". Enter this URL for the Redirect URI field:', 'powerkit' ), 'post' ); ?></p>
+										<p><?php echo wp_kses( __( 'In order to connect to your Google Analytics Account, you need to create a new project in the <a href="https://console.developers.google.com/project" target="_blank">Google API Console</a> and activate the Analytics API in "APIs &amp; Services"', 'powerkit' ), 'post' ); ?></p>
 
-										<p><code><?php echo wp_kses( powerkit_get_page_url( $this->slug ), 'post' ); ?></code></p>
+										<ol>
+											<li><?php echo wp_kses( __( 'Go to "APIs &amp; Services".', 'powerkit' ), 'post' ); ?></li>
+											<li><?php echo wp_kses( __( 'On the tab "OAuth consent screen" register the application, select "User Type" (External) and click "Create".', 'powerkit' ), 'post' ); ?></li>
+											<li><?php echo wp_kses( __( 'On the tab "OAuth consent screen" enter "Application name" and add your domain.', 'powerkit' ), 'post' ); ?></li>
+											<li><?php echo wp_kses( sprintf( __( 'Then, create an OAuth Client ID in "APIs  &amp; Services > Credentials" (Select "Web application", enter this URL %s for the "Authorized redirect URIs" field). ', 'powerkit' ), '<code>' . powerkit_get_page_url( $this->slug ) . '</code>' ), 'post' ); ?></li>
+											<li><?php echo wp_kses( __( 'Enter your access below and connect to Google Analytics (if you have received a notice - "This app is not verified", then you can continue by clicking on "Advanced" link and follow the instructions).', 'powerkit' ), 'post' ); ?></li>
+										</ol>
 
 										<!-- Client ID -->
 										<tr>
@@ -362,41 +365,6 @@ class Powerkit_Post_Views_Admin extends Powerkit_Module_Admin {
 	 */
 	public function column_style() {
 		echo '<style>.column-pk_post_views { width: 120px; }</style>';
-	}
-
-	/**
-	 * Filters the list table sortable columns for a specific screen.
-	 *
-	 * @param array $sortable_columns An array of sortable columns.
-	 */
-	public function manage_sortable_columns( $sortable_columns ) {
-
-		$sortable_columns['pk_post_views'] = 'pk_post_views';
-
-		return $sortable_columns;
-
-	}
-
-	/**
-	 * Fires after the query variable object is created, but before the actual query is run.
-	 *
-	 * @param object $query The current.
-	 */
-	public function pre_get_posts( $query ) {
-
-		$orderby = $query->get( 'orderby' );
-
-		if ( $query->is_main_query() && $orderby ) {
-			switch ( $orderby ) {
-				case 'pk_post_views':
-					$query->set( 'meta_key', '_powerkit_post_views_count' );
-					$query->set( 'orderby', 'meta_value_num' );
-
-					break;
-			}
-		}
-
-		return $query;
 	}
 
 	/**

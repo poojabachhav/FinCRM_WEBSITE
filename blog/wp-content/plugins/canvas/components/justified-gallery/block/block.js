@@ -81,206 +81,10 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 113);
+/******/ 	return __webpack_require__(__webpack_require__.s = 159);
 /******/ })
 /************************************************************************/
 /******/ ({
-
-/***/ 113:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(114);
-
-
-/***/ }),
-
-/***/ 114:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _block_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(115);
-/* harmony import */ var _block_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_block_scss__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * Internal dependencies
- */
-
-/**
- * WordPress dependencies
- */
-
-var __ = wp.i18n.__;
-var addFilter = wp.hooks.addFilter;
-var _wp$components = wp.components,
-    Button = _wp$components.Button,
-    DropZone = _wp$components.DropZone;
-var _wp$editor = wp.editor,
-    MediaPlaceholder = _wp$editor.MediaPlaceholder,
-    MediaUpload = _wp$editor.MediaUpload,
-    mediaUpload = _wp$editor.mediaUpload;
-var createBlock = wp.blocks.createBlock;
-/**
- * Custom block Edit output for Justified Gallery block.
- *
- * @param {JSX} edit Original block edit.
- * @param {Object} blockProps Block data.
- *
- * @return {JSX} Block edit.
- */
-
-function editRender(edit, blockProps) {
-  if ('canvas/justified-gallery' !== blockProps.name) {
-    return edit;
-  }
-
-  var attributes = blockProps.attributes,
-      setAttributes = blockProps.setAttributes,
-      isSelected = blockProps.isSelected;
-  var images = attributes.images;
-  var ALLOWED_MEDIA_TYPES = ['image'];
-  var hasImages = images && images.length; // show gallery with images.
-
-  if (hasImages) {
-    return wp.element.createElement("div", null, edit, wp.element.createElement(DropZone, {
-      onFilesDrop: function onFilesDrop(files) {
-        var currentImages = images || [];
-        mediaUpload({
-          allowedTypes: ALLOWED_MEDIA_TYPES,
-          filesList: files,
-          onFileChange: function onFileChange(images) {
-            var result = images.map(function (image) {
-              return image.id;
-            });
-            setAttributes({
-              images: currentImages.concat(result)
-            });
-          },
-          onError: function onError(e) {
-            // eslint-disable-next-line no-console
-            console.log(e);
-          }
-        });
-      }
-    }), isSelected ? wp.element.createElement("div", {
-      className: "cnvs-block-jg-add-media-button"
-    }, wp.element.createElement(MediaUpload, {
-      onSelect: function onSelect(images) {
-        var result = images.map(function (image) {
-          return image.id;
-        });
-        setAttributes({
-          images: result
-        });
-      },
-      allowedTypes: ALLOWED_MEDIA_TYPES,
-      multiple: true,
-      gallery: true,
-      value: images,
-      render: function render(_ref) {
-        var open = _ref.open;
-        return wp.element.createElement(Button, {
-          isDefault: true,
-          onClick: open
-        }, __('Edit Gallery'));
-      }
-    })) : '');
-  } // add media upload if no images selected.
-
-
-  return wp.element.createElement("div", null, wp.element.createElement(MediaPlaceholder, {
-    icon: "format-gallery",
-    labels: {
-      title: __('Gallery'),
-      instructions: __('Drag images, upload new ones or select files from your library.')
-    },
-    onSelect: function onSelect(images) {
-      var result = images.map(function (image) {
-        return image.id;
-      });
-      setAttributes({
-        images: result
-      });
-    },
-    accept: "image/*",
-    allowedTypes: ALLOWED_MEDIA_TYPES,
-    multiple: true,
-    value: undefined,
-    onError: function onError(e) {
-      // eslint-disable-next-line no-console
-      console.log(e);
-    }
-  }));
-}
-/**
- * Block transformations.
- *
- * @param {Object} blockData Block data.
- *
- * @return {Object} Block data.
- */
-
-
-function registerData(blockData) {
-  if ('canvas/justified-gallery' === blockData.name) {
-    blockData.transforms = {
-      from: [{
-        type: 'block',
-        blocks: ['canvas/slider-gallery'],
-        transform: function transform(attrs) {
-          return createBlock('canvas/justified-gallery', {
-            images: attrs.images,
-            imageSize: attrs.imageSize,
-            linkTo: attrs.linkTo
-          });
-        }
-      }]
-    };
-  }
-
-  return blockData;
-}
-
-addFilter('canvas.customBlock.editRender', 'canvas/justified-gallery/editRender', editRender);
-addFilter('canvas.customBlock.registerData', 'canvas/justified-gallery/registerData', registerData);
-
-/***/ }),
-
-/***/ 115:
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(116);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(14)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {}
-
-/***/ }),
-
-/***/ 116:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(13)(false);
-// Module
-exports.push([module.i, ".cnvs-block-jg-add-media-button button.components-button {\n  justify-content: center;\n  width: 100%;\n  height: auto;\n  margin-top: 20px;\n  padding: 20px;\n  box-shadow: none !important;\n  border: none;\n  border-radius: 0; }\n", ""]);
-
-
-
-/***/ }),
 
 /***/ 13:
 /***/ (function(module, exports, __webpack_require__) {
@@ -871,6 +675,202 @@ module.exports = function (css) {
 	// send back the fixed css
 	return fixedCss;
 };
+
+
+/***/ }),
+
+/***/ 159:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(160);
+
+
+/***/ }),
+
+/***/ 160:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _block_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(161);
+/* harmony import */ var _block_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_block_scss__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * Internal dependencies
+ */
+
+/**
+ * WordPress dependencies
+ */
+
+var __ = wp.i18n.__;
+var addFilter = wp.hooks.addFilter;
+var _wp$components = wp.components,
+    Button = _wp$components.Button,
+    DropZone = _wp$components.DropZone;
+var _wp$editor = wp.editor,
+    MediaPlaceholder = _wp$editor.MediaPlaceholder,
+    MediaUpload = _wp$editor.MediaUpload,
+    mediaUpload = _wp$editor.mediaUpload;
+var createBlock = wp.blocks.createBlock;
+/**
+ * Custom block Edit output for Justified Gallery block.
+ *
+ * @param {JSX} edit Original block edit.
+ * @param {Object} blockProps Block data.
+ *
+ * @return {JSX} Block edit.
+ */
+
+function editRender(edit, blockProps) {
+  if ('canvas/justified-gallery' !== blockProps.name) {
+    return edit;
+  }
+
+  var attributes = blockProps.attributes,
+      setAttributes = blockProps.setAttributes,
+      isSelected = blockProps.isSelected;
+  var images = attributes.images;
+  var ALLOWED_MEDIA_TYPES = ['image'];
+  var hasImages = images && images.length; // show gallery with images.
+
+  if (hasImages) {
+    return wp.element.createElement("div", null, edit, wp.element.createElement(DropZone, {
+      onFilesDrop: function onFilesDrop(files) {
+        var currentImages = images || [];
+        mediaUpload({
+          allowedTypes: ALLOWED_MEDIA_TYPES,
+          filesList: files,
+          onFileChange: function onFileChange(images) {
+            var result = images.map(function (image) {
+              return image.id;
+            });
+            setAttributes({
+              images: currentImages.concat(result)
+            });
+          },
+          onError: function onError(e) {
+            // eslint-disable-next-line no-console
+            console.log(e);
+          }
+        });
+      }
+    }), isSelected ? wp.element.createElement("div", {
+      className: "cnvs-block-jg-add-media-button"
+    }, wp.element.createElement(MediaUpload, {
+      onSelect: function onSelect(images) {
+        var result = images.map(function (image) {
+          return image.id;
+        });
+        setAttributes({
+          images: result
+        });
+      },
+      allowedTypes: ALLOWED_MEDIA_TYPES,
+      multiple: true,
+      gallery: true,
+      value: images,
+      render: function render(_ref) {
+        var open = _ref.open;
+        return wp.element.createElement(Button, {
+          isDefault: true,
+          onClick: open
+        }, __('Edit Gallery'));
+      }
+    })) : '');
+  } // add media upload if no images selected.
+
+
+  return wp.element.createElement("div", null, wp.element.createElement(MediaPlaceholder, {
+    icon: "format-gallery",
+    labels: {
+      title: __('Gallery'),
+      instructions: __('Drag images, upload new ones or select files from your library.')
+    },
+    onSelect: function onSelect(images) {
+      var result = images.map(function (image) {
+        return image.id;
+      });
+      setAttributes({
+        images: result
+      });
+    },
+    accept: "image/*",
+    allowedTypes: ALLOWED_MEDIA_TYPES,
+    multiple: true,
+    value: undefined,
+    onError: function onError(e) {
+      // eslint-disable-next-line no-console
+      console.log(e);
+    }
+  }));
+}
+/**
+ * Block transformations.
+ *
+ * @param {Object} blockData Block data.
+ *
+ * @return {Object} Block data.
+ */
+
+
+function registerData(blockData) {
+  if ('canvas/justified-gallery' === blockData.name) {
+    blockData.transforms = {
+      from: [{
+        type: 'block',
+        blocks: ['canvas/slider-gallery'],
+        transform: function transform(attrs) {
+          return createBlock('canvas/justified-gallery', {
+            images: attrs.images,
+            imageSize: attrs.imageSize,
+            linkTo: attrs.linkTo
+          });
+        }
+      }]
+    };
+  }
+
+  return blockData;
+}
+
+addFilter('canvas.customBlock.editRender', 'canvas/justified-gallery/editRender', editRender);
+addFilter('canvas.customBlock.registerData', 'canvas/justified-gallery/registerData', registerData);
+
+/***/ }),
+
+/***/ 161:
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(162);
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(14)(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ 162:
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(13)(false);
+// Module
+exports.push([module.i, ".cnvs-block-jg-add-media-button button.components-button {\n  justify-content: center;\n  width: 100%;\n  height: auto;\n  margin-top: 20px;\n  padding: 20px;\n  box-shadow: none !important;\n  border: none;\n  border-radius: 0; }\n", ""]);
+
 
 
 /***/ })

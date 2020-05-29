@@ -21,7 +21,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Likes', 'powerkit' ),
 		'link'   => esc_url( 'https://facebook.com/%powerkit_social_links_facebook_user%' ),
 		'fields' => array(
-			'powerkit_social_links_facebook_user' => esc_html__( 'Facebook User', 'powerkit' ),
+			'powerkit_social_links_facebook_user'     => esc_html__( 'Facebook User', 'powerkit' ),
+			'powerkit_social_links_facebook_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -32,7 +33,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => esc_url( 'https://twitter.com/%powerkit_social_links_twitter_user%' ),
 		'fields' => array(
-			'powerkit_social_links_twitter_user' => esc_html__( 'Twitter User', 'powerkit' ),
+			'powerkit_social_links_twitter_user'     => esc_html__( 'Twitter User', 'powerkit' ),
+			'powerkit_social_links_twitter_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -43,18 +45,21 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => esc_url( 'https://www.instagram.com/%powerkit_social_links_instagram_user%' ),
 		'fields' => array(
-			'powerkit_social_links_instagram_user' => esc_html__( 'Instagram User', 'powerkit' ),
+			'powerkit_social_links_instagram_user'     => esc_html__( 'Instagram User', 'powerkit' ),
+			'powerkit_social_links_instagram_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
 	// Pinterest.
 	$list['pinterest'] = array(
-		'id'     => 'pinterest',
-		'name'   => esc_html__( 'Pinterest', 'powerkit' ),
-		'label'  => esc_html__( 'Followers', 'powerkit' ),
-		'link'   => esc_url( 'https://pinterest.com/%powerkit_social_links_pinterest_user%' ),
-		'fields' => array(
-			'powerkit_social_links_pinterest_user' => esc_html__( 'Pinterest User', 'powerkit' ),
+		'id'       => 'pinterest',
+		'name'     => esc_html__( 'Pinterest', 'powerkit' ),
+		'label'    => esc_html__( 'Followers', 'powerkit' ),
+		'override' => esc_html__( 'Manual Count Override', 'powerkit' ),
+		'link'     => esc_url( 'https://pinterest.com/%powerkit_social_links_pinterest_user%' ),
+		'fields'   => array(
+			'powerkit_social_links_pinterest_user'     => esc_html__( 'Pinterest User', 'powerkit' ),
+			'powerkit_social_links_pinterest_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -77,7 +82,8 @@ function powerkit_social_links_list( $list = array() ) {
 					'channel' => esc_html__( 'Channel', 'powerkit' ),
 				),
 			),
-			'powerkit_social_links_youtube_slug'  => esc_html__( 'YouTube User or Channel ID', 'powerkit' ),
+			'powerkit_social_links_youtube_slug'         => esc_html__( 'YouTube User or Channel ID', 'powerkit' ),
+			'powerkit_social_links_youtube_override'     => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -88,7 +94,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => 'https://t.me/%powerkit_social_links_telegram_chat%',
 		'fields' => array(
-			'powerkit_social_links_telegram_chat' => esc_html__( 'Telegram Channel ID', 'powerkit' ),
+			'powerkit_social_links_telegram_chat'     => esc_html__( 'Telegram Channel ID', 'powerkit' ),
+			'powerkit_social_links_telegram_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -99,7 +106,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => esc_url( 'https://vimeo.com/%powerkit_social_links_vimeo_user%' ),
 		'fields' => array(
-			'powerkit_social_links_vimeo_user' => esc_html__( 'Vimeo User ID', 'powerkit' ),
+			'powerkit_social_links_vimeo_user'     => esc_html__( 'Vimeo User ID', 'powerkit' ),
+			'powerkit_social_links_vimeo_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -110,7 +118,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => esc_url( 'https://soundcloud.com/%powerkit_social_links_soundcloud_user_id%' ),
 		'fields' => array(
-			'powerkit_social_links_soundcloud_user_id' => esc_html__( 'SoundCloud User ID', 'powerkit' ),
+			'powerkit_social_links_soundcloud_user_id'  => esc_html__( 'SoundCloud User ID', 'powerkit' ),
+			'powerkit_social_links_soundcloud_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -146,7 +155,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => esc_url( 'https://dribbble.com/%powerkit_social_links_dribbble_user%' ),
 		'fields' => array(
-			'powerkit_social_links_dribbble_user' => esc_html__( 'Dribbble User ID', 'powerkit' ),
+			'powerkit_social_links_dribbble_user'     => esc_html__( 'Dribbble User ID', 'powerkit' ),
+			'powerkit_social_links_dribbble_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -157,7 +167,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => esc_url( 'https://www.behance.net/%powerkit_social_links_behance_user%' ),
 		'fields' => array(
-			'powerkit_social_links_behance_user' => esc_html__( 'Behance User ID', 'powerkit' ),
+			'powerkit_social_links_behance_user'     => esc_html__( 'Behance User ID', 'powerkit' ),
+			'powerkit_social_links_behance_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -168,7 +179,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => esc_url( 'https://github.com/%powerkit_social_links_github_user%' ),
 		'fields' => array(
-			'powerkit_social_links_github_user' => esc_html__( 'GitHub User ID', 'powerkit' ),
+			'powerkit_social_links_github_user'     => esc_html__( 'GitHub User ID', 'powerkit' ),
+			'powerkit_social_links_github_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -186,7 +198,7 @@ function powerkit_social_links_list( $list = array() ) {
 			),
 		),
 		'fields' => array(
-			'powerkit_social_links_ok_type' => array(
+			'powerkit_social_links_ok_type'     => array(
 				'title'   => esc_html__( 'Type', 'powerkit' ),
 				'options' => array(
 					'profile'      => esc_html__( 'Profile ID', 'powerkit' ),
@@ -195,7 +207,8 @@ function powerkit_social_links_list( $list = array() ) {
 					'group_name'   => esc_html__( 'Group Name', 'powerkit' ),
 				),
 			),
-			'powerkit_social_links_ok_slug' => esc_html__( 'Odnoklassniki Slug / ID', 'powerkit' ),
+			'powerkit_social_links_ok_slug'     => esc_html__( 'Odnoklassniki Slug / ID', 'powerkit' ),
+			'powerkit_social_links_ok_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -211,14 +224,15 @@ function powerkit_social_links_list( $list = array() ) {
 			),
 		),
 		'fields' => array(
-			'powerkit_social_links_vk_type' => array(
+			'powerkit_social_links_vk_type'     => array(
 				'title'   => esc_html__( 'Profile Type', 'powerkit' ),
 				'options' => array(
 					'group' => esc_html__( 'Group', 'powerkit' ),
 					'user'  => esc_html__( 'User', 'powerkit' ),
 				),
 			),
-			'powerkit_social_links_vk_id' => esc_html__( 'Group or User ID', 'powerkit' ),
+			'powerkit_social_links_vk_id'       => esc_html__( 'Group or User ID', 'powerkit' ),
+			'powerkit_social_links_vk_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -275,7 +289,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => 'https://www.twitch.tv/%powerkit_social_links_twitch_user_id%',
 		'fields' => array(
-			'powerkit_social_links_twitch_user_id' => esc_html__( 'Twitch Channel ID', 'powerkit' ),
+			'powerkit_social_links_twitch_user_id'  => esc_html__( 'Twitch Channel ID', 'powerkit' ),
+			'powerkit_social_links_twitch_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -286,7 +301,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Follow', 'powerkit' ),
 		'link'   => 'https://www.flickr.com/photos/%powerkit_social_links_flickr_user_id%',
 		'fields' => array(
-			'powerkit_social_links_flickr_user_id' => esc_html__( 'User ID', 'powerkit' ),
+			'powerkit_social_links_flickr_user_id'  => esc_html__( 'User ID', 'powerkit' ),
+			'powerkit_social_links_flickr_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -308,7 +324,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => 'https://medium.com/%powerkit_social_links_medium_user%',
 		'fields' => array(
-			'powerkit_social_links_medium_user' => esc_html__( 'Medium Username', 'powerkit' ) . '<p class="description">Example: @user_name</p>',
+			'powerkit_social_links_medium_user'     => esc_html__( 'Medium Username', 'powerkit' ) . '<p class="description">Example: @user_name</p>',
+			'powerkit_social_links_medium_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -319,7 +336,8 @@ function powerkit_social_links_list( $list = array() ) {
 		'label'  => esc_html__( 'Followers', 'powerkit' ),
 		'link'   => 'https://www.strava.com/athletes/%powerkit_social_links_strava_user%',
 		'fields' => array(
-			'powerkit_social_links_strava_user' => esc_html__( 'Strava User ID', 'powerkit' ),
+			'powerkit_social_links_strava_user'     => esc_html__( 'Strava User ID', 'powerkit' ),
+			'powerkit_social_links_strava_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 
@@ -346,14 +364,15 @@ function powerkit_social_links_list( $list = array() ) {
 			),
 		),
 		'fields' => array(
-			'powerkit_social_links_reddit_type' => array(
+			'powerkit_social_links_reddit_type'     => array(
 				'title'   => esc_html__( 'Type', 'powerkit' ),
 				'options' => array(
 					'subreddit' => esc_html__( 'Subreddit', 'powerkit' ),
 					'user'      => esc_html__( 'User', 'powerkit' ),
 				),
 			),
-			'powerkit_social_links_reddit_user' => esc_html__( 'Subreddit Name or Reddit User ', 'powerkit' ),
+			'powerkit_social_links_reddit_user'     => esc_html__( 'Subreddit Name or Reddit User ', 'powerkit' ),
+			'powerkit_social_links_reddit_override' => esc_html__( 'Manual Count Override', 'powerkit' ),
 		),
 	);
 

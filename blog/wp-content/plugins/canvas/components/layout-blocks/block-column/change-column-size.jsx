@@ -20,7 +20,7 @@ const {
  */
 import { getAdjacentBlocks } from './utils';
 
-const MIN_COL_SIZE = 2;
+const MIN_COL_SIZE = 1;
 
 /**
  * Update columns size.

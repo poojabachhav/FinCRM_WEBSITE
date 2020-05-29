@@ -81,25 +81,25 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 171);
+/******/ 	return __webpack_require__(__webpack_require__.s = 133);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 171:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(172);
+module.exports = __webpack_require__(134);
 
 
 /***/ }),
 
-/***/ 172:
+/***/ 134:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(173);
+/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(135);
 /**
  * WordPress dependencies
  */
@@ -130,15 +130,15 @@ addFilter('canvas.customBlock.editRender', 'canvas/section-heading/editRender', 
 
 /***/ }),
 
-/***/ 173:
+/***/ 135:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(72);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _aligntoolbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(174);
-/* harmony import */ var _tagtoolbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(175);
+/* harmony import */ var _aligntoolbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(136);
+/* harmony import */ var _tagtoolbar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(137);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -280,7 +280,7 @@ jQuery(function () {
 
 /***/ }),
 
-/***/ 174:
+/***/ 136:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -393,7 +393,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 175:
+/***/ 137:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

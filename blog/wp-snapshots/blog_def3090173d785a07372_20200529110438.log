@@ -1,0 +1,84 @@
+********************************************************************************
+DUPLICATOR-LITE PACKAGE-LOG: May 29, 2020 11:05 am
+NOTICE: Do NOT post to public sites or forums 
+********************************************************************************
+VERSION:	1.3.34
+WORDPRESS:	5.4.1
+PHP INFO:	7.4.3 | SAPI: apache2handler
+SERVER:		Apache/2.4.41 (Win64) OpenSSL/1.1.1c PHP/7.4.3 
+PHP TIME LIMIT: (0) no time limit imposed 
+PHP MAX MEMORY: 4294967296 (512M default) 
+MEMORY STACK: 6MB
+
+********************************************************************************
+DATABASE:
+********************************************************************************
+BUILD MODE:   MYSQLDUMP
+MYSQLTIMEOUT: 5000
+MYSQLDUMP:    Is Supported
+SQL CREATED: blog_def3090173d785a07372_20200529110438_database.sql
+SQL FILE SIZE: 11.78MB (12351790)
+SQL FILE TIME: 2020-05-29 11:06:06
+SQL RUNTIME: 47.37 sec.
+
+********************************************************************************
+ARCHIVE (ZIP):
+********************************************************************************
+ARCHIVE DIR:  C:/xampp/htdocs/FinCRM_WEBSITE/blog
+ARCHIVE FILE: blog_def3090173d785a07372_20200529110438_archive.zip
+FILTERS: *OFF*
+DIRS:
+	not set
+FILES:
+	not set
+EXTS:  not set
+----------------------------------------
+COMPRESSING
+SIZE:	94.42MB
+STATS:	Dirs 873 | Files 4,998
+SQL ADDED: blog_def3090173d785a07372_20200529110438_database.sql
+ZipArchive Object
+(
+    [status] => 0
+    [statusSys] => 0
+    [numFiles] => 5871
+    [filename] => C:\xampp\htdocs\FinCRM_WEBSITE\blog\wp-snapshots\tmp\blog_def3090173d785a07372_20200529110438_archive.zip
+    [comment] => 
+)
+
+FILE ADDED TO ZIP: 5870
+COMPRESSION RESULT: '1'
+COMPRESSED SIZE: 39.31MB
+ARCHIVE RUNTIME: 80.17 sec.
+MEMORY STACK: 8MB
+building installer
+add_extra_files1
+add_extra_files2
+add_extra_files3
+add_extra_files4
+Doing archive file check
+add_extra_files5
+add_extra_files6
+add_extra_files8
+Successfully opened zip C:/xampp/htdocs/FinCRM_WEBSITE/blog/wp-snapshots/tmp/blog_def3090173d785a07372_20200529110438_archive.zip
+Adding enhanced installer files to archive using ZipArchive
+Installer files added to archive
+Added to archive
+After ziparchive close when adding installer
+
+********************************************************************************
+INTEGRITY CHECKS:
+********************************************************************************
+SQL FILE: 11.78MB
+INSTALLER FILE: 61.3KB
+ARCHIVE FILE: 40.8MB 
+EXPECTED FILE/DIRECTORY COUNT: 5,871
+ACTUAL FILE/DIRECTORY COUNT: 5,870
+ARCHIVE CONSISTENCY TEST: Pass
+
+********************************************************************************
+RECORD ID:[1]
+TOTAL PROCESS RUNTIME: 137.42 sec.
+PEAK PHP MEMORY USED: 10MB
+DONE PROCESSING => blog May 29, 2020 11:07 am
+

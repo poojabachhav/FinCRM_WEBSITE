@@ -15,15 +15,8 @@ function powerkit_connect_instagram( $list = array() ) {
 
 	// Instagram.
 	$list['instagram'] = array(
-		'id'     => 'instagram',
-		'name'   => esc_html__( 'Instagram', 'powerkit' ),
-		'fields' => array(
-			array(
-				'key'         => 'powerkit_connect_instagram_token',
-				'caption'     => esc_html__( 'Instagram Token', 'powerkit' ),
-				'instruction' => wp_kses_post( __( '<a href="https://codesupply.co/documentation/powerkit/social-integrations/instagram-integration/#instagram-token" target="_blank">How to obtaint the Instagram Token</a>', 'powerkit' ) ),
-			),
-		),
+		'id'   => 'instagram',
+		'name' => esc_html__( 'Instagram', 'powerkit' ),
 	);
 
 	return $list;

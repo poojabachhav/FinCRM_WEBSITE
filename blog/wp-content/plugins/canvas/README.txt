@@ -14,6 +14,9 @@ A revolutionary block-based page builder used for building layouts, an interplay
 
 == Changelog ==
 
+= 2.0.3 =
+* Remove column limit from Row Block.
+
 = 2.0.2 =
 * Improve blocks.
 

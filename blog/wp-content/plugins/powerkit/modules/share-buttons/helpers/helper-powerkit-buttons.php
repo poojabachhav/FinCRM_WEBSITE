@@ -29,10 +29,10 @@ function powerkit_share_buttons_get_cache_time( $post_id = false ) {
 	// Post age in seconds.
 	$post_age = floor( intval( date( 'U' ) ) - intval( get_post_time( 'U', true, $post_id ) ) );
 
-	$three_months_period = apply_filters( 'powerkit_share_buttons_three_months', 5184000 );
-	$three_weeks_period  = apply_filters( 'powerkit_share_buttons_three_weeks', 1814400 );
+	$two_months_period  = apply_filters( 'powerkit_share_buttons_two_months', 5184000 );
+	$three_weeks_period = apply_filters( 'powerkit_share_buttons_three_weeks', 1814400 );
 
-	if ( isset( $post_age ) && $post_age > $three_months_period ) {
+	if ( isset( $post_age ) && $post_age > $two_months_period ) {
 
 		// Post older than 60 days - expire cache after 12 hours.
 		$seconds = apply_filters( 'powerkit_share_buttons_refresh_60_days', 43200 );

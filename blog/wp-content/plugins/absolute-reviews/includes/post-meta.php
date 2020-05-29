@@ -25,7 +25,7 @@ if ( ! function_exists( 'abr_allowed_post_meta' ) ) {
 			'comments' => esc_html__( 'Comments count', 'canvas' ),
 		);
 
-		if ( abr_powerkit_module_enabled( 'post_views' ) ) {
+		if ( abr_post_views_enabled() ) {
 			$allowed['views'] = esc_html__( 'Views', 'canvas' );
 		}
 
@@ -324,11 +324,16 @@ if ( ! function_exists( 'abr_get_meta_views' ) ) {
 	 */
 	function abr_get_meta_views( $tag = 'span', $compact = false ) {
 
-		if ( ! function_exists( 'powerkit_module_enabled' ) || ! powerkit_module_enabled( 'post_views' ) ) {
-			return;
+		switch ( abr_post_views_enabled() ) {
+			case 'post_views':
+				$views = pvc_get_post_views();
+				break;
+			case 'pk_post_views':
+				$views = powerkit_get_post_views( null, false );
+				break;
+			default:
+				return;
 		}
-
-		$views = powerkit_get_post_views();
 
 		// Don't display if minimum threshold is not met.
 		if ( $views < apply_filters( 'abr_post_minimum_views', 1 ) ) {

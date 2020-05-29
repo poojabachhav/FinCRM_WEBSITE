@@ -69,7 +69,7 @@ class ABR_Reviews_Posts_Block {
 				'default'         => false,
 				'active_callback' => $settings['active_callback'],
 			),
-			abr_powerkit_module_enabled( 'post_views' ) ? array(
+			abr_post_views_enabled() ? array(
 				'key'             => $settings['field_prefix'] . '_showMetaViews',
 				'label'           => esc_html__( 'Views', 'authentic' ),
 				'section'         => $settings['section_name'],

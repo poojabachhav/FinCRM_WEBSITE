@@ -78,7 +78,7 @@ function powerkit_widget_author_default_template( $author, $args, $params, $inst
 
 							if ( isset( $params['is_block'] ) && isset( $params['block_attrs'] ) && $params['is_block'] ) {
 								?>
-								<div class="pk-twitter-footer">
+								<div class="pk-author-footer">
 									<?php powerkit_print_gutenberg_blocks_button( $text, $href, '', 'button', $params['block_attrs'] ); ?>
 								</div>
 								<?php

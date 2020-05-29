@@ -3,6 +3,10 @@
  * included in this file.
  */
 /*--------------------------------------------------------------*/
+.cnvs-block-row {
+	overflow: hidden;
+}
+
 .cnvs-block-row > .cnvs-block-row-inner {
 	display: -webkit-box;
 	display: -ms-flexbox;

@@ -43,7 +43,8 @@ if ( $color_topbar_bg !== $color_bottombar_bg ) {
 					<?php do_action( 'csco_navbar_topbar_left' ); ?>
 					<button class="sign_btn sign_color">
 						Sign In
-					</button><?php do_action( 'csco_navbar_topbar_right' ); ?>
+					</button>
+				<?php do_action( 'csco_navbar_topbar_right' ); ?>
 					
 				</div>
 			</div>
@@ -73,6 +74,7 @@ if ( $color_topbar_bg !== $color_bottombar_bg ) {
 				</div>
 
 				<div class="col-lg-2 navbar-col">
+					
 					<?php do_action( 'csco_navbar_topbar_left' ); ?>
 					<?php do_action( 'csco_navbar_bottombar_right' ); ?>
 				</div>

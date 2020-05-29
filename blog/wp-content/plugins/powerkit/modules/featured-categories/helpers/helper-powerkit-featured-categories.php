@@ -91,7 +91,8 @@ function powerkit_featured_categories_output( $params ) {
 						<?php if ( $params['number'] ) { ?>
 							<div class="pk-featured-count">
 								<span class="pk-featured-number"><?php echo esc_html( $category->count ); ?></span>
-								<span class="pk-featured-label"><?php esc_html_e( ' Posts', 'powerkit' ); ?></div>
+								<span class="pk-featured-label"><?php esc_html_e( ' Posts', 'powerkit' ); ?></span>
+							</div>
 						<?php } ?>
 					</div>
 				</div>

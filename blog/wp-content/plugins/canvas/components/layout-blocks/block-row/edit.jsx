@@ -29,6 +29,7 @@ import getStyles from './styles';
 import changeColumnSize from '../block-column/change-column-size';
 
 const availableSizes = {
+	1: [ 12 ],
 	2: [ 6, 6 ],
 	3: [ 4, 4, 4 ],
 	4: [ 3, 3, 3, 3 ],

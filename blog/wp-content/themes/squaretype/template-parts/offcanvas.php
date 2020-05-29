@@ -35,11 +35,11 @@ if ( csco_offcanvas_exists() ) {
 					<?php
 				}
 				?>
-
-				<button type="button" class="toggle-offcanvas">
+              
+	           <button type="button" class="toggle-offcanvas ">
 					<i class="cs-icon cs-icon-x"></i>
 				</button>
-
+				
 			</nav>
 
 			<?php do_action( 'csco_offcanvas_header_end' ); ?>

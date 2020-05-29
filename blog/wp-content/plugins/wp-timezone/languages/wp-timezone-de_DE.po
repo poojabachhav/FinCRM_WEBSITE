@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP TimeZone\n"
+"POT-Creation-Date: 2014-01-12 11:43+0100\n"
+"PO-Revision-Date: 2014-01-12 11:45+0100\n"
+"Last-Translator: Ezra Verheijen\n"
+"Language-Team: Ezra Verheijen\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.3\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../wp-timezone.php:177
+msgid "Timezones are automatically managed by the WP TimeZone plugin."
+msgstr "Zeitzonen werden automatisch verwaltet bei der WP TimeZone Plugin."
+
+#: ../wp-timezone.php:182
+msgid ""
+"Missed schedule. The WP TimeZone plugin takes care of publication within 5 "
+"minutes."
+msgstr ""
+"Planung gescheitert. Der WP TimeZone Plugin sorgt innerhalb von 5 Minuten "
+"für die Veröffentlichung."
+
+#: ../wp-timezone.php:203
+msgid "Donate"
+msgstr "Spenden"

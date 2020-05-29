@@ -81,129 +81,25 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 166);
+/******/ 	return __webpack_require__(__webpack_require__.s = 125);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 123:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveClass", function() { return getActiveClass; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "replaceClass", function() { return replaceClass; });
-/**
- * WordPress dependencies
- */
-var TokenList = wp.tokenList;
-/**
- * Returns the active style from the given className.
- *
- * @param {string} className  Class name
- * @param {string} namespace  The replacing class namespace.
- *
- * @return {string} The active style.
- */
-
-function getActiveClass(className, namespace) {
-  var list = new TokenList(className);
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = list.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var activeClass = _step.value;
-
-      if (activeClass.indexOf("".concat(namespace, "-")) === -1) {
-        continue;
-      }
-
-      return activeClass;
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return != null) {
-        _iterator.return();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
-
-  return false;
-}
-/**
- * Replaces the active class with namespace in the className.
- *
- * @param {string} className  Class name.
- * @param {string} namespace  The replacing class namespace.
- * @param {string} newClass   The replacing class.
- *
- * @return {string} The updated className.
- */
-
-function replaceClass(className, namespace, newClass) {
-  var list = new TokenList(className);
-  var namespaceRegExp = new RegExp("".concat(namespace, "-")); // remove classes with the same namespace.
-
-  var _iteratorNormalCompletion2 = true;
-  var _didIteratorError2 = false;
-  var _iteratorError2 = undefined;
-
-  try {
-    for (var _iterator2 = list.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var activeClass = _step2.value;
-
-      if (namespaceRegExp.test(activeClass)) {
-        list.remove(activeClass);
-      }
-    } // add new class.
-
-  } catch (err) {
-    _didIteratorError2 = true;
-    _iteratorError2 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-        _iterator2.return();
-      }
-    } finally {
-      if (_didIteratorError2) {
-        throw _iteratorError2;
-      }
-    }
-  }
-
-  if (newClass) {
-    list.add("".concat(namespace, "-").concat(newClass));
-  }
-
-  return list.value;
-}
-
-/***/ }),
-
-/***/ 166:
+/***/ 125:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(167);
+module.exports = __webpack_require__(126);
 
 
 /***/ }),
 
-/***/ 167:
+/***/ 126:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _gutenberg_utils_classes_replacer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(123);
+/* harmony import */ var _gutenberg_utils_classes_replacer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(127);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -348,6 +244,110 @@ var coverWithCanvasVertical = createHigherOrderComponent(function (BlockEdit) {
   })(NewEdit);
 }, 'coverWithCanvasVertical');
 addFilter('editor.BlockEdit', 'canvas/cover/vertical', coverWithCanvasVertical);
+
+/***/ }),
+
+/***/ 127:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getActiveClass", function() { return getActiveClass; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "replaceClass", function() { return replaceClass; });
+/**
+ * WordPress dependencies
+ */
+var TokenList = wp.tokenList;
+/**
+ * Returns the active style from the given className.
+ *
+ * @param {string} className  Class name
+ * @param {string} namespace  The replacing class namespace.
+ *
+ * @return {string} The active style.
+ */
+
+function getActiveClass(className, namespace) {
+  var list = new TokenList(className);
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = list.values()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var activeClass = _step.value;
+
+      if (activeClass.indexOf("".concat(namespace, "-")) === -1) {
+        continue;
+      }
+
+      return activeClass;
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+
+  return false;
+}
+/**
+ * Replaces the active class with namespace in the className.
+ *
+ * @param {string} className  Class name.
+ * @param {string} namespace  The replacing class namespace.
+ * @param {string} newClass   The replacing class.
+ *
+ * @return {string} The updated className.
+ */
+
+function replaceClass(className, namespace, newClass) {
+  var list = new TokenList(className);
+  var namespaceRegExp = new RegExp("".concat(namespace, "-")); // remove classes with the same namespace.
+
+  var _iteratorNormalCompletion2 = true;
+  var _didIteratorError2 = false;
+  var _iteratorError2 = undefined;
+
+  try {
+    for (var _iterator2 = list.values()[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+      var activeClass = _step2.value;
+
+      if (namespaceRegExp.test(activeClass)) {
+        list.remove(activeClass);
+      }
+    } // add new class.
+
+  } catch (err) {
+    _didIteratorError2 = true;
+    _iteratorError2 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+        _iterator2.return();
+      }
+    } finally {
+      if (_didIteratorError2) {
+        throw _iteratorError2;
+      }
+    }
+  }
+
+  if (newClass) {
+    list.add("".concat(namespace, "-").concat(newClass));
+  }
+
+  return list.value;
+}
 
 /***/ })
 

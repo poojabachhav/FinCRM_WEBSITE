@@ -71,18 +71,18 @@ function powerkit_instagram_json_get_feed( $ins_request, $ins_params ) {
 	// Get data of user.
 	if ( is_object( $user_data ) ) {
 
-		if ( isset( $user_data->meta->error_message ) ) {
+		if ( isset( $user_data->error->message ) ) {
 
-			return sprintf( '%s <a href="%s">%s</a>', $user_data->meta->error_message . esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Token', 'powerkit' ) );
+			return sprintf( '%s <a href="%s">%s</a>', $user_data->error->message . esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Settings', 'powerkit' ) );
 
-		} elseif ( isset( $user_data->data->username ) ) {
+		} elseif ( isset( $user_data->username ) ) {
 
-			if ( $ins_params['user_id'] !== $user_data->data->username ) {
+			if ( $ins_params['user_id'] !== $user_data->username ) {
 				return esc_html__( 'Please check your Instagram User, you do not have access to this account.', 'powerkit' );
 			}
 		} else {
 
-			return sprintf( '%s <a href="%s">%s</a>', esc_html__( 'Instagram data is not set. Please check your Instagram User or ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Token', 'powerkit' ) );
+			return sprintf( '%s <a href="%s">%s</a>', esc_html__( 'Instagram data is not set. Please check your Instagram User or ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Settings', 'powerkit' ) );
 		}
 	} else {
 		return esc_html__( 'Error decoding the instagram json.', 'powerkit' );
@@ -96,11 +96,11 @@ function powerkit_instagram_json_get_feed( $ins_request, $ins_params ) {
 	// Get data of media.
 	if ( is_object( $media_data ) ) {
 
-		if ( isset( $media_data->meta->error_message ) ) {
+		if ( isset( $media_data->error->message ) ) {
 
-			return sprintf( '%s <a href="%s">%s</a>', $media_data->meta->error_message . esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Token', 'powerkit' ) );
+			return sprintf( '%s <a href="%s">%s</a>', $media_data->error->message . esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Settings', 'powerkit' ) );
 
-		} elseif ( isset( $media_data->data ) ) {
+		} elseif ( isset( $media_data ) ) {
 
 			// Images not found.
 			if ( ! is_array( $media_data->data ) || count( $media_data->data ) <= 0 ) {
@@ -108,7 +108,7 @@ function powerkit_instagram_json_get_feed( $ins_request, $ins_params ) {
 			}
 		} else {
 
-			return sprintf( '%s <a href="%s">%s</a>', esc_html__( 'Instagram data is not set. Please check your Instagram User or ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Token', 'powerkit' ) );
+			return sprintf( '%s <a href="%s">%s</a>', esc_html__( 'Instagram data is not set. Please check your Instagram User or ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Settings', 'powerkit' ) );
 		}
 	} else {
 		return esc_html__( 'Error decoding the instagram json.', 'powerkit' );
@@ -121,86 +121,88 @@ function powerkit_instagram_json_get_feed( $ins_request, $ins_params ) {
 	// Full name.
 	$feed['name'] = null;
 
-	if ( isset( $user_data->data->full_name ) ) {
-		$feed['name'] = $user_data->data->full_name;
+	if ( isset( $user_data->name ) ) {
+		$feed['name'] = $user_data->name;
 	}
 
 	// Username.
 	$feed['username'] = null;
 
-	if ( isset( $user_data->data->username ) ) {
-		$feed['username'] = $user_data->data->username;
+	if ( isset( $user_data->username ) ) {
+		$feed['username'] = $user_data->username;
 	}
 
 	// Liked count.
-	$feed['following'] = 0;
+	$feed['following'] = null;
 
-	if ( isset( $user_data->data->counts->follows ) ) {
-		$feed['following'] = (int) $user_data->data->counts->follows;
+	if ( isset( $user_data->following_count ) ) {
+		$feed['following'] = (int) $user_data->following_count;
 	}
 
 	// Liked count.
-	$feed['followers'] = 0;
+	$feed['followers'] = null;
 
-	if ( isset( $user_data->data->counts->followed_by ) ) {
-		$feed['followers'] = (int) $user_data->data->counts->followed_by;
+	if ( isset( $user_data->followers_count ) ) {
+		$feed['followers'] = (int) $user_data->followers_count;
 	}
 
 	// Avatar x1.
 	$feed['avatar_1x'] = null;
 
-	if ( isset( $user_data->data->profile_picture ) ) {
-		$feed['avatar_1x'] = $user_data->data->profile_picture;
+	if ( isset( $user_data->profile_picture_url ) ) {
+		$feed['avatar_1x'] = $user_data->profile_picture_url;
 	}
 
 	// Avatar x2.
 	$feed['avatar_2x'] = null;
 
-	if ( isset( $user_data->data->profile_picture ) ) {
-		$feed['avatar_2x'] = $user_data->data->profile_picture;
+	if ( isset( $user_data->profile_picture_url ) ) {
+		$feed['avatar_2x'] = $user_data->profile_picture_url;
 	}
 
 	// Images.
 	$feed['images'] = array();
 
 	foreach ( $media_data->data as $key => $media ) {
-		if ( ! isset( $media->images ) || ! $media->images ) {
-			continue;
-		}
-
 		// Thumbnail.
 		$feed['images'][ $key ]['sizes']['thumbnail'] = null;
 
-		if ( isset( $media->images->thumbnail->url ) ) {
-			$feed['images'][ $key ]['sizes']['thumbnail'] = $media->images->thumbnail->url;
+		if ( isset( $media->media_url ) ) {
+			$feed['images'][ $key ]['sizes']['thumbnail'] = $media->media_url;
 		}
 
 		// Small.
 		$feed['images'][ $key ]['sizes']['small'] = null;
 
-		if ( isset( $media->images->low_resolution->url ) ) {
-			$feed['images'][ $key ]['sizes']['small'] = $media->images->low_resolution->url;
+		if ( isset( $media->media_url ) ) {
+			$feed['images'][ $key ]['sizes']['small'] = $media->media_url;
 		}
 
 		// Large.
 		$feed['images'][ $key ]['sizes']['large'] = null;
 
-		if ( isset( $media->images->standard_resolution->url ) ) {
-			$feed['images'][ $key ]['sizes']['large'] = $media->images->standard_resolution->url;
+		if ( isset( $media->media_url ) ) {
+			$feed['images'][ $key ]['sizes']['large'] = $media->media_url;
+		}
+
+		if ( isset( $media->thumbnail_url ) ) {
+			$feed['images'][ $key ]['sizes']['thumbnail'] = $media->thumbnail_url;
+			$feed['images'][ $key ]['sizes']['small']     = $media->thumbnail_url;
+			$feed['images'][ $key ]['sizes']['large']     = $media->thumbnail_url;
 		}
 
 		// Item link.
 		$feed['images'][ $key ]['link'] = null;
 
-		if ( isset( $media->link ) ) {
-			$feed['images'][ $key ]['link'] = $media->link;
+		if ( isset( $media->permalink ) ) {
+			$feed['images'][ $key ]['link'] = $media->permalink;
 		}
 
 		// Desc.
 		$feed['images'][ $key ]['text'] = null;
 
-		if ( isset( $media->caption->text ) ) {
-			$text = strtok( $media->caption->text, "\n" );
+		if ( isset( $media->caption ) ) {
+			$text = strtok( $media->caption, "\n" );
 
 			$feed['images'][ $key ]['text'] = strip_tags( $text );
 		}
@@ -208,22 +210,22 @@ function powerkit_instagram_json_get_feed( $ins_request, $ins_params ) {
 		// Timestamp.
 		$feed['images'][ $key ]['timestamp'] = null;
 
-		if ( isset( $media->created_time ) ) {
-			$feed['images'][ $key ]['timestamp'] = powerkit_relative_time( $media->created_time );
+		if ( isset( $media->timestamp ) ) {
+			$feed['images'][ $key ]['timestamp'] = powerkit_relative_time( $media->timestamp );
 		}
 
 		// Comment count.
-		$feed['images'][ $key ]['comment_count'] = 0;
+		$feed['images'][ $key ]['comment_count'] = null;
 
-		if ( isset( $media->comments->count ) ) {
-			$feed['images'][ $key ]['comment_count'] = (int) $media->comments->count;
+		if ( isset( $media->comments_count ) ) {
+			$feed['images'][ $key ]['comment_count'] = (int) $media->comments_count;
 		}
 
 		// Liked count.
-		$feed['images'][ $key ]['liked_count'] = 0;
+		$feed['images'][ $key ]['liked_count'] = null;
 
-		if ( isset( $media->likes->count ) ) {
-			$feed['images'][ $key ]['liked_count'] = (int) $media->likes->count;
+		if ( isset( $media->like_count ) ) {
+			$feed['images'][ $key ]['liked_count'] = (int) $media->like_count;
 		}
 	}
 
@@ -254,7 +256,7 @@ function powerkit_instagram_html_get_feed( $ins_request, $ins_params ) {
 	$ins_data_json = array_shift( $ins_data );
 
 	if ( ! $ins_data_json ) {
-		return sprintf( '%s <a href="%s">%s</a> %s', esc_html__( 'Instagram html data cannot be retrieved. Please try adding the ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( 'Instagram Token', 'powerkit' ), esc_html__( ' on the settings page.', 'powerkit' ) );
+		return sprintf( '%s <a href="%s">%s</a> %s', esc_html__( 'Instagram html data cannot be retrieved. Please try adding the ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( 'Instagram Settings', 'powerkit' ), esc_html__( ' on the settings page.', 'powerkit' ) );
 	}
 
 	$instagram_json = json_decode( $ins_data_json, true );
@@ -266,7 +268,7 @@ function powerkit_instagram_html_get_feed( $ins_request, $ins_params ) {
 
 	// Current instagram data is not set.
 	if ( ! isset( $instagram_json['entry_data']['ProfilePage'][0]['graphql']['user'] ) ) {
-		return sprintf( '%s <a href="%s">%s</a> %s', esc_html__( 'Instagram data is not set, please check the ID. Please try adding the ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( 'Instagram Token', 'powerkit' ), esc_html__( ' on the settings page.', 'powerkit' ) );
+		return sprintf( '%s <a href="%s">%s</a> %s', esc_html__( 'Instagram data is not set, please check the ID. Please try adding the ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( 'Instagram Settings', 'powerkit' ), esc_html__( ' on the settings page.', 'powerkit' ) );
 	}
 
 	$user_data = $instagram_json['entry_data']['ProfilePage'][0]['graphql']['user'];
@@ -293,14 +295,14 @@ function powerkit_instagram_html_get_feed( $ins_request, $ins_params ) {
 	}
 
 	// Liked count.
-	$feed['following'] = 0;
+	$feed['following'] = null;
 
 	if ( isset( $user_data['edge_follow']['count'] ) ) {
 		$feed['following'] = (int) $user_data['edge_follow']['count'];
 	}
 
 	// Liked count.
-	$feed['followers'] = 0;
+	$feed['followers'] = null;
 
 	if ( isset( $user_data['edge_followed_by']['count'] ) ) {
 		$feed['followers'] = (int) $user_data['edge_followed_by']['count'];
@@ -381,14 +383,14 @@ function powerkit_instagram_html_get_feed( $ins_request, $ins_params ) {
 		}
 
 		// Comment count.
-		$feed['images'][ $key ]['comment_count'] = 0;
+		$feed['images'][ $key ]['comment_count'] = null;
 
 		if ( isset( $edge['node']['edge_media_to_comment']['count'] ) ) {
 			$feed['images'][ $key ]['comment_count'] = (int) $edge['node']['edge_media_to_comment']['count'];
 		}
 
 		// Liked count.
-		$feed['images'][ $key ]['liked_count'] = 0;
+		$feed['images'][ $key ]['liked_count'] = null;
 
 		if ( isset( $edge['node']['edge_liked_by']['count'] ) ) {
 			$feed['images'][ $key ]['liked_count'] = (int) $edge['node']['edge_liked_by']['count'];
@@ -410,11 +412,35 @@ function powerkit_instagram_html_get_feed( $ins_request, $ins_params ) {
  * @param array  $ins_params  Options.
  */
 function powerkit_instagram_get_feed( $ins_request, $ins_params ) {
-	if ( powerkit_connect( 'instagram_token' ) ) {
-		return powerkit_instagram_json_get_feed( $ins_request, $ins_params );
+	if ( powerkit_connect( 'instagram_app_access_token' ) ) {
+		$feed = powerkit_instagram_json_get_feed( $ins_request, $ins_params );
 	} else {
-		return powerkit_instagram_html_get_feed( $ins_request, $ins_params );
+		$feed = powerkit_instagram_html_get_feed( $ins_request, $ins_params );
 	}
+
+	/* Manual Override */
+
+	if ( get_option( 'powerkit_connect_instagram_custom_name' ) ) {
+		$feed['name'] = get_option( 'powerkit_connect_instagram_custom_name' );
+	}
+
+	if ( get_option( 'powerkit_connect_instagram_following' ) ) {
+		$feed['following'] = (int) get_option( 'powerkit_connect_instagram_following' );
+	}
+
+	if ( get_option( 'powerkit_connect_instagram_custom_followers' ) ) {
+		$feed['followers'] = (int) get_option( 'powerkit_connect_instagram_custom_followers' );
+	}
+
+	if ( get_option( 'powerkit_connect_instagram_custom_avatar' ) ) {
+		$feed['avatar_1x'] = get_option( 'powerkit_connect_instagram_custom_avatar' );
+	}
+
+	if ( get_option( 'powerkit_connect_instagram_custom_avatar' ) ) {
+		$feed['avatar_2x'] = get_option( 'powerkit_connect_instagram_custom_avatar' );
+	}
+
+	return $feed;
 }
 
 /**
@@ -423,7 +449,7 @@ function powerkit_instagram_get_feed( $ins_request, $ins_params ) {
  * @param array  $params     Recent options.
  * @param string $cache_name The cache name.
  */
-function powerkit_instagram_get_recent( $params, $cache_name = 'powerkit_data_instagram' ) {
+function powerkit_instagram_get_recent( $params, $cache_name = 'powerkit_instagram_data' ) {
 
 	$params = array_merge( array(
 		'user_id'    => '',
@@ -440,19 +466,29 @@ function powerkit_instagram_get_recent( $params, $cache_name = 'powerkit_data_in
 	$cache_time = (int) $params['cache_time'];
 
 	// Instagram trans name.
-	$trans_name = $cache_name . '_' . md5( maybe_serialize( $params ) ) . powerkit_connect( 'instagram_token' );
+	$trans_name = $cache_name . '_' . md5( maybe_serialize( $params ) . powerkit_connect( 'instagram_app_access_token' ) );
 
 	// Instagram request.
 	$ins_request = get_transient( $trans_name );
 
 	if ( false === $ins_request || 0 === $cache_time ) {
 
-		if ( powerkit_connect( 'instagram_token' ) ) {
+		if ( powerkit_connect( 'instagram_app_access_token' ) && powerkit_connect( 'instagram_app_user_id' ) ) {
+			$access_token = powerkit_connect( 'instagram_app_access_token' );
+			$user_id      = powerkit_connect( 'instagram_app_user_id' );
 
-			// Get information about .
-			$ins_link = add_query_arg( array(
-				'access_token' => powerkit_connect( 'instagram_token' ),
-			), 'https://api.instagram.com/v1/users/self' );
+			// Get information about.
+			if ( 'business' === powerkit_connect( 'instagram_app_type' ) ) {
+				$ins_link = add_query_arg( array(
+					'fields'       => 'biography,id,username,website,followers_count,media_count,profile_picture_url,name',
+					'access_token' => $access_token,
+				), 'https://graph.facebook.com/' . $user_id );
+			} else {
+				$ins_link = add_query_arg( array(
+					'fields'       => 'id,username,media_count',
+					'access_token' => $access_token,
+				), 'https://graph.instagram.com/me' );
+			}
 
 			$ins_request = wp_safe_remote_get( $ins_link,
 				array(
@@ -466,10 +502,19 @@ function powerkit_instagram_get_recent( $params, $cache_name = 'powerkit_data_in
 			usleep( 100000 );
 
 			// Get the most recent media published.
-			$ins_recent_link = add_query_arg( array(
-				'count'        => $params['number'],
-				'access_token' => powerkit_connect( 'instagram_token' ),
-			), 'https://api.instagram.com/v1/users/self/media/recent' );
+			if ( 'business' === powerkit_connect( 'instagram_app_type' ) ) {
+				$ins_recent_link = add_query_arg( array(
+					'fields'       => 'media_url,thumbnail_url,caption,id,media_type,timestamp,username,comments_count,like_count,permalink',
+					'limit'        => min( $params['number'], 200 ),
+					'access_token' => $access_token,
+				), 'https://graph.facebook.com/' . $user_id . '/media' );
+			} else {
+				$ins_recent_link = add_query_arg( array(
+					'fields'       => 'media_url,thumbnail_url,caption,id,media_type,timestamp,username,comments_count,like_count,permalink',
+					'limit'        => min( $params['number'], 200 ),
+					'access_token' => $access_token,
+				), 'https://graph.instagram.com/' . $user_id . '/media' );
+			}
 
 			$ins_recent_request = wp_safe_remote_get( $ins_recent_link,
 				array(
@@ -481,7 +526,6 @@ function powerkit_instagram_get_recent( $params, $cache_name = 'powerkit_data_in
 			);
 
 			$ins_request['headers']['recent'] = $ins_recent_request;
-
 		} else {
 
 			$ins_link = sprintf( 'https://www.instagram.com/%s', $params['user_id'] );
@@ -611,7 +655,7 @@ function powerkit_instagram_get_recent( $params, $cache_name = 'powerkit_data_in
 				}
 
 				// Template Output.
-				echo $template_html; // XSS OK.
+				call_user_func( 'printf', '%s', $template_html );
 				?>
 			</div>
 			<?php

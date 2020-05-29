@@ -17,7 +17,8 @@ class Powerkit_Social_Links_Admin extends Powerkit_Module_Admin {
 	 * Initialize
 	 */
 	public function initialize() {
-		add_filter( 'powerkit_ajax_reset_cache', array( $this, 'ajax_reset_cache' ) );
+		add_filter( 'powerkit_reset_cache', array( $this, 'register_reset_cache' ) );
+		add_filter( 'powerkit_ajax_reset_cache', array( $this, 'register_reset_cache' ) );
 		add_filter( 'user_contactmethods', array( $this, 'contactmethods' ), 1000, 1 );
 		add_filter( 'coauthors_guest_author_fields', array( $this, 'guest_author_fields' ), 10, 2 );
 		add_action( 'admin_menu', array( $this, 'register_options_page' ) );
@@ -28,7 +29,7 @@ class Powerkit_Social_Links_Admin extends Powerkit_Module_Admin {
 	 *
 	 * @param array $list Change list reset cache.
 	 */
-	public function ajax_reset_cache( $list ) {
+	public function register_reset_cache( $list ) {
 		$slug = powerkit_get_page_slug( $this->slug );
 
 		$list[ $slug ] = 'powerkit_social_links_counter';
@@ -118,9 +119,9 @@ class Powerkit_Social_Links_Admin extends Powerkit_Module_Admin {
 															$powerkit_social_links_multiple_list = get_option( 'powerkit_social_links_multiple_list', array() );
 
 															$checked = in_array( $key, $powerkit_social_links_multiple_list, true ) ? 'checked' : '';
-														?>
+															?>
 															<p class="social-item"><label for="powerkit_social_links_multiple_list_<?php echo esc_attr( $key ); ?>"><input class="powerkit_social_links_multiple_list" data-item="<?php echo esc_attr( $key ); ?>" id="powerkit_social_links_multiple_list_<?php echo esc_attr( $key ); ?>" name="powerkit_social_links_multiple_list[]" type="checkbox" value="<?php echo esc_attr( $key ); ?>" <?php echo esc_attr( $checked ); ?>> <?php echo esc_attr( $link['name'] ); ?></label></p>
-														<?php
+															<?php
 														}
 													}
 													?>
@@ -140,7 +141,7 @@ class Powerkit_Social_Links_Admin extends Powerkit_Module_Admin {
 													// Sort.
 													if ( $social_links_save && $links ) {
 														$social_links_save = array_flip( $social_links_save );
-														$links      = array_merge( $social_links_save, $links );
+														$links             = array_merge( $social_links_save, $links );
 													}
 
 													// Output.
@@ -197,7 +198,7 @@ class Powerkit_Social_Links_Admin extends Powerkit_Module_Admin {
 											if ( isset( $item['fields'] ) && $item['fields'] ) {
 												foreach ( $item['fields'] as $field_key => $field_caption ) {
 													if ( is_array( $field_caption ) ) {
-													?>
+														?>
 														<tr>
 															<th scope="row"><label class="title" for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses( $field_caption['title'], 'post' ); ?></label></th>
 															<td>
@@ -208,14 +209,14 @@ class Powerkit_Social_Links_Admin extends Powerkit_Module_Admin {
 																</select>
 															</td>
 														</tr>
-													<?php
+														<?php
 													} else {
-													?>
+														?>
 														<tr>
 															<th scope="row"><label class="title" for="<?php echo esc_attr( $field_key ); ?>"><?php echo wp_kses( $field_caption, 'post' ); ?></label></th>
 															<td><input class="regular-text" id="<?php echo esc_attr( $field_key ); ?>" name="<?php echo esc_attr( $field_key ); ?>" type="text" value="<?php echo esc_attr( get_option( $field_key ) ); ?>" /></td>
 														</tr>
-													<?php
+														<?php
 													}
 												}
 											}

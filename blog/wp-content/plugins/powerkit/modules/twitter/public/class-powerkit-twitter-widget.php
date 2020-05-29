@@ -60,9 +60,8 @@ class Powerkit_Twitter_Widget extends WP_Widget {
 			if ( $params['title'] ) {
 				echo $args['before_title'] . apply_filters( 'widget_title', $params['title'], $instance, $this->id_base ) . $args['after_title']; // XSS.
 			}
-			
-			powerkit_twitter_get_recent( $params, 'powerkit_twitter_widget_cache' );
 
+			powerkit_twitter_get_recent( $params, 'powerkit_twitter_widget_cache' );
 			?>
 		</div>
 

@@ -12,20 +12,12 @@
 class Powerkit_Links_Social_Counter {
 
 	/**
-	 * Social users
+	 * Social config
 	 *
 	 * @since 1.0.0
-	 * @var   array $users    List of user names.
+	 * @var   array $config Config.
 	 */
-	public $users = array();
-
-	/**
-	 * Extra data
-	 *
-	 * @since 1.0.0
-	 * @var   array $extra    Extra data.
-	 */
-	public $extra = array();
+	public $config = array();
 
 	/**
 	 * Transient Prefix
@@ -59,17 +51,13 @@ class Powerkit_Links_Social_Counter {
 	 */
 	public function run_api() {
 
-		$config = new Powerkit_Links_Api_Config();
+		$api_config = new Powerkit_Links_Api_Config();
 
 		// Cache Timeout.
-		$this->cache_timeout = $config::$cache_timeout;
+		$this->cache_timeout = $api_config::$cache_timeout;
 
 		// Users.
-		$this->users = $config::$users;
-
-		// Extra.
-		$this->extra = $config::$extra;
-
+		$this->config = $api_config::$config;
 	}
 
 	/**
@@ -201,15 +189,15 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['pinterest_user'] ) {
-			$result['error'] = esc_html( 'Please enter a pinterest user name.', 'powerkit' );
+		if ( ! $this->config['pinterest_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a pinterest user name.', 'powerkit' );
 			return $result;
 		}
 
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'https://api.pinterest.com/v3/pidgets/users/' . $this->users['pinterest_user'] . '/pins',
+			'url'     => 'https://api.pinterest.com/v3/pidgets/users/' . $this->config['pinterest_user'] . '/pins',
 			'params'  => array(),
 			'cache'   => $cache,
 			'decode'  => true,
@@ -253,8 +241,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['dribbble_user'] ) {
-			$result['error'] = esc_html( 'Please enter a dribbble user name.', 'powerkit' );
+		if ( ! $this->config['dribbble_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a dribbble user name.', 'powerkit' );
 			return $result;
 		}
 
@@ -266,7 +254,7 @@ class Powerkit_Links_Social_Counter {
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'https://api.dribbble.com/v1/users/' . $this->users['dribbble_user'],
+			'url'     => 'https://api.dribbble.com/v1/users/' . $this->config['dribbble_user'],
 			'params'  => array(
 				'access_token' => powerkit_connect( 'dribbble_token' ),
 			),
@@ -311,121 +299,59 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['facebook_user'] ) {
-			$result['error'] = esc_html( 'Please enter a Facebook user name.', 'powerkit' );
+		if ( ! $this->config['facebook_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a Facebook user name.', 'powerkit' );
 
 			return $result;
 		}
 
 		// Check Facebook access token.
-		if ( powerkit_connect( 'facebook_api_appid' ) && powerkit_connect( 'facebook_api_appsecret' ) && powerkit_connect( 'facebook_access_token' ) ) {
+		if ( powerkit_connect( 'facebook_app_access_token' ) ) {
 
-			// Get OAuth url.
-			$oauth_url = add_query_arg( array(
-				'grant_type'        => 'fb_exchange_token',
-				'client_id'         => powerkit_connect( 'facebook_api_appid' ),
-				'client_secret'     => powerkit_connect( 'facebook_api_appsecret' ),
-				'fb_exchange_token' => powerkit_connect( 'facebook_access_token' ),
-			), 'https://graph.facebook.com/v3.3/oauth/access_token' );
+			$url = sprintf( 'https://graph.facebook.com/%s?fields=fan_count&access_token=%s', $this->config['facebook_user'], powerkit_connect( 'facebook_app_access_token' ) );
 
-			// Get define access token.
-			$define_access_token = get_option( md5( $oauth_url ) );
+			// Get Count.
+			$data = $this->curl_get_api( array(
+				'network' => $network,
+				'url'     => $url,
+				'params'  => array(),
+				'cache'   => $cache,
+				'decode'  => true,
+			) );
 
-			// Check define access token.
-			if ( ! $define_access_token ) {
-
-				$response = wp_safe_remote_get( $oauth_url );
-
-				// Get OAuth data.
-				$oauth_data = json_decode( wp_remote_retrieve_body( $response ) );
-
-				if ( is_object( $oauth_data ) && isset( $oauth_data->error->message ) ) {
-
-					// API Error.
-					$result['error'] = $oauth_data->error->message;
-
-				} elseif ( is_object( $oauth_data ) && isset( $oauth_data->access_token ) ) {
-
-					// Get graph page url.
-					$graph_page_url = add_query_arg( array(
-						'fields'       => 'access_token',
-						'access_token' => $oauth_data->access_token,
-					), 'https://graph.facebook.com/' . $this->users['facebook_user'] );
-
-					$response = wp_safe_remote_get( $graph_page_url );
-
-					// Get OAuth data.
-					$graph_data = json_decode( wp_remote_retrieve_body( $response ) );
-
-					if ( is_object( $graph_data ) && isset( $graph_data->error->message ) ) {
-
-						// API Error.
-						$result['error'] = $graph_data->error->message;
-
-					} elseif ( is_object( $graph_data ) && isset( $graph_data->access_token ) ) {
-
-						update_option( md5( $oauth_url ), $graph_data->access_token );
-
-						$define_access_token = $graph_data->access_token;
-
-					} else {
-						// API Error.
-						$result['error'] = esc_html( 'Graph identification failed.', 'powerkit' );
-					}
-				} else {
-					// API Error.
-					$result['error'] = esc_html( 'OAuth identification failed.', 'powerkit' );
-				}
+			// Cached Count.
+			if ( is_array( $data ) && isset( $data['count'] ) ) {
+				return $data;
 			}
 
-			if ( $define_access_token ) {
+			// Set Count.
+			if ( isset( $data->error->message ) ) {
 
-				// Get Count.
-				$data = $this->curl_get_api( array(
-					'network' => $network,
-					'url'     => 'https://graph.facebook.com/v3.3/' . $this->users['facebook_user'],
-					'params'  => array(
-						'access_token' => $define_access_token,
-						'fields'       => 'fan_count',
-					),
-					'cache'   => $cache,
-					'decode'  => true,
-				) );
+				// API Error.
+				$result['error'] = $data->error->message;
 
-				// Cached Count.
-				if ( is_array( $data ) && isset( $data['count'] ) ) {
-					return $data;
-				}
+			} elseif ( isset( $data->fan_count ) ) {
 
-				// Set Count.
-				if ( isset( $data->error->message ) ) {
-
-					// API Error.
-					$result['error'] = $data->error->message;
-
-				} elseif ( isset( $data->fan_count ) ) {
-
-					// Live Count.
-					$result['count'] = $data->fan_count;
-				}
+				// Live Count.
+				$result['count'] = $data->fan_count;
 			}
 
 			// Set message.
 			if ( isset( $result['error'] ) ) {
-				$result['error'] .= sprintf( '%s <a href="%s">%s</a>', esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=facebook' ), esc_html__( ' Facebook API Settings', 'powerkit' ) );
+				$result['error'] .= sprintf( '%s <a href="%s">%s</a>', esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=facebook' ), esc_html__( ' Facebook Settings', 'powerkit' ) );
 
 				if ( false !== strpos( $result['error'], 'Some of the aliases you requested do not exist' ) ) {
-					$result['error'] = esc_html( 'Please check your User ID.', 'powerkit' );
+					$result['error'] = esc_html__( 'Please check your User ID.', 'powerkit' );
 				}
 
 				if ( false !== strpos( $result['error'], 'Page Public Content Access' ) ) {
-					$result['error'] = esc_html( 'Please make sure you own the page and allowed your Facebook app to manage it.', 'powerkit' );
+					$result['error'] = esc_html__( 'Please make sure you own the page and allowed your Facebook app to manage it.', 'powerkit' );
 				}
 			}
 		} else {
 
 			$url = add_query_arg( array(
-				'href'                  => rawurlencode( 'https://www.facebook.com/' . $this->users['facebook_user'] ),
+				'href'                  => rawurlencode( 'https://www.facebook.com/' . $this->config['facebook_user'] ),
 				'domain'                => rawurlencode( home_url() ),
 				'origin'                => rawurlencode( home_url() ),
 				'adapt_container_width' => 'true',
@@ -469,7 +395,7 @@ class Powerkit_Links_Social_Counter {
 
 			// Set Message.
 			if ( isset( $result['error'] ) ) {
-				$result['error'] .= sprintf( '%s <a href="%s">%s</a>', esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=facebook' ), esc_html__( ' Facebook API Settings', 'powerkit' ) );
+				$result['error'] .= sprintf( '%s <a href="%s">%s</a>', esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=facebook' ), esc_html__( ' Facebook Settings', 'powerkit' ) );
 			}
 		}
 
@@ -493,22 +419,37 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check Instagram User.
-		if ( ! $this->users['instagram_user'] ) {
-			$result['error'] = esc_html( 'Please enter an Instagram User.', 'powerkit' );
+		if ( ! $this->config['instagram_user'] ) {
+			$result['error'] = esc_html__( 'Please enter an Instagram User.', 'powerkit' );
 
 			return $result;
 		}
 
 		// Get Count.
-		if ( powerkit_connect( 'instagram_token' ) ) {
+		if ( powerkit_connect( 'instagram_app_access_token' ) ) {
+
+			if ( powerkit_connect( 'instagram_app_username' ) !== $this->config['instagram_user'] ) {
+				$result['error'] = esc_html__( 'Please check your Instagram User, you do not have access to this account.', 'powerkit' );
+			}
+
+			// Get information about.
+			if ( 'business' === powerkit_connect( 'instagram_app_type' ) ) {
+				$url = add_query_arg( array(
+					'fields'       => 'biography,id,username,website,followers_count,media_count,profile_picture_url,name',
+					'access_token' => powerkit_connect( 'instagram_app_access_token' ),
+				), 'https://graph.facebook.com/' . powerkit_connect( 'instagram_app_user_id' ) );
+			} else {
+				$url = add_query_arg( array(
+					'fields'       => 'id,username,media_count',
+					'access_token' => powerkit_connect( 'instagram_app_access_token' ),
+				), 'https://graph.instagram.com/me' );
+			}
 
 			// Get Count.
 			$data = $this->curl_get_api( array(
 				'network' => $network,
-				'url'     => 'https://api.instagram.com/v1/users/self/',
-				'params'  => array(
-					'access_token' => powerkit_connect( 'instagram_token' ),
-				),
+				'url'     => $url,
+				'params'  => array(),
 				'cache'   => $cache,
 				'decode'  => true,
 			));
@@ -519,35 +460,22 @@ class Powerkit_Links_Social_Counter {
 			}
 
 			// Set count.
-			if ( isset( $data->meta->error_message ) ) {
+			if ( isset( $data->error->message ) ) {
 
 				// API Error.
-				$result['error'] = $data->meta->error_message;
+				$result['error'] = $data->error->message;
 
-			} elseif ( isset( $data->data->counts->followed_by ) ) {
+			} elseif ( isset( $data->followers_count ) ) {
 
 				// Live Count.
-				if ( $this->users['instagram_user'] === $data->data->username ) {
+				$result['count'] = $data->followers_count;
+			} else {
 
-					$result['data'] = $data;
-
-					$result['count'] = $data->data->counts->followed_by;
-				} else {
-
-					$result['error'] = esc_html__( 'Please check your Instagram User, you do not have access to this account.', 'powerkit' );
-				}
-			}
-
-			// Set Message.
-			if ( isset( $result['error'] ) ) {
-
-				if ( false === strpos( $result['error'], 'Please check your Instagram User' ) ) {
-					$result['error'] .= sprintf( '%s <a href="%s">%s</a>', esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Token', 'powerkit' ) );
-				}
+				$result['error'] = sprintf( '%s <a href="%s">%s</a>', esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Settings', 'powerkit' ) );
 			}
 		} else {
 			$data = $this->curl_get_api( array(
-				'url'     => 'https://www.instagram.com/' . $this->users['instagram_user'],
+				'url'     => 'https://www.instagram.com/' . $this->config['instagram_user'],
 				'network' => $network,
 				'cache'   => $cache,
 				'params'  => array(),
@@ -584,7 +512,7 @@ class Powerkit_Links_Social_Counter {
 
 			// Set Message.
 			if ( isset( $result['error'] ) ) {
-				$result['error'] .= sprintf( '%s <a href="%s">%s</a>', esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Token', 'powerkit' ) );
+				$result['error'] .= sprintf( '%s <a href="%s">%s</a>', esc_html__( ' Please check your ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=instagram' ), esc_html__( ' Instagram Settings', 'powerkit' ) );
 			}
 		}
 
@@ -608,8 +536,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['youtube_slug'] ) {
-			$result['error'] = esc_html( 'Please enter an YouTube User.', 'powerkit' );
+		if ( ! $this->config['youtube_slug'] ) {
+			$result['error'] = esc_html__( 'Please enter an YouTube User.', 'powerkit' );
 			return $result;
 		}
 
@@ -619,11 +547,11 @@ class Powerkit_Links_Social_Counter {
 		}
 
 		// Generate Params.
-		switch ( $this->extra['youtube_channel_type'] ) {
+		switch ( $this->config['youtube_channel_type'] ) {
 			case 'channel':
 				$params = array(
 					'part' => 'snippet,contentDetails,statistics',
-					'id'   => $this->users['youtube_slug'],
+					'id'   => $this->config['youtube_slug'],
 					'key'  => powerkit_connect( 'youtube_key' ),
 				);
 				break;
@@ -632,7 +560,7 @@ class Powerkit_Links_Social_Counter {
 			default:
 				$params = array(
 					'part'        => 'snippet,contentDetails,statistics',
-					'forUsername' => $this->users['youtube_slug'],
+					'forUsername' => $this->config['youtube_slug'],
 					'key'         => powerkit_connect( 'youtube_key' ),
 				);
 				break;
@@ -668,7 +596,7 @@ class Powerkit_Links_Social_Counter {
 		} elseif ( isset( $data->items ) && empty( $data->items ) ) {
 
 			// API Error 2.
-			$result['error'] = esc_html( 'Please check your username or channel.', 'powerkit' );
+			$result['error'] = esc_html__( 'Please check your username or channel.', 'powerkit' );
 
 		}
 
@@ -692,8 +620,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check chat id.
-		if ( ! $this->users['telegram_chat'] ) {
-			$result['error'] = esc_html( 'Please enter an Telegram Channel ID.', 'powerkit' );
+		if ( ! $this->config['telegram_chat'] ) {
+			$result['error'] = esc_html__( 'Please enter an Telegram Channel ID.', 'powerkit' );
 			return $result;
 		}
 
@@ -707,7 +635,7 @@ class Powerkit_Links_Social_Counter {
 			'network' => $network,
 			'url'     => 'https://api.telegram.org/bot' . powerkit_connect( 'telegram_token' ) . '/getChatMembersCount',
 			'params'  => array(
-				'chat_id' => '@' . $this->users['telegram_chat'],
+				'chat_id' => '@' . $this->config['telegram_chat'],
 			),
 			'cache'   => $cache,
 			'decode'  => true,
@@ -750,8 +678,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['soundcloud_user_id'] ) {
-			$result['error'] = esc_html( 'Please enter a SoundCloud User ID.', 'powerkit' );
+		if ( ! $this->config['soundcloud_user_id'] ) {
+			$result['error'] = esc_html__( 'Please enter a SoundCloud User ID.', 'powerkit' );
 			return $result;
 		}
 
@@ -763,7 +691,7 @@ class Powerkit_Links_Social_Counter {
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'http://api.soundcloud.com/users/' . $this->users['soundcloud_user_id'],
+			'url'     => 'http://api.soundcloud.com/users/' . $this->config['soundcloud_user_id'],
 			'params'  => array(
 				'client_id' => powerkit_connect( 'soundcloud_client_id' ),
 			),
@@ -780,7 +708,7 @@ class Powerkit_Links_Social_Counter {
 		if ( ! $data ) {
 
 			// API Error.
-			$result['error'] = esc_html( 'SoundCloud API Error.', 'powerkit' );
+			$result['error'] = esc_html__( 'SoundCloud API Error.', 'powerkit' );
 
 		} elseif ( isset( $data->followers_count ) ) {
 
@@ -808,8 +736,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['vimeo_user'] ) {
-			$result['error'] = esc_html( 'Please enter a Vimeo User ID.', 'powerkit' );
+		if ( ! $this->config['vimeo_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a Vimeo User ID.', 'powerkit' );
 			return $result;
 		}
 
@@ -821,7 +749,7 @@ class Powerkit_Links_Social_Counter {
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'https://api.vimeo.com/users/' . $this->users['vimeo_user'] . '/followers',
+			'url'     => 'https://api.vimeo.com/users/' . $this->config['vimeo_user'] . '/followers',
 			'params'  => array(
 				'access_token' => powerkit_connect( 'vimeo_token' ),
 			),
@@ -865,28 +793,18 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['twitter_user'] ) {
-			$result['error'] = esc_html( 'Please enter a Twitter User.', 'powerkit' );
-			return $result;
-		}
-
-		// Check Twitter Consumer Key.
-		if ( ! powerkit_connect( 'twitter_consumer_key' ) ) {
-			return $result;
-		}
-
-		// Check Twitter Consumer Secret.
-		if ( ! powerkit_connect( 'twitter_consumer_secret' ) ) {
+		if ( ! $this->config['twitter_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a Twitter User.', 'powerkit' );
 			return $result;
 		}
 
 		// Check Twitter Access Token.
-		if ( ! powerkit_connect( 'twitter_access_token' ) ) {
+		if ( ! powerkit_connect( 'twitter_app_oauth_token' ) ) {
 			return $result;
 		}
 
 		// Check Twitter Access Token Secret.
-		if ( ! powerkit_connect( 'twitter_access_token_secret' ) ) {
+		if ( ! powerkit_connect( 'twitter_app_oauth_token_secret' ) ) {
 			return $result;
 		}
 
@@ -904,66 +822,42 @@ class Powerkit_Links_Social_Counter {
 
 		// Get Count.
 		if ( ! $data ) {
+			$twitter_connect = new Powerkit_Twitter_API();
+			$twitter_connect->init( array(
+				'consumer_key'        => powerkit_connect( 'twitter_app_consumer_key' ),
+				'consumer_secret'     => powerkit_connect( 'twitter_app_consumer_secret' ),
+				'access_token'        => powerkit_connect( 'twitter_app_oauth_token' ),
+				'access_token_secret' => powerkit_connect( 'twitter_app_oauth_token_secret' ),
+			), 'timeline' );
 
-			/* Get Token */
-			$token = get_transient( $this->trans_prefix . $network . '_token' );
-			if ( ! $token || ! $cache ) {
-				$credentials = powerkit_connect( 'twitter_consumer_key' ) . ':' . powerkit_connect( 'twitter_consumer_secret' );
-				$to_send     = base64_encode( $credentials );
-
-				$args = array(
-					'method'      => 'POST',
-					'httpversion' => '1.1',
-					'blocking'    => true,
-					'headers'     => array(
-						'Authorization' => 'Basic ' . $to_send,
-						'Content-Type'  => 'application/x-www-form-urlencoded;charset=UTF-8',
-					),
-					'body'        => array(
-						'grant_type' => 'client_credentials',
-					),
-				);
-
-				add_filter( 'https_ssl_verify', '__return_false' );
-				$response = wp_remote_post( esc_url( 'https://api.twitter.com/oauth2/token', null, '' ), $args );
-
-				$keys = json_decode( wp_remote_retrieve_body( $response ) );
-
-				$token = isset( $keys->access_token ) ? $keys->access_token : null;
-
-				set_transient( $this->trans_prefix . $network . '_token', $token, $this->cache_timeout );
-			}
-
-			/* Get Data */
-			$args = array(
-				'httpversion' => '1.1',
-				'blocking'    => true,
-				'headers'     => array(
-					'Authorization' => "Bearer $token",
-				),
-			);
-			add_filter( 'https_ssl_verify', '__return_false' );
-
-			$json_url = add_query_arg( array(
-				'screen_name'     => $this->users['twitter_user'],
+			$twitter_connect->set_url_base();
+			$twitter_connect->set_get_fields( array(
+				'screen_name'     => $this->config['twitter_user'],
 				'count'           => '1',
-				'exclude_replies' => true,
-			), 'https://api.twitter.com/1.1/statuses/user_timeline.json' );
+				'exclude_replies' => false,
+			) );
 
-			$response = wp_safe_remote_get( $json_url, $args );
+			$twitter_connect->perform_request();
 
-			remove_filter( 'https_ssl_verify', '__return_false' );
+			$response_code    = wp_remote_retrieve_response_code( $twitter_connect->json );
+			$response_message = wp_remote_retrieve_response_message( $twitter_connect->json );
+			$response_body    = json_decode( wp_remote_retrieve_body( $twitter_connect->json ) );
 
 			/* Set Data Followers */
-			if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
+			if ( 200 !== $response_code && ! empty( $response_message ) ) {
 
-				$data = json_decode( wp_remote_retrieve_body( $response ) );
+				$result['error'] = $response_message;
 
-				if ( ! isset( $data->errors ) ) {
-					$result['error'] = 'Not available!';
-				}
+			} elseif ( 200 !== $response_code ) {
+
+				$result['error'] = sprintf( '%s <a href="%s">%s</a>', esc_html__( 'Twitter data is not set. Please check your Twitter User or ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=twitter' ), esc_html__( ' Twitter Settings', 'powerkit' ) );
+
+			} elseif ( empty( $response_body ) ) {
+
+				$result['error'] = esc_html__( 'There are no tweets in your account.', 'powerkit' );
+
 			} else {
-				$data = json_decode( wp_remote_retrieve_body( $response ) );
+				$data = $response_body;
 			}
 		}
 
@@ -1009,8 +903,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['github_user'] ) {
-			$result['error'] = esc_html( 'Please enter a GitHub User ID.', 'powerkit' );
+		if ( ! $this->config['github_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a GitHub User ID.', 'powerkit' );
 			return $result;
 		}
 
@@ -1027,7 +921,7 @@ class Powerkit_Links_Social_Counter {
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'https://api.github.com/users/' . $this->users['github_user'],
+			'url'     => 'https://api.github.com/users/' . $this->config['github_user'],
 			'params'  => array(
 				'client_id'     => powerkit_connect( 'github_client_id' ),
 				'client_secret' => powerkit_connect( 'github_client_secret' ),
@@ -1073,8 +967,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['behance_user'] ) {
-			$result['error'] = esc_html( 'Please enter a Behance User ID.', 'powerkit' );
+		if ( ! $this->config['behance_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a Behance User ID.', 'powerkit' );
 			return $result;
 		}
 
@@ -1086,7 +980,7 @@ class Powerkit_Links_Social_Counter {
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'https://api.behance.net/v2/users/' . $this->users['behance_user'],
+			'url'     => 'https://api.behance.net/v2/users/' . $this->config['behance_user'],
 			'params'  => array(
 				'client_id' => powerkit_connect( 'behance_client_id' ),
 			),
@@ -1110,7 +1004,7 @@ class Powerkit_Links_Social_Counter {
 					}
 				}
 			} else {
-				$result['error'] = esc_html( 'Please check your username and client_id.', 'powerkit' );
+				$result['error'] = esc_html__( 'Please check your username and client_id.', 'powerkit' );
 			}
 		} elseif ( isset( $data->user->stats->followers ) ) {
 
@@ -1138,8 +1032,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check channel id.
-		if ( ! $this->users['twitch_user_id'] ) {
-			$result['error'] = esc_html( 'Please enter a Twitch User ID.', 'powerkit' );
+		if ( ! $this->config['twitch_user_id'] ) {
+			$result['error'] = esc_html__( 'Please enter a Twitch User ID.', 'powerkit' );
 			return $result;
 		}
 
@@ -1151,7 +1045,7 @@ class Powerkit_Links_Social_Counter {
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'https://api.twitch.tv/kraken/channels/' . $this->users['twitch_user_id'],
+			'url'     => 'https://api.twitch.tv/kraken/channels/' . $this->config['twitch_user_id'],
 			'params'  => array(
 				'client_id' => powerkit_connect( 'twitch_client_id' ),
 			),
@@ -1196,15 +1090,15 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['flickr_user_id'] ) {
-			$result['error'] = esc_html( 'Please enter a flickr user id.', 'powerkit' );
+		if ( ! $this->config['flickr_user_id'] ) {
+			$result['error'] = esc_html__( 'Please enter a flickr user id.', 'powerkit' );
 
 			return $result;
 		}
 
 		// Get Count.
 		$data = $this->curl_get_api( array(
-			'url'     => 'https://www.flickr.com/photos/' . $this->users['flickr_user_id'],
+			'url'     => 'https://www.flickr.com/photos/' . $this->config['flickr_user_id'],
 			'network' => $network,
 			'cache'   => $cache,
 			'params'  => array(),
@@ -1253,15 +1147,15 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check user.
-		if ( ! $this->users['medium_user'] ) {
-			$result['error'] = esc_html( 'Please enter a Medium User.', 'powerkit' );
+		if ( ! $this->config['medium_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a Medium User.', 'powerkit' );
 			return $result;
 		}
 
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'https://medium.com/' . $this->users['medium_user'],
+			'url'     => 'https://medium.com/' . $this->config['medium_user'],
 			'params'  => array(
 				'format' => 'json',
 			),
@@ -1316,15 +1210,15 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check channel id.
-		if ( ! $this->users['reddit_user'] ) {
-			$result['error'] = esc_html( 'Please enter Reddit User or Subreddit Name.', 'powerkit' );
+		if ( ! $this->config['reddit_user'] ) {
+			$result['error'] = esc_html__( 'Please enter Reddit User or Subreddit Name.', 'powerkit' );
 			return $result;
 		}
 
-		if ( 'subreddit' === $this->extra['reddit_type'] ) {
-			$url = sprintf( 'https://www.reddit.com/r/%s/about.json', $this->users['reddit_user'] );
+		if ( 'subreddit' === $this->config['reddit_type'] ) {
+			$url = sprintf( 'https://www.reddit.com/r/%s/about.json', $this->config['reddit_user'] );
 		} else {
-			$url = sprintf( 'https://www.reddit.com/user/%s/about.json', $this->users['reddit_user'] );
+			$url = sprintf( 'https://www.reddit.com/user/%s/about.json', $this->config['reddit_user'] );
 		}
 
 		// Get Count.
@@ -1342,7 +1236,7 @@ class Powerkit_Links_Social_Counter {
 		}
 
 		// Set Count.
-		if ( 'subreddit' === $this->extra['reddit_type'] ) {
+		if ( 'subreddit' === $this->config['reddit_type'] ) {
 			if ( isset( $data->data->subscribers ) ) {
 				// Live Count.
 				$result['count'] = $data->data->subscribers;
@@ -1378,8 +1272,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check username.
-		if ( ! $this->users['ok_slug'] ) {
-			$result['error'] = esc_html( 'Please enter a Odnoklassniki Slug or ID.', 'powerkit' );
+		if ( ! $this->config['ok_slug'] ) {
+			$result['error'] = esc_html__( 'Please enter a Odnoklassniki Slug or ID.', 'powerkit' );
 			return $result;
 		}
 
@@ -1403,12 +1297,12 @@ class Powerkit_Links_Social_Counter {
 		$object_id = null;
 
 		// Get info by slug.
-		if ( 'profile_name' === $this->extra['ok_type'] || 'group_name' === $this->extra['ok_type'] ) {
+		if ( 'profile_name' === $this->config['ok_type'] || 'group_name' === $this->config['ok_type'] ) {
 			$params = array(
 				'application_key' => powerkit_connect( 'ok_application_key' ),
 				'format'          => 'json',
 				'method'          => 'url.getInfo',
-				'url'             => 'https://ok.ru/' . $this->users['ok_slug'],
+				'url'             => 'https://ok.ru/' . $this->config['ok_slug'],
 			);
 
 			$query = http_build_query( $params, '', '' );
@@ -1430,11 +1324,11 @@ class Powerkit_Links_Social_Counter {
 				$object_id = $data->objectId;
 			}
 		} else {
-			$object_id = $this->users['ok_slug'];
+			$object_id = $this->config['ok_slug'];
 		}
 
 		if ( $object_id ) {
-			if ( 'group' === $this->extra['ok_type'] || 'group_name' === $this->extra['ok_type'] ) {
+			if ( 'group' === $this->config['ok_type'] || 'group_name' === $this->config['ok_type'] ) {
 				$params = array(
 					'application_key' => powerkit_connect( 'ok_application_key' ),
 					'counterTypes'    => 'members',
@@ -1459,7 +1353,7 @@ class Powerkit_Links_Social_Counter {
 				));
 			}
 
-			if ( 'profile' === $this->extra['ok_type'] || 'profile_name' === $this->extra['ok_type'] ) {
+			if ( 'profile' === $this->config['ok_type'] || 'profile_name' === $this->config['ok_type'] ) {
 				$params = array(
 					'application_key' => powerkit_connect( 'ok_application_key' ),
 					'fid'             => $object_id,
@@ -1529,8 +1423,8 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check vk id.
-		if ( ! $this->users['vk_id'] ) {
-			$result['error'] = esc_html( 'Please enter a Group/Page ID.', 'powerkit' );
+		if ( ! $this->config['vk_id'] ) {
+			$result['error'] = esc_html__( 'Please enter a Group/Page ID.', 'powerkit' );
 			return $result;
 		}
 
@@ -1540,14 +1434,14 @@ class Powerkit_Links_Social_Counter {
 		}
 
 		// Get Count.
-		if ( 'user' === $this->users['vk_type'] ) {
+		if ( 'user' === $this->config['vk_type'] ) {
 
 			$data = $this->curl_get_api( array(
 				'network' => $network,
 				'url'     => 'https://api.vk.com/method/users.get',
 				'params'  => array(
 					'access_token' => powerkit_connect( 'vk_token' ),
-					'user_ids'     => $this->users['vk_id'],
+					'user_ids'     => $this->config['vk_id'],
 					'fields'       => 'counters',
 					'v'            => '5.101',
 				),
@@ -1578,7 +1472,7 @@ class Powerkit_Links_Social_Counter {
 				'url'     => 'https://api.vk.com/method/groups.getById',
 				'params'  => array(
 					'access_token' => powerkit_connect( 'vk_token' ),
-					'group_id'     => $this->users['vk_id'],
+					'group_id'     => $this->config['vk_id'],
 					'fields'       => 'members_count',
 					'v'            => '5.101',
 				),
@@ -1623,15 +1517,15 @@ class Powerkit_Links_Social_Counter {
 		);
 
 		// Check user.
-		if ( ! $this->users['strava_user'] ) {
-			$result['error'] = esc_html( 'Please enter a Strava User.', 'powerkit' );
+		if ( ! $this->config['strava_user'] ) {
+			$result['error'] = esc_html__( 'Please enter a Strava User.', 'powerkit' );
 			return $result;
 		}
 
 		// Get Count.
 		$data = $this->curl_get_api( array(
 			'network' => $network,
-			'url'     => 'https://www.strava.com/athletes/' . $this->users['strava_user'],
+			'url'     => 'https://www.strava.com/athletes/' . $this->config['strava_user'],
 			'params'  => array(
 				'format' => 'json',
 			),
@@ -1720,9 +1614,9 @@ class Powerkit_Links_Social_Counter {
 
 		if ( $count_format ) {
 			if ( $value > 999 && $value <= 999999 ) {
-				$result = round( $value / 1000 ) . esc_html( 'K', 'powerkit' );
+				$result = round( $value / 1000 ) . esc_html__( 'K', 'powerkit' );
 			} elseif ( $value > 999999 ) {
-				$result = number_format( $value / 1000000, 1, '.', '' ) . esc_html( 'M', 'powerkit' );
+				$result = number_format( $value / 1000000, 1, '.', '' ) . esc_html__( 'M', 'powerkit' );
 
 				$result = str_replace( '.0', '', $result );
 			} else {
@@ -1765,6 +1659,15 @@ function powerkit_social_links_get_count( $network = '', $labels = true, $cache 
 
 	// Get Count.
 	$counter = new Powerkit_Links_Social_Counter();
+
+	// Manual Count Override.
+	$count_override = get_option( sprintf( 'powerkit_social_links_%s_override', $network ) );
+
+	if ( $count_override ) {
+		return array(
+			'count' => $array_format ? $counter->count_format( $count_override ) : $count_override,
+		);
+	}
 
 	$result = $counter->get_count( $network, $cache );
 

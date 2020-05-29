@@ -28,6 +28,10 @@ class Powerkit_Twitter extends Powerkit_Module {
 		);
 		$this->links           = array(
 			array(
+				'name' => esc_html__( 'Clear cache', 'powerkit' ),
+				'url'  => powerkit_get_page_url( $this->slug . '&action=powerkit_reset_cache' ),
+			),
+			array(
 				'name'   => esc_html__( 'View documentation', 'powerkit' ),
 				'url'    => powerkit_get_setting( 'documentation' ) . '/social-integrations/twitter-integration/',
 				'target' => '_blank',
@@ -44,6 +48,7 @@ class Powerkit_Twitter extends Powerkit_Module {
 
 		// Helpers Functions for the module.
 		require_once dirname( __FILE__ ) . '/helpers/helper-powerkit-twitter.php';
+		require_once dirname( __FILE__ ) . '/helpers/helper-powerkit-twitter-connect-list.php';
 
 		// The classes responsible for defining all actions.
 		require_once dirname( __FILE__ ) . '/public/class-powerkit-twitter-shortcode.php';

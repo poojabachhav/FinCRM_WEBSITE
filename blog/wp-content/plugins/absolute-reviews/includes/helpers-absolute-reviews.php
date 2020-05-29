@@ -42,6 +42,26 @@ if ( ! function_exists( 'abr_powerkit_module_enabled' ) ) {
 	}
 }
 
+if ( ! function_exists( 'abr_post_views_enabled' ) ) {
+	/**
+	 * Check post views module.
+	 *
+	 * @return string Type.
+	 */
+	function abr_post_views_enabled() {
+
+		// Post Views Counter.
+		if ( class_exists( 'Post_Views_Counter' ) ) {
+			return 'post_views';
+		}
+
+		// Powerkit Post Views.
+		if ( abr_powerkit_module_enabled( 'post_views' ) ) {
+			return 'pk_post_views';
+		}
+	}
+}
+
 if ( ! function_exists( 'abr_get_available_image_sizes' ) ) {
 	/**
 	 * Get the available image sizes

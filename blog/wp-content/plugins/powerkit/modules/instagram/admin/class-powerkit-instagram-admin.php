@@ -18,7 +18,8 @@ class Powerkit_Instagram_Admin extends Powerkit_Module_Admin {
 	 * Initialize
 	 */
 	public function initialize() {
-		add_filter( 'powerkit_ajax_reset_cache', array( $this, 'ajax_reset_cache' ) );
+		add_filter( 'powerkit_reset_cache', array( $this, 'register_reset_cache' ) );
+		add_filter( 'powerkit_ajax_reset_cache', array( $this, 'register_reset_cache' ) );
 	}
 
 	/**
@@ -28,10 +29,13 @@ class Powerkit_Instagram_Admin extends Powerkit_Module_Admin {
 	 * @param    array $list Change list reset cache.
 	 * @access   private
 	 */
-	public function ajax_reset_cache( $list ) {
+	public function register_reset_cache( $list ) {
 		$slug = powerkit_get_page_slug( $this->slug );
 
-		$list[ $slug ] = 'powerkit_data_instagram';
+		$list[ $slug ] = array(
+			'powerkit_instagram_data',
+			'powerkit_instagram_recent',
+		);
 
 		return $list;
 	}

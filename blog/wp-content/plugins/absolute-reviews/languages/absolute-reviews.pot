@@ -128,7 +128,7 @@ msgstr ""
 msgid "Auto Сalculate Total Score"
 msgstr ""
 
-#: admin/class-absolute-reviews-admin.php:309, includes/helpers-absolute-reviews.php:556, public/class-absolute-reviews-block.php:83, public/class-absolute-reviews-block.php:103, public/class-absolute-reviews-block.php:123, public/class-absolute-reviews-block.php:142, public/class-absolute-reviews-block.php:180
+#: admin/class-absolute-reviews-admin.php:309, includes/helpers-absolute-reviews.php:576, public/class-absolute-reviews-block.php:83, public/class-absolute-reviews-block.php:103, public/class-absolute-reviews-block.php:123, public/class-absolute-reviews-block.php:142, public/class-absolute-reviews-block.php:180
 msgid "Total Score"
 msgstr ""
 
@@ -160,7 +160,7 @@ msgstr ""
 msgid "Pros Heading"
 msgstr ""
 
-#: admin/class-absolute-reviews-admin.php:402, includes/helpers-absolute-reviews.php:760
+#: admin/class-absolute-reviews-admin.php:402, includes/helpers-absolute-reviews.php:780
 msgid "The Good"
 msgstr ""
 
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Cons Heading"
 msgstr ""
 
-#: admin/class-absolute-reviews-admin.php:472, includes/helpers-absolute-reviews.php:784
+#: admin/class-absolute-reviews-admin.php:472, includes/helpers-absolute-reviews.php:804
 msgid "The Bad"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #. translators: %s number of post views
-#: includes/post-meta.php:346
+#: includes/post-meta.php:351
 msgid "%s view"
 msgid_plural "%s views"
 msgstr[0] ""

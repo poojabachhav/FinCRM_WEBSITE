@@ -14,6 +14,9 @@ Add beautiful responsive and modern review boxes with valid JSON-LD schema to yo
 
 == Changelog ==
 
+= 1.0.5 =
+* Added support Post Views Counter.
+
 = 1.0.4 =
 * Minor improvements.
 

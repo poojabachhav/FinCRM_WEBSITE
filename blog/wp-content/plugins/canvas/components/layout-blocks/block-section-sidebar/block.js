@@ -81,26 +81,26 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 150);
+/******/ 	return __webpack_require__(__webpack_require__.s = 185);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 150:
+/***/ 185:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(151);
+module.exports = __webpack_require__(186);
 
 
 /***/ }),
 
-/***/ 151:
+/***/ 186:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(152);
-/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(153);
+/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(187);
+/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(188);
 /**
  * WordPress dependencies
  */
@@ -149,7 +149,7 @@ addFilter('canvas.customBlock.registerData', 'canvas/section-sidebar/registerDat
 
 /***/ }),
 
-/***/ 152:
+/***/ 187:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -235,7 +235,7 @@ var SectionSidebarBlockEditWithSelect = withSelect(function (select, ownProps) {
 
 /***/ }),
 
-/***/ 153:
+/***/ 188:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

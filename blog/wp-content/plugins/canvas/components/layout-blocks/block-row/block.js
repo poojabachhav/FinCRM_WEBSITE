@@ -81,17 +81,17 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 135);
+/******/ 	return __webpack_require__(__webpack_require__.s = 170);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 132:
+/***/ 167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(133);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(168);
 /**
  * WordPress dependencies.
  */
@@ -110,7 +110,7 @@ var _window = window,
  */
 
 
-var MIN_COL_SIZE = 2;
+var MIN_COL_SIZE = 1;
 /**
  * Update columns size.
  *
@@ -197,7 +197,7 @@ function updateAttribute(clientId, size) {
 
 /***/ }),
 
-/***/ 133:
+/***/ 168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -226,21 +226,21 @@ function getAdjacentBlocks(blocks, clientId) {
 
 /***/ }),
 
-/***/ 135:
+/***/ 170:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(136);
+module.exports = __webpack_require__(171);
 
 
 /***/ }),
 
-/***/ 136:
+/***/ 171:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(137);
-/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(139);
+/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(172);
+/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(174);
 /**
  * WordPress dependencies
  */
@@ -289,15 +289,15 @@ addFilter('canvas.customBlock.registerData', 'canvas/row/registerData', register
 
 /***/ }),
 
-/***/ 137:
+/***/ 172:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(72);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(138);
-/* harmony import */ var _block_column_change_column_size__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(132);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(173);
+/* harmony import */ var _block_column_change_column_size__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(167);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -337,6 +337,7 @@ var withSelect = wp.data.withSelect;
 
 
 var availableSizes = {
+  1: [12],
   2: [6, 6],
   3: [4, 4, 4],
   4: [3, 3, 3, 3],
@@ -448,7 +449,7 @@ function (_Component) {
 
 /***/ }),
 
-/***/ 138:
+/***/ 173:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -511,7 +512,7 @@ var _window = window,
 
 /***/ }),
 
-/***/ 139:
+/***/ 174:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

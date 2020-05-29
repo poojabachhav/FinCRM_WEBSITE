@@ -81,26 +81,26 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 154);
+/******/ 	return __webpack_require__(__webpack_require__.s = 113);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 154:
+/***/ 113:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(155);
+module.exports = __webpack_require__(114);
 
 
 /***/ }),
 
-/***/ 155:
+/***/ 114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(156);
-/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(157);
+/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(115);
+/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(116);
 /**
  * WordPress dependencies
  */
@@ -149,7 +149,7 @@ addFilter('canvas.customBlock.registerData', 'canvas/alert/registerData', regist
 
 /***/ }),
 
-/***/ 156:
+/***/ 115:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -259,7 +259,7 @@ var AlertBlockEditWithSelect = withSelect(function (select, ownProps) {
 
 /***/ }),
 
-/***/ 157:
+/***/ 116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

@@ -3,7 +3,7 @@
  * Plugin Name:       Canvas
  * Plugin URI:        https://codesupply.co/cnvs/
  * Description:       A revolutionary block-based page builder used for building layouts, an interplay of the WordPress block editor features and exceptional UI design.
- * Version:           2.0.2.2
+ * Version:           2.0.3.1
  * Author:            Code Supply Co.
  * Author URI:        https://codesupply.co/
  * License:           GPL-2.0+

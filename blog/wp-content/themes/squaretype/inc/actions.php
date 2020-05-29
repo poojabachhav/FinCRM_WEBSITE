@@ -28,6 +28,7 @@ add_action( 'csco_navbar_content_left', 'csco_navbar_nav_menu', 20 );
 add_action( 'csco_navbar_content_center', 'csco_header_logo', 10 );
 add_action( 'csco_navbar_content_right', 'csco_header_social_links', 10 );
 add_action( 'csco_navbar_content_right', 'csco_header_follow', 20 );
+// add_action( 'csco_navbar_content_right', 'csco_header_offcanvas_button', 10 );
 add_action( 'csco_navbar_content_right', 'csco_header_search_button', 30 );
 
 // Large Layout.

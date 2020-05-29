@@ -19,18 +19,11 @@ class Powerkit_Links_Api_Config {
 	public static $cache_timeout;
 
 	/**
-	 * Users
+	 * Config
 	 *
-	 * @var string $users  Users List.
+	 * @var string $config Config List.
 	 */
-	public static $users = array();
-
-	/**
-	 * Api keys
-	 *
-	 * @var string $extra  Extra data.
-	 */
-	public static $extra = array();
+	public static $config = array();
 
 	/**
 	 * Initialize.
@@ -40,28 +33,29 @@ class Powerkit_Links_Api_Config {
 	public function __construct() {
 		self::$cache_timeout = (int) apply_filters( 'powerkit_social_links_cache_timeout', 60 );
 
-		self::$users['dribbble_user']        = get_option( 'powerkit_social_links_dribbble_user' );
-		self::$users['facebook_user']        = get_option( 'powerkit_social_links_facebook_user' );
-		self::$users['instagram_user']       = get_option( 'powerkit_social_links_instagram_user' );
-		self::$users['youtube_slug']         = get_option( 'powerkit_social_links_youtube_slug' );
-		self::$users['telegram_chat']        = get_option( 'powerkit_social_links_telegram_chat' );
-		self::$users['pinterest_user']       = get_option( 'powerkit_social_links_pinterest_user' );
-		self::$users['soundcloud_user_id']   = get_option( 'powerkit_social_links_soundcloud_user_id' );
-		self::$users['vimeo_user']           = get_option( 'powerkit_social_links_vimeo_user' );
-		self::$users['twitter_user']         = get_option( 'powerkit_social_links_twitter_user' );
-		self::$users['behance_user']         = get_option( 'powerkit_social_links_behance_user' );
-		self::$users['github_user']          = get_option( 'powerkit_social_links_github_user' );
-		self::$users['ok_slug']              = get_option( 'powerkit_social_links_ok_slug' );
-		self::$users['vk_id']                = get_option( 'powerkit_social_links_vk_id' );
-		self::$users['twitch_user_id']       = get_option( 'powerkit_social_links_twitch_user_id' );
-		self::$users['flickr_user_id']       = get_option( 'powerkit_social_links_flickr_user_id' );
-		self::$users['snapchat_user']        = get_option( 'powerkit_social_links_snapchat_user' );
-		self::$users['medium_user']          = get_option( 'powerkit_social_links_medium_user' );
-		self::$users['reddit_user']          = get_option( 'powerkit_social_links_reddit_user' );
-		self::$users['strava_user']          = get_option( 'powerkit_social_links_strava_user' );
-		self::$extra['ok_type']              = get_option( 'powerkit_social_links_ok_type' );
-		self::$extra['reddit_type']          = get_option( 'powerkit_social_links_reddit_type' );
-		self::$extra['youtube_channel_type'] = get_option( 'powerkit_social_links_youtube_channel_type' );
-		self::$extra['linkedin_slug']        = get_option( 'powerkit_social_links_linkedin_slug' );
+		self::$config['dribbble_user']        = get_option( 'powerkit_social_links_dribbble_user' );
+		self::$config['facebook_user']        = get_option( 'powerkit_social_links_facebook_user' );
+		self::$config['instagram_user']       = get_option( 'powerkit_social_links_instagram_user' );
+		self::$config['youtube_slug']         = get_option( 'powerkit_social_links_youtube_slug' );
+		self::$config['youtube_channel_type'] = get_option( 'powerkit_social_links_youtube_channel_type' );
+		self::$config['telegram_chat']        = get_option( 'powerkit_social_links_telegram_chat' );
+		self::$config['pinterest_user']       = get_option( 'powerkit_social_links_pinterest_user' );
+		self::$config['soundcloud_user_id']   = get_option( 'powerkit_social_links_soundcloud_user_id' );
+		self::$config['vimeo_user']           = get_option( 'powerkit_social_links_vimeo_user' );
+		self::$config['twitter_user']         = get_option( 'powerkit_social_links_twitter_user' );
+		self::$config['behance_user']         = get_option( 'powerkit_social_links_behance_user' );
+		self::$config['github_user']          = get_option( 'powerkit_social_links_github_user' );
+		self::$config['vk_id']                = get_option( 'powerkit_social_links_vk_id' );
+		self::$config['vk_type']              = get_option( 'powerkit_social_links_vk_type' );
+		self::$config['twitch_user_id']       = get_option( 'powerkit_social_links_twitch_user_id' );
+		self::$config['flickr_user_id']       = get_option( 'powerkit_social_links_flickr_user_id' );
+		self::$config['snapchat_user']        = get_option( 'powerkit_social_links_snapchat_user' );
+		self::$config['medium_user']          = get_option( 'powerkit_social_links_medium_user' );
+		self::$config['reddit_user']          = get_option( 'powerkit_social_links_reddit_user' );
+		self::$config['reddit_type']          = get_option( 'powerkit_social_links_reddit_type' );
+		self::$config['strava_user']          = get_option( 'powerkit_social_links_strava_user' );
+		self::$config['ok_slug']              = get_option( 'powerkit_social_links_ok_slug' );
+		self::$config['ok_type']              = get_option( 'powerkit_social_links_ok_type' );
+		self::$config['linkedin_slug']        = get_option( 'powerkit_social_links_linkedin_slug' );
 	}
 }

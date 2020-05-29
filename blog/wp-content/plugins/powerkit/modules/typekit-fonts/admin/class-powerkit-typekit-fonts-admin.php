@@ -127,9 +127,9 @@ class Powerkit_Typekit_Fonts_Admin extends Powerkit_Module_Admin {
 								// If exist families.
 								if ( isset( $typekit_data['kit']['families'] ) && $typekit_data['kit']['families'] ) {
 
-									// First family for example.
-									if ( isset( $typekit_data['kit']['families']['0']['slug'] ) ) {
-										$first_family = $typekit_data['kit']['families']['0']['slug'];
+									// First stack for example.
+									if ( isset( $typekit_data['kit']['families']['0']['css_stack'] ) ) {
+										$first_stack = $typekit_data['kit']['families']['0']['css_stack'];
 									}
 									// First family variant for example.
 									if ( isset( $typekit_data['kit']['families']['0']['variations']['0'] ) ) {
@@ -139,24 +139,24 @@ class Powerkit_Typekit_Fonts_Admin extends Powerkit_Module_Admin {
 									}
 
 									// Example code.
-									if ( isset( $first_family ) && isset( $first_variant ) ) {
+									if ( isset( $first_stack ) && isset( $first_variant ) ) {
 
 										$first_weight = isset( $first_variant['weight'] ) ? $first_variant['weight'] : 'normal';
 										$first_style  = isset( $first_variant['style'] ) ? $first_variant['style'] : 'normal';
 
 											$code = sprintf(
 												'h1 {
-													font-family: "%s";
+													font-family: %s;
 													font-weight: %s;
 													font-style: %s;
 												}',
-												$first_family,
+												$first_stack,
 												$first_weight,
 												$first_style
 											);
 
 										$code = str_replace( "\t\t", '', $code );
-									?>
+										?>
 										<div id="template">
 											<h3><?php esc_html_e( 'Example of using a Typekit font', 'powerkit' ); ?></h3>
 
@@ -187,10 +187,11 @@ class Powerkit_Typekit_Fonts_Admin extends Powerkit_Module_Admin {
 
 														$family_weight = isset( $var_format['weight'] ) ? $var_format['weight'] : 'normal';
 														$family_style  = isset( $var_format['style'] ) ? $var_format['style'] : 'normal';
+														$family_slug   = isset( $family['css_names'][0] ) ? $family['css_names'][0] : $family['slug'];
 														?>
 														<tr>
 															<td scope="col" class="manage-column"><?php echo esc_html( $family['name'] ); ?></td>
-															<td scope="col" class="manage-column"><?php echo esc_html( $family['slug'] ); ?></td>
+															<td scope="col" class="manage-column"><?php echo esc_html( $family_slug ); ?></td>
 															<td scope="col" class="manage-column"><?php echo esc_html( $family_weight ); ?></td>
 															<td scope="col" class="manage-column"><?php echo esc_html( $family_style ); ?></td>
 														</tr>

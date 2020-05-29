@@ -340,17 +340,16 @@ function powerkit_social_links_appearance( $params ) {
 					$title = get_option( sprintf( 'powerkit_social_links_title_%s', $id ) );
 					$label = get_option( sprintf( 'powerkit_social_links_label_%s', $id ) );
 
-					$link = powerkit_social_links_parse_link( powerkit_social_links_specific_param( $id, 'link' ) ); // Link User.
+					// Link User.
+					$link = powerkit_social_links_parse_link( powerkit_social_links_specific_param( $id, 'link' ) );
 
 					// Account Count.
 					$result = array();
 
-					if ( $params['counts'] ) {
-						if ( 'rest' === $params['mode'] ) {
-							$result = powerkit_social_links_get_count( $id, $params['labels'], 'forcibly', true ); // Count User.
-						} else {
-							$result = powerkit_social_links_get_count( $id, $params['labels'], $params['cache'], true ); // Count User.
-						}
+					if ( 'rest' === $params['mode'] ) {
+						$result = powerkit_social_links_get_count( $id, $params['labels'], 'forcibly', true ); // Count User.
+					} else {
+						$result = powerkit_social_links_get_count( $id, $params['labels'], $params['cache'], true ); // Count User.
 					}
 
 					$class = ( ! isset( $result['count'] ) || ! $result['count'] ) ? ' pk-social-links-no-count' : '';

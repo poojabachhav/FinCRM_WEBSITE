@@ -55,13 +55,12 @@ function powerkit_post_views_api_call( $url, $params = array(), $url_encode = tr
 
 			$options['error'] = $json['error']['errors'][0]['message'];
 
-			$options['token']         = null;
-			$options['token_refresh'] = null;
-			$options['expires']       = null;
-			$options['gid']           = null;
-
 			update_option( 'powerkit_post_views_options', $options );
 
+		} else {
+			$options['error'] = esc_html__( 'Failed to get data of Google Analytics.', 'powerkit' );
+
+			update_option( 'powerkit_post_views_options', $options );
 		}
 
 		return new stdClass();
@@ -124,10 +123,9 @@ function powerkit_post_views_refresh_token() {
 
 				$options['error'] = $json['error']['errors'][0]['message'];
 
-				$options['token']         = null;
-				$options['token_refresh'] = null;
-				$options['expires']       = null;
-				$options['gid']           = null;
+				update_option( 'powerkit_post_views_options', $options );
+			} else {
+				$options['error'] = esc_html__( 'Failed to update token of Google Analytics.', 'powerkit' );
 
 				update_option( 'powerkit_post_views_options', $options );
 			}
@@ -180,10 +178,10 @@ function powerkit_post_views_get_cache_time( $post_id = false ) {
 	// Post age in seconds.
 	$post_age = floor( intval( date( 'U' ) ) - intval( get_post_time( 'U', true, $post_id ) ) );
 
-	$three_months_period = apply_filters( 'powerkit_post_views_three_months', 5184000 );
-	$three_weeks_period  = apply_filters( 'powerkit_post_views_three_weeks', 1814400 );
+	$two_months_period  = apply_filters( 'powerkit_post_views_two_months', 5184000 );
+	$three_weeks_period = apply_filters( 'powerkit_post_views_three_weeks', 1814400 );
 
-	if ( isset( $post_age ) && $post_age > $three_months_period ) {
+	if ( isset( $post_age ) && $post_age > $two_months_period ) {
 
 		// Post older than 60 days - expire cache after 12 hours.
 		$seconds = apply_filters( 'powerkit_post_views_refresh_60_days', 43200 );
@@ -200,6 +198,40 @@ function powerkit_post_views_get_cache_time( $post_id = false ) {
 	}
 
 	return $seconds;
+}
+
+/**
+ * Get no-cached post views
+ *
+ * @param int $post_id The post id.
+ */
+function powerkit_get_nocached_post_views( $post_id ) {
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
+
+	global $wpdb;
+
+	$query = 'SELECT * FROM ' . $wpdb->prefix . 'pk_post_views WHERE id = ' . $post_id . ' AND type = 1';
+
+	// Get cached data.
+	$post_views = wp_cache_get( md5( $query ), 'pk-get-no-post-views' );
+
+	// Cached data not found?
+	if ( false === $post_views ) {
+		$post_row = $wpdb->get_row( $query );
+
+		if ( $post_row ) {
+			$post_views = (float) $post_row->count;
+
+			// Set the cache expiration, 5 minutes by default.
+			$expire = absint( apply_filters( 'pk_object_cache_expire', 5 * 60, 'post-views' ) );
+
+			wp_cache_add( md5( $query ), $post_views, 'pk-get-no-post-views', $expire );
+		}
+	}
+
+	return $post_views;
 }
 
 /**
@@ -233,11 +265,7 @@ function powerkit_get_cached_post_views( $post_id ) {
 		}
 	}
 
-	if ( $post_views ) {
-		return $post_views;
-	}
-
-	return false;
+	return $post_views;
 }
 
 /**
@@ -255,10 +283,9 @@ function powerkit_set_cached_post_views( $post_id, $count ) {
 
 	return $wpdb->query(
 		$wpdb->prepare(
-			'
-			INSERT INTO ' . $wpdb->prefix . 'pk_post_views (id, type, period, count)
-			VALUES (%d, %d, %s, %d)
-			ON DUPLICATE KEY UPDATE count = %d', $post_id, 1, $period, $count, $count
+			'INSERT INTO ' . $wpdb->prefix . 'pk_post_views (id, type, period, count)
+			VALUES (%1$d, %2$d, %3$s, %4$d)
+			ON DUPLICATE KEY UPDATE period = %3$s, count = %4$d', $post_id, 1, $period, $count
 		)
 	);
 }
@@ -321,6 +348,8 @@ function powerkit_get_post_views( $post_id = null, $format = true ) {
 			), false
 		);
 
+		$json = false;
+
 		if ( isset( $json->totalsForAllResults->{$options['metric']} ) ) {
 
 			$total_result = $json->totalsForAllResults->{$options['metric']};
@@ -334,10 +363,10 @@ function powerkit_get_post_views( $post_id = null, $format = true ) {
 			$value = $options['defaultval'];
 
 			// If we have an old value let's put that instead of the default one in case of an error.
-			$meta_value = get_post_meta( $post_id, '_powerkit_post_views_count', true );
+			$db_value = powerkit_get_nocached_post_views( $post_id );
 
-			if ( false !== $meta_value && '' !== $meta_value ) {
-				$value = $meta_value;
+			if ( false !== $db_value && '' !== $db_value ) {
+				$value = $db_value;
 			}
 
 			// Set cached views.

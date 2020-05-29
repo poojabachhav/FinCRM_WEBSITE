@@ -20,7 +20,7 @@ class Powerkit_Share_Buttons_Admin extends Powerkit_Module_Admin {
 	public function initialize() {
 		add_action( 'init', array( $this, 'register_options_default' ) );
 		add_action( 'admin_menu', array( $this, 'register_options_page' ) );
-		add_filter( 'powerkit_ajax_reset_cache', array( $this, 'ajax_reset_cache' ) );
+		add_filter( 'powerkit_ajax_reset_cache', array( $this, 'register_reset_cache' ) );
 	}
 
 
@@ -31,7 +31,7 @@ class Powerkit_Share_Buttons_Admin extends Powerkit_Module_Admin {
 	 * @param    array $list Change list reset cache.
 	 * @access   private
 	 */
-	public function ajax_reset_cache( $list ) {
+	public function register_reset_cache( $list ) {
 		$slug = powerkit_get_page_slug( $this->slug );
 
 		$list[ $slug ] = array(

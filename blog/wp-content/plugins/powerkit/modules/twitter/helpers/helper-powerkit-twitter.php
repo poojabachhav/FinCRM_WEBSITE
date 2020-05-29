@@ -82,79 +82,48 @@ function powerkit_twitter_convert_links( $links, $targetblank = true ) {
 /**
  * Get timeline twitter
  *
- * @param string $consumer_key        Twitter consumer key.
- * @param string $consumer_secret     Twitter consumer secret.
- * @param string $access_token        Twitter access token.
- * @param string $access_token_secret Twitter access token secret.
- * @param array  $cache_time          Cache time.
- * @param array  $options             Timeline options.
+ * @param array $options    Timeline options.
+ * @param array $cache_time Cache time.
  */
-function powerkit_twitter_get_timeline( $consumer_key, $consumer_secret, $access_token, $access_token_secret, $cache_time, $options ) {
-	if ( ! empty( $consumer_key ) && ! empty( $consumer_secret ) && ! empty( $access_token ) && ! empty( $access_token_secret ) ) {
+function powerkit_twitter_get_timeline( $options, $cache_time ) {
 
-		/* Get Token */
-		$token = get_transient( 'powerkit_twitter_twitter_token' );
+	if ( powerkit_connect( 'twitter_app_oauth_token' ) ) {
 
-		if ( ! $token || ! $cache_time ) {
-			$credentials = $consumer_key . ':' . $consumer_secret;
-			$to_send = base64_encode( $credentials );
+		$twitter_connect = new Powerkit_Twitter_API();
+		$twitter_connect->init( array(
+			'consumer_key'        => powerkit_connect( 'twitter_app_consumer_key' ),
+			'consumer_secret'     => powerkit_connect( 'twitter_app_consumer_secret' ),
+			'access_token'        => powerkit_connect( 'twitter_app_oauth_token' ),
+			'access_token_secret' => powerkit_connect( 'twitter_app_oauth_token_secret' ),
+		), 'timeline' );
+		$twitter_connect->set_url_base();
+		$twitter_connect->set_get_fields( $options );
+		$twitter_connect->perform_request();
 
-			$args = array(
-				'method' => 'POST',
-				'httpversion' => '1.1',
-				'blocking' => true,
-				'headers' => array(
-					'Authorization' => 'Basic ' . $to_send,
-					'Content-Type'  => 'application/x-www-form-urlencoded;charset=UTF-8',
-				),
-				'body' => array(
-					'grant_type' => 'client_credentials',
-				),
-			);
+		$response_code    = wp_remote_retrieve_response_code( $twitter_connect->json );
+		$response_message = wp_remote_retrieve_response_message( $twitter_connect->json );
+		$response_body    = json_decode( wp_remote_retrieve_body( $twitter_connect->json ) );
 
-			add_filter( 'https_ssl_verify', '__return_false' );
-			$response = wp_remote_post( esc_url( 'https://api.twitter.com/oauth2/token', null, '' ), $args );
+		if ( 200 !== $response_code && ! empty( $response_message ) ) {
 
-			$keys = json_decode( wp_remote_retrieve_body( $response ) );
+			$twitter = new WP_Error( $response_code, $response_message );
 
-			$token = isset( $keys->access_token ) ? $keys->access_token : null;
+		} elseif ( 200 !== $response_code ) {
 
-			set_transient( 'powerkit_twitter_twitter_token', $token, 360 );
-		}
+			$twitter = new WP_Error( $response_code, sprintf( '%s <a href="%s">%s</a>', esc_html__( 'Twitter data is not set. Please check your Twitter User or ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=twitter' ), esc_html__( ' Twitter Settings', 'powerkit' ) ) );
 
-		/* Get Data */
-		$args = array(
-			'httpversion' => '1.1',
-			'blocking' => true,
-			'headers' => array(
-				'Authorization' => "Bearer $token",
-			),
-		);
-		add_filter( 'https_ssl_verify', '__return_false' );
+		} elseif ( empty( $response_body ) ) {
 
-		$json_url = add_query_arg( $options, 'https://api.twitter.com/1.1/statuses/user_timeline.json' );
+			$twitter = new WP_Error( $response_code, esc_html__( 'There are no tweets in your account.', 'powerkit' ) );
 
-		$response = wp_remote_get( $json_url, $args );
-
-		remove_filter( 'https_ssl_verify', '__return_false' );
-
-		/* Set Data Followers */
-		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
-
-			$twitter = json_decode( wp_remote_retrieve_body( $response ), true );
-
-			if ( ! isset( $twitter['errors'] ) ) {
-
-				$twitter = array();
-
-				$twitter['errors'][0]['message'] = 'Not available!';
-			}
 		} else {
-			$twitter = json_decode( wp_remote_retrieve_body( $response ) );
+			$twitter = $response_body;
 		}
-
-		return $twitter;
+	} else {
+		$twitter = new WP_Error( 'No token.', sprintf( '%s <a href="%s">%s</a>', esc_html__( 'Twitter data is not set. Please check your Twitter User or ', 'powerkit' ), powerkit_get_page_url( 'connect&tab=twitter' ), esc_html__( ' Twitter Settings', 'powerkit' ) ) );
 	}
+
+	return $twitter;
 }
 
 /**
@@ -163,25 +132,23 @@ function powerkit_twitter_get_timeline( $consumer_key, $consumer_secret, $access
  * @param array  $params     Recent options.
  * @param string $cache_name The cache name.
  */
-function powerkit_twitter_get_recent( $params, $cache_name = 'powerkit_data_twitter' ) {
-	$params = array_merge( array(
-		'title'               => esc_html__( 'Twitter Feed', 'powerkit' ),
-		'username'            => '',
-		'number'              => 5,
-		'template'            => 'default',
-		'header'              => true,
-		'button'              => true,
-		'replies'             => false,
-		'retweets'            => false,
-		'cache_time'          => (int) apply_filters( 'powerkit_twitter_cache_timeout', 60 ),
-		'consumer_key'        => powerkit_connect( 'twitter_consumer_key' ),
-		'consumer_secret'     => powerkit_connect( 'twitter_consumer_secret' ),
-		'access_token'        => powerkit_connect( 'twitter_access_token' ),
-		'access_token_secret' => powerkit_connect( 'twitter_access_token_secret' ),
-	), (array) $params );
-	
-	$id = md5( wp_json_encode( $params ) );
-	$cache_name = $cache_name . '_' . $id;
+function powerkit_twitter_get_recent( $params, $cache_name = 'powerkit_twitter_data' ) {
+	$params = array_merge(
+		array(
+			'title'      => esc_html__( 'Twitter Feed', 'powerkit' ),
+			'username'   => '',
+			'number'     => 5,
+			'template'   => 'default',
+			'header'     => true,
+			'button'     => true,
+			'replies'    => false,
+			'retweets'   => false,
+			'cache_time' => (int) apply_filters( 'powerkit_twitter_cache_timeout', 60 ),
+		),
+		(array) $params
+	);
+
+	$cache_name = $cache_name . '_' . md5( maybe_serialize( $params ) . powerkit_connect( 'twitter_app_oauth_token' ) );
 
 	// Check if transient already exists.
 	$twitter = get_transient( $cache_name );
@@ -195,17 +162,13 @@ function powerkit_twitter_get_recent( $params, $cache_name = 'powerkit_data_twit
 
 		// Get Twitter via Twitter OAuth.
 		$twitter = powerkit_twitter_get_timeline(
-			$params['consumer_key'],
-			$params['consumer_secret'],
-			$params['access_token'],
-			$params['access_token_secret'],
-			$params['cache_time'],
 			array(
 				'screen_name'     => $params['username'],
 				'count'           => $params['number'],
-				'include_rts'     => 'true' === $params['retweets'] || true === $params['retweets'] ? 'true' : 'false',
-				'exclude_replies' => 'true' === $params['replies'] || true === $params['replies'] ? 'false' : 'true',
-			)
+				'include_rts'     => $params['retweets'] ? 'true' : 'false',
+				'exclude_replies' => $params['replies'] ? 'false' : 'true',
+			),
+			$params['cache_time']
 		);
 
 		// Set a new transient if no errors returned.
@@ -213,15 +176,9 @@ function powerkit_twitter_get_recent( $params, $cache_name = 'powerkit_data_twit
 	}
 
 	// Check if errors have been returned.
-	if ( ! empty( $twitter ) && isset( $twitter['errors'] ) ) {
-
-		powerkit_alert_warning( $twitter['errors'][0]['message'] );
-
-	} elseif ( ! empty( $twitter ) && ! isset( $twitter['errors'] ) ) {
-
-		// Check if there're valid twitter.
-		if ( isset( $twitter ) && ! empty( $twitter ) && ! isset( $twitter['errors'] ) ) {
-			powerkit_twitter_template_handler( $params['template'], $twitter, $params );
-		}
+	if ( ! is_wp_error( $twitter ) ) {
+		powerkit_twitter_template_handler( $params['template'], $twitter, $params );
+	} else {
+		powerkit_alert_warning( $twitter->get_error_message() );
 	}
 }

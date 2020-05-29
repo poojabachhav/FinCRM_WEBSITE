@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: admin/class-admin-powerkit-manager.php:48, modules/social-links/admin/class-powerkit-social-links-admin.php:181
+#: admin/class-admin-powerkit-manager.php:48, modules/social-links/admin/class-powerkit-social-links-admin.php:182
 msgid "Settings"
 msgstr ""
 
@@ -84,11 +84,11 @@ msgstr ""
 msgid "B"
 msgstr ""
 
-#: core/core-powerkit-helpers.php:142, core/core-powerkit-helpers.php:287
+#: core/core-powerkit-helpers.php:142, core/core-powerkit-helpers.php:287, modules/social-links/helpers/helper-powerkit-links-api.php:1619
 msgid "M"
 msgstr ""
 
-#: core/core-powerkit-helpers.php:143, core/core-powerkit-helpers.php:288
+#: core/core-powerkit-helpers.php:143, core/core-powerkit-helpers.php:288, modules/social-links/helpers/helper-powerkit-links-api.php:1617
 msgid "K"
 msgstr ""
 
@@ -228,7 +228,7 @@ msgstr ""
 msgid "Comments count"
 msgstr ""
 
-#: core/core-powerkit-post-meta.php:29, modules/inline-posts/public/class-powerkit-inline-posts-shortcode.php:194, modules/post-views/admin/class-powerkit-post-views-admin.php:339, modules/posts/public/class-powerkit-posts-widget.php:235
+#: core/core-powerkit-post-meta.php:29, modules/inline-posts/public/class-powerkit-inline-posts-shortcode.php:194, modules/post-views/admin/class-powerkit-post-views-admin.php:342, modules/posts/public/class-powerkit-posts-widget.php:235
 msgid "Views"
 msgstr ""
 
@@ -283,7 +283,7 @@ msgstr ""
 msgid "Go to settings"
 msgstr ""
 
-#: modules/class-powerkit-custom-fonts.php:43, modules/author-box/class-powerkit-author-box.php:28, modules/basic-elements/class-powerkit-basic-elements.php:29, modules/coming-soon/class-powerkit-coming-soon.php:32, modules/content-formatting/class-powerkit-content-formatting.php:28, modules/contributors/class-powerkit-contributors.php:28, modules/facebook/class-powerkit-facebook.php:35, modules/featured-categories/class-powerkit-featured-categories.php:28, modules/headers-footers/class-powerkit-headers-footers.php:28, modules/inline-posts/class-powerkit-inline-posts.php:28, modules/instagram/class-powerkit-instagram.php:39, modules/justified-gallery/class-powerkit-justified-gallery.php:32, modules/lazyload/class-powerkit-lazyload.php:33, modules/lightbox/class-powerkit-lightbox.php:32, modules/opt-in-forms/class-powerkit-opt-in-forms.php:32, modules/pinterest/class-powerkit-pinterest.php:32, modules/post-views/class-powerkit-post-views.php:58, modules/posts/class-powerkit-posts.php:28, modules/reading-time/class-powerkit-reading-time.php:28, modules/retina-images/class-powerkit-retina-images.php:33, modules/scroll-to-top/class-powerkit-scroll-to-top.php:28, modules/share-buttons/class-powerkit-share-buttons.php:36, modules/slider-gallery/class-powerkit-slider-gallery.php:32, modules/social-links/class-powerkit-social-links.php:44, modules/table-of-contents/class-powerkit-table-of-contents.php:28, modules/twitter/class-powerkit-twitter.php:31, modules/typekit-fonts/class-powerkit-typekit-fonts.php:36
+#: modules/class-powerkit-custom-fonts.php:43, modules/author-box/class-powerkit-author-box.php:28, modules/basic-elements/class-powerkit-basic-elements.php:29, modules/coming-soon/class-powerkit-coming-soon.php:32, modules/content-formatting/class-powerkit-content-formatting.php:28, modules/contributors/class-powerkit-contributors.php:28, modules/facebook/class-powerkit-facebook.php:35, modules/featured-categories/class-powerkit-featured-categories.php:28, modules/headers-footers/class-powerkit-headers-footers.php:28, modules/inline-posts/class-powerkit-inline-posts.php:28, modules/instagram/class-powerkit-instagram.php:39, modules/justified-gallery/class-powerkit-justified-gallery.php:32, modules/lazyload/class-powerkit-lazyload.php:33, modules/lightbox/class-powerkit-lightbox.php:32, modules/opt-in-forms/class-powerkit-opt-in-forms.php:32, modules/pinterest/class-powerkit-pinterest.php:32, modules/post-views/class-powerkit-post-views.php:58, modules/posts/class-powerkit-posts.php:28, modules/reading-time/class-powerkit-reading-time.php:28, modules/retina-images/class-powerkit-retina-images.php:33, modules/scroll-to-top/class-powerkit-scroll-to-top.php:28, modules/share-buttons/class-powerkit-share-buttons.php:36, modules/slider-gallery/class-powerkit-slider-gallery.php:32, modules/social-links/class-powerkit-social-links.php:44, modules/table-of-contents/class-powerkit-table-of-contents.php:28, modules/twitter/class-powerkit-twitter.php:35, modules/typekit-fonts/class-powerkit-typekit-fonts.php:36
 msgid "View documentation"
 msgstr ""
 
@@ -432,35 +432,167 @@ msgstr ""
 msgid "Font successfully deleted."
 msgstr ""
 
-#: modules/class-powerkit-custom-fonts.php:530, modules/coming-soon/admin/class-powerkit-coming-soon-admin.php:217, modules/headers-footers/admin/class-powerkit-headers-footers-admin.php:105, modules/opt-in-forms/admin/class-powerkit-opt-in-forms-admin.php:166, modules/post-views/admin/class-powerkit-post-views-admin.php:242, modules/share-buttons/admin/class-powerkit-share-buttons-admin.php:623, modules/social-links/admin/class-powerkit-social-links-admin.php:297, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:126, modules/typekit-fonts/admin/class-powerkit-typekit-fonts-admin.php:239
+#: modules/class-powerkit-custom-fonts.php:530, modules/coming-soon/admin/class-powerkit-coming-soon-admin.php:217, modules/headers-footers/admin/class-powerkit-headers-footers-admin.php:105, modules/opt-in-forms/admin/class-powerkit-opt-in-forms-admin.php:166, modules/post-views/admin/class-powerkit-post-views-admin.php:245, modules/share-buttons/admin/class-powerkit-share-buttons-admin.php:623, modules/social-links/admin/class-powerkit-social-links-admin.php:298, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:126, modules/typekit-fonts/admin/class-powerkit-typekit-fonts-admin.php:240
 msgid "Settings saved."
 msgstr ""
 
-#: extensions/connect/class-powerkit-connect.php:43, extensions/connect/class-powerkit-connect.php:43, extensions/connect/class-powerkit-connect.php:60, modules/instagram/class-powerkit-instagram.php:31, modules/social-links/class-powerkit-social-links.php:36
+#: extensions/connect/class-powerkit-connect.php:44, extensions/connect/class-powerkit-connect.php:44, extensions/connect/class-powerkit-connect.php:62, extensions/connect/class-powerkit-connect.php:323, extensions/connect/class-powerkit-connect.php:340, extensions/connect/class-powerkit-connect.php:502, extensions/connect/class-powerkit-connect.php:578, modules/instagram/class-powerkit-instagram.php:31, modules/social-links/class-powerkit-social-links.php:36
 msgid "Connect"
 msgstr ""
 
-#: extensions/connect/class-powerkit-connect.php:53, extensions/fonts/class-powerkit-fonts.php:54, modules/coming-soon/admin/class-powerkit-coming-soon-admin.php:111, modules/headers-footers/admin/class-powerkit-headers-footers-admin.php:41, modules/opt-in-forms/admin/class-powerkit-opt-in-forms-admin.php:41, modules/post-views/admin/class-powerkit-post-views-admin.php:59, modules/share-buttons/admin/class-powerkit-share-buttons-admin.php:135, modules/social-links/admin/class-powerkit-social-links-admin.php:84, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:41
+#: extensions/connect/class-powerkit-connect.php:54, extensions/fonts/class-powerkit-fonts.php:54, modules/coming-soon/admin/class-powerkit-coming-soon-admin.php:111, modules/headers-footers/admin/class-powerkit-headers-footers-admin.php:41, modules/opt-in-forms/admin/class-powerkit-opt-in-forms-admin.php:41, modules/post-views/admin/class-powerkit-post-views-admin.php:57, modules/share-buttons/admin/class-powerkit-share-buttons-admin.php:135, modules/social-links/admin/class-powerkit-social-links-admin.php:85, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:41
 msgid "You do not have sufficient rights to view this page."
 msgstr ""
 
-#: extensions/connect/class-powerkit-connect.php:127, modules/coming-soon/admin/class-powerkit-coming-soon-admin.php:184, modules/headers-footers/admin/class-powerkit-headers-footers-admin.php:80, modules/opt-in-forms/admin/class-powerkit-opt-in-forms-admin.php:132, modules/post-views/admin/class-powerkit-post-views-admin.php:191, modules/share-buttons/admin/class-powerkit-share-buttons-admin.php:496, modules/social-links/admin/class-powerkit-social-links-admin.php:232, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:90
+#: extensions/connect/class-powerkit-connect.php:145, modules/coming-soon/admin/class-powerkit-coming-soon-admin.php:184, modules/headers-footers/admin/class-powerkit-headers-footers-admin.php:80, modules/opt-in-forms/admin/class-powerkit-opt-in-forms-admin.php:132, modules/post-views/admin/class-powerkit-post-views-admin.php:194, modules/share-buttons/admin/class-powerkit-share-buttons-admin.php:496, modules/social-links/admin/class-powerkit-social-links-admin.php:233, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:90
 msgid "Save changes"
 msgstr ""
 
-#: extensions/connect/class-powerkit-connect.php:136
+#: extensions/connect/class-powerkit-connect.php:159
 msgid "Reset cache"
 msgstr ""
 
-#: extensions/connect/class-powerkit-connect.php:140
+#: extensions/connect/class-powerkit-connect.php:163
 msgid "The list of social network settings is empty!!!"
 msgstr ""
 
-#: extensions/connect/class-powerkit-connect.php:196
+#: extensions/connect/class-powerkit-connect.php:247
+msgid "Instagram Business Profiles for This Account"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:249
+msgid "You need to select a Business profile below."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:272
+msgid "Select this profile"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:286
+msgid "Business Instagram Account"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:288
+msgid "Personal Instagram Account"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:291, extensions/connect/class-powerkit-connect.php:555
+msgid "✓ Account"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:291, extensions/connect/class-powerkit-connect.php:555
+msgid "successfully connected"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:293
+msgid "Your Instagram User ID:"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:293, extensions/connect/class-powerkit-connect.php:557
+msgid "Please use this ID in settings when requested."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:301, extensions/connect/class-powerkit-connect.php:485, extensions/connect/class-powerkit-connect.php:565
+msgid "Disconnect"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:307
+msgid "Personal Account"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:309
+msgid "Used for displaying user feeds from a Personal Instagram account."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:326
+msgid "Business Account"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:328
+msgid "Used for displaying user feeds from a Business or Creator Instagram account."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:328
+msgid "A Business or Creator account is required for displaying comments, like/comment counts, user avatar, and bio"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:348
+msgid "Manual Settings"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:355
+msgid "Number of Following"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:365
+msgid "Custom Followers"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:370
+msgid "Numbers of followers is automatically retrieved from Instagram for Business accounts."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:376
+msgid "Custom Name"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:381
+msgid "Name is automatically retrieved from Instagram for Business accounts."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:387
+msgid "Custom Avatar"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:392
+msgid "Avatar is automatically retrieved from Instagram for Business accounts."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:401
+msgid "Save settings"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:448, extensions/connect/class-powerkit-connect.php:490
+msgid "Facebook Account"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:450
+msgid "✓ Account successfully connected"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:468
+msgid "Your Facebook page ID:"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:468
+msgid ". Please use this ID in settings when requested."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:472
+msgid "Available Facebook page IDs:"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:472
+msgid ". Please use one of these IDs in settings when requested."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:553, extensions/connect/class-powerkit-connect.php:569
+msgid "Twitter Account"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:557
+msgid "Your Twitter User ID:"
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:689
+msgid "Account disabled successfully."
+msgstr ""
+
+#: extensions/connect/class-powerkit-connect.php:767, extensions/connect/class-powerkit-connect.php:787
 msgid "The settings are saved."
 msgstr ""
 
-#: extensions/connect/class-powerkit-connect.php:226
+#: extensions/connect/class-powerkit-connect.php:868
 msgid "Cache purged."
 msgstr ""
 
@@ -480,7 +612,7 @@ msgstr ""
 msgid "Use This File"
 msgstr ""
 
-#: extensions/gallery/class-powerkit-gallery.php:253, modules/basic-elements/templates/alerts.php:26, modules/basic-elements/templates/tabs.php:26, modules/social-links/helpers/helper-powerkit-links-list.php:190, modules/social-links/helpers/helper-powerkit-links-list.php:350
+#: extensions/gallery/class-powerkit-gallery.php:253, modules/basic-elements/templates/alerts.php:26, modules/basic-elements/templates/tabs.php:26, modules/social-links/helpers/helper-powerkit-links-list.php:202, modules/social-links/helpers/helper-powerkit-links-list.php:368
 msgid "Type"
 msgstr ""
 
@@ -564,7 +696,7 @@ msgstr ""
 msgid "Display your Instagram feed in your sidebar with a widget or post content via a shortcode, including your Instagram profile image, number of followers, as well as number of comments and likes per each image in the feed."
 msgstr ""
 
-#: modules/instagram/class-powerkit-instagram.php:35, modules/share-buttons/class-powerkit-share-buttons.php:32, modules/social-links/class-powerkit-social-links.php:40
+#: modules/instagram/class-powerkit-instagram.php:35, modules/share-buttons/class-powerkit-share-buttons.php:32, modules/social-links/class-powerkit-social-links.php:40, modules/twitter/class-powerkit-twitter.php:31
 msgid "Clear cache"
 msgstr ""
 
@@ -616,7 +748,7 @@ msgstr ""
 msgid "Post Format UI"
 msgstr ""
 
-#: modules/post-views/class-powerkit-post-views.php:18, modules/post-views/admin/class-powerkit-post-views-admin.php:50, modules/post-views/admin/class-powerkit-post-views-admin.php:50
+#: modules/post-views/class-powerkit-post-views.php:18, modules/post-views/admin/class-powerkit-post-views-admin.php:48, modules/post-views/admin/class-powerkit-post-views-admin.php:48
 msgid "Post Views"
 msgstr ""
 
@@ -676,7 +808,7 @@ msgstr ""
 msgid "Create beautiful slider galleries with the Slider Gallery module. Show or hide slider bullets, current and total slide numbers, next and previous buttons per gallery or globally."
 msgstr ""
 
-#: modules/social-links/class-powerkit-social-links.php:18, modules/social-links/admin/class-powerkit-social-links-admin.php:73, modules/social-links/admin/class-powerkit-social-links-admin.php:73, modules/social-links/admin/class-powerkit-social-links-admin.php:90, modules/social-links/admin/class-powerkit-social-links-admin.php:110, modules/social-links/public/class-powerkit-social-links-block.php:76, modules/social-links/public/class-powerkit-social-links-shortcode.php:46, modules/social-links/public/class-powerkit-social-links-shortcode.php:79, modules/social-links/public/class-powerkit-social-links-widget.php:23, modules/social-links/public/class-powerkit-social-links-widget.php:38, modules/social-links/public/block/render.php:16
+#: modules/social-links/class-powerkit-social-links.php:18, modules/social-links/admin/class-powerkit-social-links-admin.php:74, modules/social-links/admin/class-powerkit-social-links-admin.php:74, modules/social-links/admin/class-powerkit-social-links-admin.php:91, modules/social-links/admin/class-powerkit-social-links-admin.php:111, modules/social-links/public/class-powerkit-social-links-block.php:76, modules/social-links/public/class-powerkit-social-links-shortcode.php:46, modules/social-links/public/class-powerkit-social-links-shortcode.php:79, modules/social-links/public/class-powerkit-social-links-widget.php:23, modules/social-links/public/class-powerkit-social-links-widget.php:38, modules/social-links/public/block/render.php:16
 msgid "Social Links"
 msgstr ""
 
@@ -748,11 +880,11 @@ msgstr ""
 msgid "Author not found."
 msgstr ""
 
-#: modules/author-box/public/class-powerkit-author-box-widget.php:170, modules/contributors/public/class-powerkit-contributors-widget.php:89, modules/facebook/public/class-powerkit-facebook-fanpage-widget.php:130, modules/featured-categories/public/class-powerkit-featured-categories-widget.php:106, modules/instagram/public/class-powerkit-instagram-widget.php:111, modules/opt-in-forms/public/class-powerkit-subscription-form-widget.php:101, modules/pinterest/public/class-powerkit-pinterest-board-widget.php:97, modules/pinterest/public/class-powerkit-pinterest-profile-widget.php:97, modules/posts/public/class-powerkit-posts-widget.php:202, modules/social-links/public/class-powerkit-social-links-widget.php:114, modules/table-of-contents/public/class-powerkit-table-of-contents-widget.php:87, modules/twitter/public/class-powerkit-twitter-widget.php:120, modules/widget-about/public/class-powerkit-widget-about-init.php:99
+#: modules/author-box/public/class-powerkit-author-box-widget.php:170, modules/contributors/public/class-powerkit-contributors-widget.php:89, modules/facebook/public/class-powerkit-facebook-fanpage-widget.php:130, modules/featured-categories/public/class-powerkit-featured-categories-widget.php:106, modules/instagram/public/class-powerkit-instagram-widget.php:111, modules/opt-in-forms/public/class-powerkit-subscription-form-widget.php:101, modules/pinterest/public/class-powerkit-pinterest-board-widget.php:97, modules/pinterest/public/class-powerkit-pinterest-profile-widget.php:97, modules/posts/public/class-powerkit-posts-widget.php:202, modules/social-links/public/class-powerkit-social-links-widget.php:114, modules/table-of-contents/public/class-powerkit-table-of-contents-widget.php:87, modules/twitter/public/class-powerkit-twitter-widget.php:119, modules/widget-about/public/class-powerkit-widget-about-init.php:99
 msgid "Title:"
 msgstr ""
 
-#: modules/author-box/public/class-powerkit-author-box-widget.php:176, modules/posts/public/class-powerkit-posts-widget.php:210, modules/social-links/public/class-powerkit-social-links-widget.php:141, modules/twitter/public/class-powerkit-twitter-widget.php:133
+#: modules/author-box/public/class-powerkit-author-box-widget.php:176, modules/posts/public/class-powerkit-posts-widget.php:210, modules/social-links/public/class-powerkit-social-links-widget.php:141, modules/twitter/public/class-powerkit-twitter-widget.php:132
 msgid "Template:"
 msgstr ""
 
@@ -792,7 +924,7 @@ msgstr ""
 msgid "Display social accounts"
 msgstr ""
 
-#: modules/author-box/public/widget-author-template.php:77, modules/featured-categories/helpers/helper-powerkit-featured-categories.php:100
+#: modules/author-box/public/widget-author-template.php:77, modules/featured-categories/helpers/helper-powerkit-featured-categories.php:101
 msgid "View Posts"
 msgstr ""
 
@@ -884,19 +1016,19 @@ msgstr ""
 msgid "Link target"
 msgstr ""
 
-#: modules/basic-elements/templates/buttons.php:74, modules/social-links/admin/class-powerkit-social-links-admin.php:165
+#: modules/basic-elements/templates/buttons.php:74, modules/social-links/admin/class-powerkit-social-links-admin.php:166
 msgid "Open in same window"
 msgstr ""
 
-#: modules/basic-elements/templates/buttons.php:75, modules/social-links/admin/class-powerkit-social-links-admin.php:166
+#: modules/basic-elements/templates/buttons.php:75, modules/social-links/admin/class-powerkit-social-links-admin.php:167
 msgid "Open in new window/tab"
 msgstr ""
 
-#: modules/basic-elements/templates/buttons.php:81, modules/basic-elements/templates/collapsibles.php:32, modules/basic-elements/templates/tabs.php:58, modules/inline-posts/public/class-powerkit-inline-posts-shortcode.php:139, modules/opt-in-forms/public/class-powerkit-subscription-form-shortcode.php:60, modules/post-format-ui/admin/class-powerkit-post-format-ui-admin.php:219, modules/social-links/admin/class-powerkit-social-links-admin.php:187, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:67, modules/table-of-contents/public/class-powerkit-table-of-contents-block.php:94, modules/table-of-contents/public/class-powerkit-table-of-contents-shortcode.php:53
+#: modules/basic-elements/templates/buttons.php:81, modules/basic-elements/templates/collapsibles.php:32, modules/basic-elements/templates/tabs.php:58, modules/inline-posts/public/class-powerkit-inline-posts-shortcode.php:139, modules/opt-in-forms/public/class-powerkit-subscription-form-shortcode.php:60, modules/post-format-ui/admin/class-powerkit-post-format-ui-admin.php:219, modules/social-links/admin/class-powerkit-social-links-admin.php:188, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:67, modules/table-of-contents/public/class-powerkit-table-of-contents-block.php:94, modules/table-of-contents/public/class-powerkit-table-of-contents-shortcode.php:53
 msgid "Title"
 msgstr ""
 
-#: modules/basic-elements/templates/buttons.php:91, modules/social-links/admin/class-powerkit-social-links-admin.php:172
+#: modules/basic-elements/templates/buttons.php:91, modules/social-links/admin/class-powerkit-social-links-admin.php:173
 msgid "Apply \"nofollow\" attribute"
 msgstr ""
 
@@ -1306,7 +1438,7 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: modules/featured-categories/public/class-powerkit-featured-categories-block.php:101, modules/featured-categories/public/class-powerkit-featured-categories-widget.php:142, modules/inline-posts/public/class-powerkit-inline-posts-shortcode.php:201, modules/posts/public/class-powerkit-posts-widget.php:242, modules/share-buttons/admin/class-powerkit-share-buttons-admin.php:229, modules/social-links/admin/class-powerkit-social-links-admin.php:132
+#: modules/featured-categories/public/class-powerkit-featured-categories-block.php:101, modules/featured-categories/public/class-powerkit-featured-categories-widget.php:142, modules/inline-posts/public/class-powerkit-inline-posts-shortcode.php:201, modules/posts/public/class-powerkit-posts-widget.php:242, modules/share-buttons/admin/class-powerkit-share-buttons-admin.php:229, modules/social-links/admin/class-powerkit-social-links-admin.php:133
 msgid "Order"
 msgstr ""
 
@@ -1438,27 +1570,19 @@ msgstr ""
 msgid "Template"
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram-connect-list.php:19, modules/instagram/public/class-powerkit-instagram-block.php:49, modules/instagram/public/class-powerkit-instagram-shortcode.php:51, modules/instagram/public/class-powerkit-instagram-widget.php:23, modules/instagram/public/class-powerkit-instagram-widget.php:38, modules/social-links/helpers/helper-powerkit-links-connect-list.php:40, modules/social-links/helpers/helper-powerkit-links-list.php:42
+#: modules/instagram/helpers/helper-powerkit-instagram-connect-list.php:19, modules/instagram/public/class-powerkit-instagram-block.php:49, modules/instagram/public/class-powerkit-instagram-shortcode.php:51, modules/instagram/public/class-powerkit-instagram-widget.php:23, modules/instagram/public/class-powerkit-instagram-widget.php:38, modules/social-links/helpers/helper-powerkit-links-connect-list.php:25, modules/social-links/helpers/helper-powerkit-links-list.php:44
 msgid "Instagram"
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram-connect-list.php:23, modules/instagram/helpers/helper-powerkit-instagram.php:257, modules/instagram/helpers/helper-powerkit-instagram.php:264, modules/instagram/helpers/helper-powerkit-instagram.php:269, modules/social-links/helpers/helper-powerkit-links-connect-list.php:44
-msgid "Instagram Token"
-msgstr ""
-
-#: modules/instagram/helpers/helper-powerkit-instagram-connect-list.php:24, modules/social-links/helpers/helper-powerkit-links-connect-list.php:45
-msgid "<a href=\"https://codesupply.co/documentation/powerkit/social-integrations/instagram-integration/#instagram-token\" target=\"_blank\">How to obtaint the Instagram Token</a>"
-msgstr ""
-
-#: modules/instagram/helpers/helper-powerkit-instagram.php:76, modules/instagram/helpers/helper-powerkit-instagram.php:101, modules/social-links/helpers/helper-powerkit-links-api.php:415, modules/social-links/helpers/helper-powerkit-links-api.php:472, modules/social-links/helpers/helper-powerkit-links-api.php:545, modules/social-links/helpers/helper-powerkit-links-api.php:587
+#: modules/instagram/helpers/helper-powerkit-instagram.php:76, modules/instagram/helpers/helper-powerkit-instagram.php:101, modules/social-links/helpers/helper-powerkit-links-api.php:341, modules/social-links/helpers/helper-powerkit-links-api.php:398, modules/social-links/helpers/helper-powerkit-links-api.php:474, modules/social-links/helpers/helper-powerkit-links-api.php:515
 msgid " Please check your "
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram.php:76, modules/instagram/helpers/helper-powerkit-instagram.php:85, modules/instagram/helpers/helper-powerkit-instagram.php:101, modules/instagram/helpers/helper-powerkit-instagram.php:111, modules/social-links/helpers/helper-powerkit-links-api.php:545, modules/social-links/helpers/helper-powerkit-links-api.php:587
-msgid " Instagram Token"
+#: modules/instagram/helpers/helper-powerkit-instagram.php:76, modules/instagram/helpers/helper-powerkit-instagram.php:85, modules/instagram/helpers/helper-powerkit-instagram.php:101, modules/instagram/helpers/helper-powerkit-instagram.php:111, modules/social-links/helpers/helper-powerkit-links-api.php:474, modules/social-links/helpers/helper-powerkit-links-api.php:515
+msgid " Instagram Settings"
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram.php:81, modules/social-links/helpers/helper-powerkit-links-api.php:537
+#: modules/instagram/helpers/helper-powerkit-instagram.php:81, modules/social-links/helpers/helper-powerkit-links-api.php:432
 msgid "Please check your Instagram User, you do not have access to this account."
 msgstr ""
 
@@ -1470,27 +1594,35 @@ msgstr ""
 msgid "Error decoding the instagram json."
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram.php:107, modules/instagram/helpers/helper-powerkit-instagram.php:276
+#: modules/instagram/helpers/helper-powerkit-instagram.php:107, modules/instagram/helpers/helper-powerkit-instagram.php:278
 msgid "There are no images in your account."
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram.php:257
+#: modules/instagram/helpers/helper-powerkit-instagram.php:259
 msgid "Instagram html data cannot be retrieved. Please try adding the "
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram.php:257, modules/instagram/helpers/helper-powerkit-instagram.php:264, modules/instagram/helpers/helper-powerkit-instagram.php:269
+#: modules/instagram/helpers/helper-powerkit-instagram.php:259, modules/instagram/helpers/helper-powerkit-instagram.php:271
+msgid "Instagram Settings"
+msgstr ""
+
+#: modules/instagram/helpers/helper-powerkit-instagram.php:259, modules/instagram/helpers/helper-powerkit-instagram.php:266, modules/instagram/helpers/helper-powerkit-instagram.php:271
 msgid " on the settings page."
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram.php:264
+#: modules/instagram/helpers/helper-powerkit-instagram.php:266
 msgid "Error decoding the instagram json. Please try adding the "
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram.php:269
+#: modules/instagram/helpers/helper-powerkit-instagram.php:266
+msgid "Instagram Token"
+msgstr ""
+
+#: modules/instagram/helpers/helper-powerkit-instagram.php:271
 msgid "Instagram data is not set, please check the ID. Please try adding the "
 msgstr ""
 
-#: modules/instagram/helpers/helper-powerkit-instagram.php:620, modules/opt-in-forms/helpers/helper-powerkit-opt-in-forms.php:85
+#: modules/instagram/helpers/helper-powerkit-instagram.php:664, modules/opt-in-forms/helpers/helper-powerkit-opt-in-forms.php:85
 msgid "This client has not been approved to access this resource."
 msgstr ""
 
@@ -1498,7 +1630,7 @@ msgstr ""
 msgid "The block allows you to display images from your instagram account."
 msgstr ""
 
-#: modules/instagram/public/class-powerkit-instagram-block.php:85, modules/instagram/public/class-powerkit-instagram-shortcode.php:59, modules/social-links/helpers/helper-powerkit-links-list.php:289
+#: modules/instagram/public/class-powerkit-instagram-block.php:85, modules/instagram/public/class-powerkit-instagram-shortcode.php:59, modules/social-links/helpers/helper-powerkit-links-list.php:304
 msgid "User ID"
 msgstr ""
 
@@ -1538,11 +1670,11 @@ msgstr ""
 msgid "Current window (_self)"
 msgstr ""
 
-#: modules/instagram/public/class-powerkit-instagram-shortcode.php:65, modules/instagram/public/class-powerkit-instagram-widget.php:123, modules/twitter/public/class-powerkit-twitter-shortcode.php:65, modules/twitter/public/class-powerkit-twitter-widget.php:150
+#: modules/instagram/public/class-powerkit-instagram-shortcode.php:65, modules/instagram/public/class-powerkit-instagram-widget.php:123, modules/twitter/public/class-powerkit-twitter-shortcode.php:65, modules/twitter/public/class-powerkit-twitter-widget.php:149
 msgid "Display header"
 msgstr ""
 
-#: modules/instagram/public/class-powerkit-instagram-shortcode.php:71, modules/instagram/public/class-powerkit-instagram-widget.php:127, modules/twitter/public/class-powerkit-twitter-shortcode.php:71, modules/twitter/public/class-powerkit-twitter-widget.php:154
+#: modules/instagram/public/class-powerkit-instagram-shortcode.php:71, modules/instagram/public/class-powerkit-instagram-widget.php:127, modules/twitter/public/class-powerkit-twitter-shortcode.php:71, modules/twitter/public/class-powerkit-twitter-widget.php:153
 msgid "Display follow button"
 msgstr ""
 
@@ -1610,19 +1742,19 @@ msgstr ""
 msgid "Open links in:"
 msgstr ""
 
-#: modules/instagram/public/instagram-template.php:58, modules/twitter/public/twitter-template.php:75
+#: modules/instagram/public/instagram-template.php:62, modules/twitter/public/twitter-template.php:75
 msgid "Following"
 msgstr ""
 
-#: modules/instagram/public/instagram-template.php:61, modules/social-links/helpers/helper-powerkit-links-list.php:32, modules/social-links/helpers/helper-powerkit-links-list.php:43, modules/social-links/helpers/helper-powerkit-links-list.php:54, modules/social-links/helpers/helper-powerkit-links-list.php:88, modules/social-links/helpers/helper-powerkit-links-list.php:99, modules/social-links/helpers/helper-powerkit-links-list.php:110, modules/social-links/helpers/helper-powerkit-links-list.php:121, modules/social-links/helpers/helper-powerkit-links-list.php:146, modules/social-links/helpers/helper-powerkit-links-list.php:157, modules/social-links/helpers/helper-powerkit-links-list.php:168, modules/social-links/helpers/helper-powerkit-links-list.php:179, modules/social-links/helpers/helper-powerkit-links-list.php:206, modules/social-links/helpers/helper-powerkit-links-list.php:252, modules/social-links/helpers/helper-powerkit-links-list.php:275, modules/social-links/helpers/helper-powerkit-links-list.php:308, modules/social-links/helpers/helper-powerkit-links-list.php:319, modules/social-links/helpers/helper-powerkit-links-list.php:330, modules/social-links/helpers/helper-powerkit-links-list.php:364, modules/social-links/helpers/helper-powerkit-links-list.php:397, modules/social-links/helpers/helper-powerkit-links-list.php:408, modules/social-links/helpers/helper-powerkit-links-list.php:419, modules/social-links/helpers/helper-powerkit-links-list.php:430, modules/social-links/helpers/helper-powerkit-links-list.php:441, modules/social-links/helpers/helper-powerkit-links-list.php:452, modules/social-links/helpers/helper-powerkit-links-list.php:463, modules/social-links/helpers/helper-powerkit-links-list.php:474, modules/social-links/helpers/helper-powerkit-links-list.php:485, modules/social-links/helpers/helper-powerkit-links-list.php:496, modules/social-links/helpers/helper-powerkit-links-list.php:507, modules/social-links/helpers/helper-powerkit-links-list.php:518, modules/social-links/helpers/helper-powerkit-links-list.php:529, modules/social-links/helpers/helper-powerkit-links-list.php:540, modules/social-links/helpers/helper-powerkit-links-list.php:551, modules/social-links/helpers/helper-powerkit-links-list.php:562, modules/social-links/helpers/helper-powerkit-links-list.php:573, modules/social-links/helpers/helper-powerkit-links-list.php:584, modules/social-links/helpers/helper-powerkit-links-list.php:595, modules/social-links/helpers/helper-powerkit-links-list.php:606, modules/social-links/helpers/helper-powerkit-links-list.php:617, modules/social-links/helpers/helper-powerkit-links-list.php:628, modules/social-links/helpers/helper-powerkit-links-list.php:639, modules/social-links/helpers/helper-powerkit-links-list.php:650, modules/twitter/public/twitter-template.php:78
+#: modules/instagram/public/instagram-template.php:68, modules/social-links/helpers/helper-powerkit-links-list.php:33, modules/social-links/helpers/helper-powerkit-links-list.php:45, modules/social-links/helpers/helper-powerkit-links-list.php:57, modules/social-links/helpers/helper-powerkit-links-list.php:94, modules/social-links/helpers/helper-powerkit-links-list.php:106, modules/social-links/helpers/helper-powerkit-links-list.php:118, modules/social-links/helpers/helper-powerkit-links-list.php:130, modules/social-links/helpers/helper-powerkit-links-list.php:155, modules/social-links/helpers/helper-powerkit-links-list.php:167, modules/social-links/helpers/helper-powerkit-links-list.php:179, modules/social-links/helpers/helper-powerkit-links-list.php:191, modules/social-links/helpers/helper-powerkit-links-list.php:219, modules/social-links/helpers/helper-powerkit-links-list.php:266, modules/social-links/helpers/helper-powerkit-links-list.php:289, modules/social-links/helpers/helper-powerkit-links-list.php:324, modules/social-links/helpers/helper-powerkit-links-list.php:336, modules/social-links/helpers/helper-powerkit-links-list.php:348, modules/social-links/helpers/helper-powerkit-links-list.php:383, modules/social-links/helpers/helper-powerkit-links-list.php:416, modules/social-links/helpers/helper-powerkit-links-list.php:427, modules/social-links/helpers/helper-powerkit-links-list.php:438, modules/social-links/helpers/helper-powerkit-links-list.php:449, modules/social-links/helpers/helper-powerkit-links-list.php:460, modules/social-links/helpers/helper-powerkit-links-list.php:471, modules/social-links/helpers/helper-powerkit-links-list.php:482, modules/social-links/helpers/helper-powerkit-links-list.php:493, modules/social-links/helpers/helper-powerkit-links-list.php:504, modules/social-links/helpers/helper-powerkit-links-list.php:515, modules/social-links/helpers/helper-powerkit-links-list.php:526, modules/social-links/helpers/helper-powerkit-links-list.php:537, modules/social-links/helpers/helper-powerkit-links-list.php:548, modules/social-links/helpers/helper-powerkit-links-list.php:559, modules/social-links/helpers/helper-powerkit-links-list.php:570, modules/social-links/helpers/helper-powerkit-links-list.php:581, modules/social-links/helpers/helper-powerkit-links-list.php:592, modules/social-links/helpers/helper-powerkit-links-list.php:603, modules/social-links/helpers/helper-powerkit-links-list.php:614, modules/social-links/helpers/helper-powerkit-links-list.php:625, modules/social-links/helpers/helper-powerkit-links-list.php:636, modules/social-links/helpers/helper-powerkit-links-list.php:647, modules/social-links/helpers/helper-powerkit-links-list.php:658, modules/social-links/helpers/helper-powerkit-links-list.php:669, modules/twitter/public/twitter-template.php:78
 msgid "Followers"
 msgstr ""
 
-#: modules/instagram/public/instagram-template.php:85
+#: modules/instagram/public/instagram-template.php:100
 msgid "Images Not Found!"
 msgstr ""
 
-#: modules/instagram/public/instagram-template.php:91, modules/social-links/helpers/helper-powerkit-links-list.php:229, modules/social-links/helpers/helper-powerkit-links-list.php:286, modules/social-links/helpers/helper-powerkit-links-list.php:297, modules/social-links/helpers/helper-powerkit-links-list.php:375, modules/social-links/helpers/helper-powerkit-links-list.php:386, modules/twitter/public/twitter-template.php:133
+#: modules/instagram/public/instagram-template.php:106, modules/social-links/helpers/helper-powerkit-links-list.php:243, modules/social-links/helpers/helper-powerkit-links-list.php:301, modules/social-links/helpers/helper-powerkit-links-list.php:313, modules/social-links/helpers/helper-powerkit-links-list.php:394, modules/social-links/helpers/helper-powerkit-links-list.php:405, modules/twitter/public/twitter-template.php:133
 msgid "Follow"
 msgstr ""
 
@@ -2016,104 +2148,128 @@ msgstr ""
 msgid "Alt Text"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:67
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:65
 msgid "Post Views Settings"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:78
-msgid "In order to connect to your Google Analytics Account, you need to create a new project in the <a href=\"https://console.developers.google.com/project\" target=\"_blank\">Google API Console</a> and activate the Analytics API in \"APIs &amp; auth &gt; APIs\""
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:77
+msgid "In order to connect to your Google Analytics Account, you need to create a new project in the <a href=\"https://console.developers.google.com/project\" target=\"_blank\">Google API Console</a> and activate the Analytics API in \"APIs &amp; Services\""
 msgstr ""
 
 #: modules/post-views/admin/class-powerkit-post-views-admin.php:80
-msgid "Then, create an OAuth Client ID in \"APIs &amp; auth &gt; Credentials\". Enter this URL for the Redirect URI field:"
+msgid "Go to \"APIs &amp; Services\"."
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:86
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:81
+msgid "On the tab \"OAuth consent screen\" register the application, select \"User Type\" (External) and click \"Create\"."
+msgstr ""
+
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:82
+msgid "On the tab \"OAuth consent screen\" enter \"Application name\" and add your domain."
+msgstr ""
+
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:83
+msgid "Then, create an OAuth Client ID in \"APIs  &amp; Services > Credentials\" (Select \"Web application\", enter this URL %s for the \"Authorized redirect URIs\" field). "
+msgstr ""
+
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:84
+msgid "Enter your access below and connect to Google Analytics (if you have received a notice - \"This app is not verified\", then you can continue by clicking on \"Advanced\" link and follow the instructions)."
+msgstr ""
+
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:89
 msgid "Client ID"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:91
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:94
 msgid "Client secret"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:104
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:107
 msgid "Connect to Google Analytics"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:106
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:109
 msgid "Clear the API keys"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:115
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:118
 msgid "You are connected to Google Analytics with the e-mail address"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:117
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:120
 msgid "Disconnect from Google Analytics"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:119
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:122
 msgid "Empty page views cache"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:123
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:126
 msgid "Use this website to retrieve pageviews numbers"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:126, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:59
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:129, modules/table-of-contents/admin/class-powerkit-table-of-contents-admin.php:59
 msgid "None"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:151
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:154
 msgid "Metrics to retrieve"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:155
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:158
 msgid "Page views"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:158
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:161
 msgid "Unique page views"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:165
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:168
 msgid "Start date for the analytics"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:170
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:173
 msgid "Default value when a count cannot be fetched"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:175
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:178
 msgid "Display the Views column in Posts list"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:180
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:183
 msgid "Search pageviews slugs with trailing slash"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:267
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:270
 msgid "There was something wrong with Google!"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:312
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:315
 msgid "API Keys removed."
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:318
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:321
 msgid "Token refreshed successfully."
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:324
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:327
 msgid "Cache flushed successfully."
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:413, modules/post-views/admin/class-powerkit-post-views-admin.php:417
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:381, modules/post-views/admin/class-powerkit-post-views-admin.php:385
 msgid "Update settings"
 msgstr ""
 
-#: modules/post-views/admin/class-powerkit-post-views-admin.php:417
+#: modules/post-views/admin/class-powerkit-post-views-admin.php:385
 msgid "Google Post Views Error: "
+msgstr ""
+
+#: modules/post-views/helpers/helper-powerkit-post-views.php:61
+msgid "Failed to get data of Google Analytics."
+msgstr ""
+
+#: modules/post-views/helpers/helper-powerkit-post-views.php:128
+msgid "Failed to update token of Google Analytics."
 msgstr ""
 
 #: modules/posts/public/class-powerkit-posts-public.php:59
@@ -2304,7 +2460,7 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:74, modules/social-links/helpers/helper-powerkit-links-list.php:31, modules/twitter/public/class-powerkit-twitter-block.php:49
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:74, modules/social-links/helpers/helper-powerkit-links-connect-list.php:31, modules/social-links/helpers/helper-powerkit-links-list.php:32, modules/twitter/helpers/helper-powerkit-twitter-connect-list.php:19, modules/twitter/public/class-powerkit-twitter-block.php:49
 msgid "Twitter"
 msgstr ""
 
@@ -2312,7 +2468,7 @@ msgstr ""
 msgid "Tweet"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:194, modules/social-links/helpers/helper-powerkit-links-list.php:53
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:194, modules/social-links/helpers/helper-powerkit-links-list.php:56
 msgid "Pinterest"
 msgstr ""
 
@@ -2324,15 +2480,15 @@ msgstr ""
 msgid "Share Link"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:233, modules/social-links/helpers/helper-powerkit-links-list.php:693
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:233, modules/social-links/helpers/helper-powerkit-links-list.php:712
 msgid "Mail"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:256, modules/social-links/helpers/helper-powerkit-links-list.php:228
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:256, modules/social-links/helpers/helper-powerkit-links-list.php:242
 msgid "Xing"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:280, modules/social-links/helpers/helper-powerkit-links-list.php:251
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:280, modules/social-links/helpers/helper-powerkit-links-list.php:265
 msgid "LinkedIn"
 msgstr ""
 
@@ -2344,7 +2500,7 @@ msgstr ""
 msgid "Pocket"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:353, modules/social-links/helpers/helper-powerkit-links-list.php:682
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:353, modules/social-links/helpers/helper-powerkit-links-list.php:701
 msgid "WhatsApp"
 msgstr ""
 
@@ -2352,11 +2508,11 @@ msgstr ""
 msgid "Facebook Messenger"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:401, modules/social-links/helpers/helper-powerkit-links-list.php:671
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:401, modules/social-links/helpers/helper-powerkit-links-list.php:690
 msgid "Viber"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:424, modules/social-links/helpers/helper-powerkit-links-list.php:178
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:424, modules/social-links/helpers/helper-powerkit-links-list.php:190
 msgid "Odnoklassniki"
 msgstr ""
 
@@ -2364,11 +2520,11 @@ msgstr ""
 msgid "Like"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:448, modules/social-links/helpers/helper-powerkit-links-list.php:205
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:448, modules/social-links/helpers/helper-powerkit-links-list.php:218
 msgid "VK"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:481, modules/social-links/helpers/helper-powerkit-links-list.php:87
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:481, modules/social-links/helpers/helper-powerkit-links-list.php:93
 msgid "Telegram"
 msgstr ""
 
@@ -2376,7 +2532,7 @@ msgstr ""
 msgid "Line"
 msgstr ""
 
-#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:529, modules/social-links/helpers/helper-powerkit-links-list.php:340
+#: modules/share-buttons/helpers/helper-powerkit-buttons-list.php:529, modules/social-links/helpers/helper-powerkit-links-list.php:358
 msgid "Reddit"
 msgstr ""
 
@@ -2432,48 +2588,136 @@ msgstr ""
 msgid " of "
 msgstr ""
 
-#: modules/social-links/admin/class-powerkit-social-links-admin.php:97
+#: modules/social-links/admin/class-powerkit-social-links-admin.php:98
 msgid "General"
 msgstr ""
 
-#: modules/social-links/admin/class-powerkit-social-links-admin.php:105
+#: modules/social-links/admin/class-powerkit-social-links-admin.php:106
 msgid "General Settings"
 msgstr ""
 
-#: modules/social-links/admin/class-powerkit-social-links-admin.php:163
+#: modules/social-links/admin/class-powerkit-social-links-admin.php:164
 msgid "Link Target"
 msgstr ""
 
-#: modules/social-links/admin/class-powerkit-social-links-admin.php:192
+#: modules/social-links/admin/class-powerkit-social-links-admin.php:193
 msgid "Label"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-api.php:415, modules/social-links/helpers/helper-powerkit-links-api.php:472
-msgid " Facebook API Settings"
+#: modules/social-links/helpers/helper-powerkit-links-api.php:193
+msgid "Please enter a pinterest user name."
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-api.php:467, modules/social-links/helpers/helper-powerkit-links-api.php:579, modules/social-links/helpers/helper-powerkit-links-api.php:582
+#: modules/social-links/helpers/helper-powerkit-links-api.php:245
+msgid "Please enter a dribbble user name."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:303
+msgid "Please enter a Facebook user name."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:341, modules/social-links/helpers/helper-powerkit-links-api.php:398
+msgid " Facebook Settings"
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:344
+msgid "Please check your User ID."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:348
+msgid "Please make sure you own the page and allowed your Facebook app to manage it."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:393, modules/social-links/helpers/helper-powerkit-links-api.php:507, modules/social-links/helpers/helper-powerkit-links-api.php:510
 msgid "Data not found."
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-api.php:1233, modules/social-links/helpers/helper-powerkit-links-api.php:1657
+#: modules/social-links/helpers/helper-powerkit-links-api.php:423
+msgid "Please enter an Instagram User."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:540
+msgid "Please enter an YouTube User."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:599
+msgid "Please check your username or channel."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:624
+msgid "Please enter an Telegram Channel ID."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:682
+msgid "Please enter a SoundCloud User ID."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:711
+msgid "SoundCloud API Error."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:740
+msgid "Please enter a Vimeo User ID."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:797
+msgid "Please enter a Twitter User."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:853, modules/twitter/helpers/helper-powerkit-twitter.php:113, modules/twitter/helpers/helper-powerkit-twitter.php:123
+msgid "Twitter data is not set. Please check your Twitter User or "
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:853, modules/twitter/helpers/helper-powerkit-twitter.php:113, modules/twitter/helpers/helper-powerkit-twitter.php:123
+msgid " Twitter Settings"
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:857, modules/twitter/helpers/helper-powerkit-twitter.php:117
+msgid "There are no tweets in your account."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:907
+msgid "Please enter a GitHub User ID."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:971
+msgid "Please enter a Behance User ID."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1007
+msgid "Please check your username and client_id."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1036
+msgid "Please enter a Twitch User ID."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1094
+msgid "Please enter a flickr user id."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1127, modules/social-links/helpers/helper-powerkit-links-api.php:1551
 msgid "Data not found. Please check your user ID."
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-connect-list.php:23
-msgid "App ID"
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1151
+msgid "Please enter a Medium User."
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-connect-list.php:27
-msgid "App Secret"
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1214
+msgid "Please enter Reddit User or Subreddit Name."
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-connect-list.php:31
-msgid "User Access Token"
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1276
+msgid "Please enter a Odnoklassniki Slug or ID."
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-connect-list.php:32
-msgid "<a href=\"https://codesupply.co/documentation/powerkit/social-integrations/facebook-integration/#api-keys\" target=\"_blank\">How to obtaint API Keys of Facebook</a>"
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1427
+msgid "Please enter a Group/Page ID."
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-api.php:1521
+msgid "Please enter a Strava User."
 msgstr ""
 
 #: modules/social-links/helpers/helper-powerkit-links-list.php:21
@@ -2484,443 +2728,447 @@ msgstr ""
 msgid "Facebook User"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:35
+#: modules/social-links/helpers/helper-powerkit-links-list.php:25, modules/social-links/helpers/helper-powerkit-links-list.php:37, modules/social-links/helpers/helper-powerkit-links-list.php:49, modules/social-links/helpers/helper-powerkit-links-list.php:58, modules/social-links/helpers/helper-powerkit-links-list.php:62, modules/social-links/helpers/helper-powerkit-links-list.php:86, modules/social-links/helpers/helper-powerkit-links-list.php:98, modules/social-links/helpers/helper-powerkit-links-list.php:110, modules/social-links/helpers/helper-powerkit-links-list.php:122, modules/social-links/helpers/helper-powerkit-links-list.php:159, modules/social-links/helpers/helper-powerkit-links-list.php:171, modules/social-links/helpers/helper-powerkit-links-list.php:183, modules/social-links/helpers/helper-powerkit-links-list.php:211, modules/social-links/helpers/helper-powerkit-links-list.php:235, modules/social-links/helpers/helper-powerkit-links-list.php:293, modules/social-links/helpers/helper-powerkit-links-list.php:305, modules/social-links/helpers/helper-powerkit-links-list.php:328, modules/social-links/helpers/helper-powerkit-links-list.php:340, modules/social-links/helpers/helper-powerkit-links-list.php:375
+msgid "Manual Count Override"
+msgstr ""
+
+#: modules/social-links/helpers/helper-powerkit-links-list.php:36
 msgid "Twitter User"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:46
+#: modules/social-links/helpers/helper-powerkit-links-list.php:48
 msgid "Instagram User"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:57
+#: modules/social-links/helpers/helper-powerkit-links-list.php:61
 msgid "Pinterest User"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:64
+#: modules/social-links/helpers/helper-powerkit-links-list.php:69
 msgid "YouTube"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:65, modules/social-links/helpers/helper-powerkit-links-list.php:341
+#: modules/social-links/helpers/helper-powerkit-links-list.php:70, modules/social-links/helpers/helper-powerkit-links-list.php:359
 msgid "Subscribers"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:74
+#: modules/social-links/helpers/helper-powerkit-links-list.php:79
 msgid "YouTube Channel Type"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:76, modules/social-links/helpers/helper-powerkit-links-list.php:133, modules/social-links/helpers/helper-powerkit-links-list.php:218, modules/social-links/helpers/helper-powerkit-links-list.php:353
+#: modules/social-links/helpers/helper-powerkit-links-list.php:81, modules/social-links/helpers/helper-powerkit-links-list.php:142, modules/social-links/helpers/helper-powerkit-links-list.php:231, modules/social-links/helpers/helper-powerkit-links-list.php:371
 msgid "User"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:77
+#: modules/social-links/helpers/helper-powerkit-links-list.php:82
 msgid "Channel"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:80
+#: modules/social-links/helpers/helper-powerkit-links-list.php:85
 msgid "YouTube User or Channel ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:91
+#: modules/social-links/helpers/helper-powerkit-links-list.php:97
 msgid "Telegram Channel ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:98
+#: modules/social-links/helpers/helper-powerkit-links-list.php:105
 msgid "Vimeo"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:102
+#: modules/social-links/helpers/helper-powerkit-links-list.php:109
 msgid "Vimeo User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:109
+#: modules/social-links/helpers/helper-powerkit-links-list.php:117
 msgid "SoundCloud"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:113
+#: modules/social-links/helpers/helper-powerkit-links-list.php:121
 msgid "SoundCloud User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:120
+#: modules/social-links/helpers/helper-powerkit-links-list.php:129
 msgid "Spotify"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:131
+#: modules/social-links/helpers/helper-powerkit-links-list.php:140
 msgid "Spotify Type"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:134
+#: modules/social-links/helpers/helper-powerkit-links-list.php:143
 msgid "Show"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:135
+#: modules/social-links/helpers/helper-powerkit-links-list.php:144
 msgid "Artist"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:138
+#: modules/social-links/helpers/helper-powerkit-links-list.php:147
 msgid "Spotify User or Show ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:145
+#: modules/social-links/helpers/helper-powerkit-links-list.php:154
 msgid "Dribbble"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:149
+#: modules/social-links/helpers/helper-powerkit-links-list.php:158
 msgid "Dribbble User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:156
+#: modules/social-links/helpers/helper-powerkit-links-list.php:166
 msgid "Behance"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:160
+#: modules/social-links/helpers/helper-powerkit-links-list.php:170
 msgid "Behance User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:167, modules/social-links/helpers/helper-powerkit-links-list.php:495
+#: modules/social-links/helpers/helper-powerkit-links-list.php:178, modules/social-links/helpers/helper-powerkit-links-list.php:514
 msgid "GitHub"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:171, modules/social-links/helpers/helper-powerkit-links-list.php:499
+#: modules/social-links/helpers/helper-powerkit-links-list.php:182, modules/social-links/helpers/helper-powerkit-links-list.php:518
 msgid "GitHub User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:192
+#: modules/social-links/helpers/helper-powerkit-links-list.php:204
 msgid "Profile ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:193
+#: modules/social-links/helpers/helper-powerkit-links-list.php:205
 msgid "Profile Name"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:194
+#: modules/social-links/helpers/helper-powerkit-links-list.php:206
 msgid "Group ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:195
+#: modules/social-links/helpers/helper-powerkit-links-list.php:207
 msgid "Group Name"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:198
+#: modules/social-links/helpers/helper-powerkit-links-list.php:210
 msgid "Odnoklassniki Slug / ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:215, modules/social-links/helpers/helper-powerkit-links-list.php:238, modules/social-links/helpers/helper-powerkit-links-list.php:261
+#: modules/social-links/helpers/helper-powerkit-links-list.php:228, modules/social-links/helpers/helper-powerkit-links-list.php:252, modules/social-links/helpers/helper-powerkit-links-list.php:275
 msgid "Profile Type"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:217
+#: modules/social-links/helpers/helper-powerkit-links-list.php:230
 msgid "Group"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:221
+#: modules/social-links/helpers/helper-powerkit-links-list.php:234
 msgid "Group or User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:240, modules/social-links/helpers/helper-powerkit-links-list.php:263
+#: modules/social-links/helpers/helper-powerkit-links-list.php:254, modules/social-links/helpers/helper-powerkit-links-list.php:277
 msgid "Personal"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:241
+#: modules/social-links/helpers/helper-powerkit-links-list.php:255
 msgid "Company"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:244
+#: modules/social-links/helpers/helper-powerkit-links-list.php:258
 msgid "Xing Company or User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:264
+#: modules/social-links/helpers/helper-powerkit-links-list.php:278
 msgid "Business"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:267
+#: modules/social-links/helpers/helper-powerkit-links-list.php:281
 msgid "LinkedIn Company or User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:274
+#: modules/social-links/helpers/helper-powerkit-links-list.php:288
 msgid "Twitch"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:278
+#: modules/social-links/helpers/helper-powerkit-links-list.php:292
 msgid "Twitch Channel ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:285
+#: modules/social-links/helpers/helper-powerkit-links-list.php:300
 msgid "Flickr"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:296
+#: modules/social-links/helpers/helper-powerkit-links-list.php:312
 msgid "Snapchat"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:300
+#: modules/social-links/helpers/helper-powerkit-links-list.php:316
 msgid "Account Name"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:307
+#: modules/social-links/helpers/helper-powerkit-links-list.php:323
 msgid "Medium"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:311
+#: modules/social-links/helpers/helper-powerkit-links-list.php:327
 msgid "Medium Username"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:318
+#: modules/social-links/helpers/helper-powerkit-links-list.php:335
 msgid "Strava"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:322
+#: modules/social-links/helpers/helper-powerkit-links-list.php:339
 msgid "Strava User ID"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:329
+#: modules/social-links/helpers/helper-powerkit-links-list.php:347
 msgid "Tumblr"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:333
+#: modules/social-links/helpers/helper-powerkit-links-list.php:351
 msgid "Tumblr URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:352
+#: modules/social-links/helpers/helper-powerkit-links-list.php:370
 msgid "Subreddit"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:356
+#: modules/social-links/helpers/helper-powerkit-links-list.php:374
 msgid "Subreddit Name or Reddit User "
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:363
+#: modules/social-links/helpers/helper-powerkit-links-list.php:382
 msgid "Bloglovin"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:367
+#: modules/social-links/helpers/helper-powerkit-links-list.php:386
 msgid "Bloglovin URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:374
+#: modules/social-links/helpers/helper-powerkit-links-list.php:393
 msgid "Weibo"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:378, modules/social-links/helpers/helper-powerkit-links-list.php:389
+#: modules/social-links/helpers/helper-powerkit-links-list.php:397, modules/social-links/helpers/helper-powerkit-links-list.php:408
 msgid "Username"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:385
+#: modules/social-links/helpers/helper-powerkit-links-list.php:404
 msgid "WeChat"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:396
+#: modules/social-links/helpers/helper-powerkit-links-list.php:415
 msgid "Steam"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:400
+#: modules/social-links/helpers/helper-powerkit-links-list.php:419
 msgid "Steam URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:407
+#: modules/social-links/helpers/helper-powerkit-links-list.php:426
 msgid "TripAdvisor"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:411
+#: modules/social-links/helpers/helper-powerkit-links-list.php:430
 msgid "TripAdvisor URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:418
+#: modules/social-links/helpers/helper-powerkit-links-list.php:437
 msgid "Thumbtack"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:422
+#: modules/social-links/helpers/helper-powerkit-links-list.php:441
 msgid "Thumbtack URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:429
+#: modules/social-links/helpers/helper-powerkit-links-list.php:448
 msgid "Android"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:433
+#: modules/social-links/helpers/helper-powerkit-links-list.php:452
 msgid "Android URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:440
+#: modules/social-links/helpers/helper-powerkit-links-list.php:459
 msgid "Apple"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:444
+#: modules/social-links/helpers/helper-powerkit-links-list.php:463
 msgid "Apple URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:451
+#: modules/social-links/helpers/helper-powerkit-links-list.php:470
 msgid "Meetup"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:455
+#: modules/social-links/helpers/helper-powerkit-links-list.php:474
 msgid "Meetup URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:462
+#: modules/social-links/helpers/helper-powerkit-links-list.php:481
 msgid "500px"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:466
+#: modules/social-links/helpers/helper-powerkit-links-list.php:485
 msgid "500px URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:473
+#: modules/social-links/helpers/helper-powerkit-links-list.php:492
 msgid "Yelp"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:477
+#: modules/social-links/helpers/helper-powerkit-links-list.php:496
 msgid "Yelp URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:484
+#: modules/social-links/helpers/helper-powerkit-links-list.php:503
 msgid "CodePen"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:488
+#: modules/social-links/helpers/helper-powerkit-links-list.php:507
 msgid "CodePen URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:506
+#: modules/social-links/helpers/helper-powerkit-links-list.php:525
 msgid "GitLab"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:510
+#: modules/social-links/helpers/helper-powerkit-links-list.php:529
 msgid "GitLab URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:517
+#: modules/social-links/helpers/helper-powerkit-links-list.php:536
 msgid "Bitbucket"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:521
+#: modules/social-links/helpers/helper-powerkit-links-list.php:540
 msgid "Bitbucket URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:528
+#: modules/social-links/helpers/helper-powerkit-links-list.php:547
 msgid "freeCodeCamp"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:532
+#: modules/social-links/helpers/helper-powerkit-links-list.php:551
 msgid "freeCodeCamp URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:539
+#: modules/social-links/helpers/helper-powerkit-links-list.php:558
 msgid "JSFiddle"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:543
+#: modules/social-links/helpers/helper-powerkit-links-list.php:562
 msgid "JSFiddle URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:550
+#: modules/social-links/helpers/helper-powerkit-links-list.php:569
 msgid "Delicious"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:554
+#: modules/social-links/helpers/helper-powerkit-links-list.php:573
 msgid "Delicious URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:561
+#: modules/social-links/helpers/helper-powerkit-links-list.php:580
 msgid "DeviantArt"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:565
+#: modules/social-links/helpers/helper-powerkit-links-list.php:584
 msgid "DeviantArt URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:572
+#: modules/social-links/helpers/helper-powerkit-links-list.php:591
 msgid "Foursquare"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:576
+#: modules/social-links/helpers/helper-powerkit-links-list.php:595
 msgid "Foursquare URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:583
+#: modules/social-links/helpers/helper-powerkit-links-list.php:602
 msgid "Houzz"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:587
+#: modules/social-links/helpers/helper-powerkit-links-list.php:606
 msgid "Houzz URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:594
+#: modules/social-links/helpers/helper-powerkit-links-list.php:613
 msgid "Product Hunt"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:598
+#: modules/social-links/helpers/helper-powerkit-links-list.php:617
 msgid "Product Hunt URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:605
+#: modules/social-links/helpers/helper-powerkit-links-list.php:624
 msgid "Slideshare"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:609
+#: modules/social-links/helpers/helper-powerkit-links-list.php:628
 msgid "Slideshare URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:616
+#: modules/social-links/helpers/helper-powerkit-links-list.php:635
 msgid "Goodreads"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:620
+#: modules/social-links/helpers/helper-powerkit-links-list.php:639
 msgid "Goodreads URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:627
+#: modules/social-links/helpers/helper-powerkit-links-list.php:646
 msgid "Mastodon"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:631
+#: modules/social-links/helpers/helper-powerkit-links-list.php:650
 msgid "Mastodon URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:638
+#: modules/social-links/helpers/helper-powerkit-links-list.php:657
 msgid "PixelFed"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:642
+#: modules/social-links/helpers/helper-powerkit-links-list.php:661
 msgid "PixelFed URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:649
+#: modules/social-links/helpers/helper-powerkit-links-list.php:668
 msgid "Micro.blog"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:653
+#: modules/social-links/helpers/helper-powerkit-links-list.php:672
 msgid "Micro.blog URL"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:660, modules/social-links/helpers/helper-powerkit-links-list.php:664, modules/social-links/helpers/helper-powerkit-links-list.php:675, modules/social-links/helpers/helper-powerkit-links-list.php:686
+#: modules/social-links/helpers/helper-powerkit-links-list.php:679, modules/social-links/helpers/helper-powerkit-links-list.php:683, modules/social-links/helpers/helper-powerkit-links-list.php:694, modules/social-links/helpers/helper-powerkit-links-list.php:705
 msgid "Phone"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:661
+#: modules/social-links/helpers/helper-powerkit-links-list.php:680
 msgid "phone"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:672, modules/social-links/helpers/helper-powerkit-links-list.php:683
+#: modules/social-links/helpers/helper-powerkit-links-list.php:691, modules/social-links/helpers/helper-powerkit-links-list.php:702
 msgid "Call"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:694
+#: modules/social-links/helpers/helper-powerkit-links-list.php:713
 msgid "Send"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:697
+#: modules/social-links/helpers/helper-powerkit-links-list.php:716
 msgid "Email"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:704
+#: modules/social-links/helpers/helper-powerkit-links-list.php:723
 msgid "RSS"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:705
+#: modules/social-links/helpers/helper-powerkit-links-list.php:724
 msgid "Feed"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links-list.php:708
+#: modules/social-links/helpers/helper-powerkit-links-list.php:727
 msgid "RSS URL"
 msgstr ""
 
@@ -3012,16 +3260,16 @@ msgstr ""
 msgid "Website"
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links.php:376
+#: modules/social-links/helpers/helper-powerkit-links.php:375
 msgid "Error"
 msgstr ""
 
 #. translators: Social Settings Link.
-#: modules/social-links/helpers/helper-powerkit-links.php:386
+#: modules/social-links/helpers/helper-powerkit-links.php:385
 msgid "Please select social links in <a href=\"%s\" target=\"_blank\">Social Links Settings</a>."
 msgstr ""
 
-#: modules/social-links/helpers/helper-powerkit-links.php:538
+#: modules/social-links/helpers/helper-powerkit-links.php:537
 msgid "Social Links not found."
 msgstr ""
 
@@ -3125,7 +3373,7 @@ msgstr ""
 msgid "Minimum number of characters of post content:"
 msgstr ""
 
-#: modules/twitter/helpers/helper-powerkit-twitter.php:168, modules/twitter/public/class-powerkit-twitter-shortcode.php:21, modules/twitter/public/class-powerkit-twitter-shortcode.php:46, modules/twitter/public/class-powerkit-twitter-widget.php:25, modules/twitter/public/class-powerkit-twitter-widget.php:40, modules/twitter/public/block/render.php:16
+#: modules/twitter/helpers/helper-powerkit-twitter.php:138, modules/twitter/public/class-powerkit-twitter-shortcode.php:21, modules/twitter/public/class-powerkit-twitter-shortcode.php:46, modules/twitter/public/class-powerkit-twitter-widget.php:25, modules/twitter/public/class-powerkit-twitter-widget.php:40, modules/twitter/public/block/render.php:16
 msgid "Twitter Feed"
 msgstr ""
 
@@ -3157,11 +3405,11 @@ msgstr ""
 msgid "Number of tweets to displays"
 msgstr ""
 
-#: modules/twitter/public/class-powerkit-twitter-shortcode.php:77, modules/twitter/public/class-powerkit-twitter-widget.php:162
+#: modules/twitter/public/class-powerkit-twitter-shortcode.php:77, modules/twitter/public/class-powerkit-twitter-widget.php:161
 msgid "Include replies"
 msgstr ""
 
-#: modules/twitter/public/class-powerkit-twitter-shortcode.php:83, modules/twitter/public/class-powerkit-twitter-widget.php:158
+#: modules/twitter/public/class-powerkit-twitter-shortcode.php:83, modules/twitter/public/class-powerkit-twitter-widget.php:157
 msgid "Include retweets"
 msgstr ""
 
@@ -3169,11 +3417,11 @@ msgstr ""
 msgid "A list of recent tweets."
 msgstr ""
 
-#: modules/twitter/public/class-powerkit-twitter-widget.php:124
+#: modules/twitter/public/class-powerkit-twitter-widget.php:123
 msgid "Twitter user ID:"
 msgstr ""
 
-#: modules/twitter/public/class-powerkit-twitter-widget.php:128
+#: modules/twitter/public/class-powerkit-twitter-widget.php:127
 msgid "Number of tweets to display:"
 msgstr ""
 
@@ -3233,11 +3481,11 @@ msgstr ""
 msgid "Available Fonts"
 msgstr ""
 
-#: modules/typekit-fonts/admin/class-powerkit-typekit-fonts-admin.php:207
+#: modules/typekit-fonts/admin/class-powerkit-typekit-fonts-admin.php:208
 msgid "No fonts found. Please add fonts to your Typekit font kit."
 msgstr ""
 
-#: modules/typekit-fonts/admin/class-powerkit-typekit-fonts-admin.php:258
+#: modules/typekit-fonts/admin/class-powerkit-typekit-fonts-admin.php:259
 msgid "Font kits synchronized."
 msgstr ""
 

@@ -81,27 +81,27 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 128);
+/******/ 	return __webpack_require__(__webpack_require__.s = 163);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 128:
+/***/ 163:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(129);
+module.exports = __webpack_require__(164);
 
 
 /***/ }),
 
-/***/ 129:
+/***/ 164:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(130);
-/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(134);
-/* harmony import */ var _change_column_size__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(132);
+/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(165);
+/* harmony import */ var _save_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(169);
+/* harmony import */ var _change_column_size__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(167);
 /**
  * WordPress dependencies
  */
@@ -172,7 +172,7 @@ addFilter('canvas.customBlock.onFieldChange', 'canvas/column/changeColumnSize', 
 
 /***/ }),
 
-/***/ 130:
+/***/ 165:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -180,8 +180,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(72);
 /* harmony import */ var classnames__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(classnames__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var throttle_debounce__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(66);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(131);
-/* harmony import */ var _change_column_size__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(132);
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(166);
+/* harmony import */ var _change_column_size__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(167);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -382,7 +382,7 @@ var ColumnBlockEditWithSelect = compose(withSelect(function (select, ownProps) {
 
 /***/ }),
 
-/***/ 131:
+/***/ 166:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -480,12 +480,12 @@ var _window = window,
 
 /***/ }),
 
-/***/ 132:
+/***/ 167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(133);
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(168);
 /**
  * WordPress dependencies.
  */
@@ -504,7 +504,7 @@ var _window = window,
  */
 
 
-var MIN_COL_SIZE = 2;
+var MIN_COL_SIZE = 1;
 /**
  * Update columns size.
  *
@@ -591,7 +591,7 @@ function updateAttribute(clientId, size) {
 
 /***/ }),
 
-/***/ 133:
+/***/ 168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -620,7 +620,7 @@ function getAdjacentBlocks(blocks, clientId) {
 
 /***/ }),
 
-/***/ 134:
+/***/ 169:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

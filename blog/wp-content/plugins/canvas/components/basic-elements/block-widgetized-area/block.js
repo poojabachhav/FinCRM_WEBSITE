@@ -81,25 +81,25 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 186);
+/******/ 	return __webpack_require__(__webpack_require__.s = 146);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 186:
+/***/ 146:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(187);
+module.exports = __webpack_require__(147);
 
 
 /***/ }),
 
-/***/ 187:
+/***/ 147:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(188);
+/* harmony import */ var _edit_jsx__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(148);
 /**
  * WordPress dependencies
  */
@@ -130,7 +130,7 @@ addFilter('canvas.customBlock.editRender', 'canvas/widgetized-area/editRender', 
 
 /***/ }),
 
-/***/ 188:
+/***/ 148:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

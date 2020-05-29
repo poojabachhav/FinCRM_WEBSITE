@@ -119,38 +119,62 @@ function powerkit_get_module_meta( $slug, $field = false ) {
  * @param string $name The field name of сonnect.
  */
 function powerkit_connect( $name ) {
+
 	$default = array(
-		'facebook_app_id'             => 'MjMzNDAxODAwMzI5NTM5',
-		'facebook_share_access_token' => 'MTc5NjYwNzk4Nzc0Mjk2JTdDZmV3YV9LRU9TMHBlbHNwUE9md19qcWxqcVRr',
-		'instagram_token'             => '',
-		'twitter_consumer_key'        => 'T1FjYzdxR1NSM2U3eXIyUnlXN0dFTnJZdg==',
-		'twitter_consumer_secret'     => 'aDFMdVVIbUhjalFYdGtRNlE0c1BjOVA3Z3p4RGVaSHFSaEphcWhma05UT3Zxck92Nno=',
-		'twitter_access_token'        => 'MzQ2NTA2MzY4My1hemxLMmJ4elRBVjVsNjZSZzk1OU01enk4OEFuN0RoQnlUUzdXWkU=',
-		'twitter_access_token_secret' => 'OWNsSGpnV3VPQ2JVOEk4UHhYNW9idnhxaHBtd0QxRk1wbXQ4TUU1MWg2V0Mz',
-		'youtube_key'                 => 'QUl6YVN5RFBYNkNOMVpxQ0N1S2hEallqc1BLZDZZOC1SRXpNZ04w',
-		'telegram_token'              => 'NTM1NTAwMjM4OkFBR3dUVDBOMDhoeHFPamxHYVhDVDFGa01mb2c2blRnQ2ZR',
-		'soundcloud_client_id'        => 'OTcyMjBmYjM0YWQwMzRiNWQ0YjU5Yjk2N2ZkMTcxN2U=',
-		'dribbble_token'              => '',
-		'vimeo_token'                 => 'ODhiMDU4NjA4YWViMmU2MjdiYjc4MmY2MzNkNjVjNjQ=',
-		'behance_client_id'           => 'R0QxcmhQcUpvaWdaN0xqcFFEVEltMkZjOGdPemkxajQ=',
-		'github_client_id'            => 'Y2I3M2Q3NDczZTg1MDRhNzlmMDQ=',
-		'github_client_secret'        => 'ZDI5OTdhNjZhZmRjZmFmZWQ4OGRhNjhhMzYyZWRmZTE4OTNlNjgwYQ==',
-		'twitch_client_id'            => 'dmk0MDZ5OWhhNDV5MmRzcmtzcDZvMTd1bWt5NTR3',
-		'ok_application_key'          => 'Q0JBREVPQU5FQkFCQUJBQkE=',
-		'ok_access_token'             => 'dGtuMWNmTTJZcWZFRTBob2VxMVNHSlZrcFI1ckh0NlNuTmRtanQ0VmM1SzJ1WXpwcmF1ajNKUVZYN2J2SXI5elNwNVlw',
-		'ok_session_secret_key'       => 'ZGFmYTEzZWMyMjA4NGE2MDEwMTliN2Y2ZGRhZGQ0MzU=',
-		'vk_token'                    => 'ZWRkNjQ1ZGU3ZDQ1OTQwZjllMTMyYTMyNmIxM2MxNWJjNWYxMWNhMzRkY2MzYTc1MGE2MmQxOTI4YjY5MjExZThmNTU0Nzc5ZWU3OTNmMTk2YTJiNw==',
+		'instagram_app_id'               => 'MjU5MzMzMzEwNDI0NzQxOA==',
+		'instagram_app_url'              => 'https://api.codesupply.co/instagram-connect.php',
+		'instagram_app_fb_client_id'     => 'MzA1NDQ5ODgzNjk4NjQ5',
+		'instagram_app_fb_url'           => 'https://api.codesupply.co/facebook-connect.php?business=true',
+		'instagram_app_type'             => '',
+		'instagram_app_access_token'     => '',
+		'instagram_app_user_id'          => '',
+		'instagram_app_username'         => '',
+		'facebook_app_id'                => 'MzA1NDQ5ODgzNjk4NjQ5',
+		'facebook_app_url'               => 'https://api.codesupply.co/facebook-connect.php',
+		'facebook_app_access_token'      => '',
+		'facebook_app_accounts'          => '',
+		'facebook_share_access_token'    => 'MTc5NjYwNzk4Nzc0Mjk2JTdDZmV3YV9LRU9TMHBlbHNwUE9md19qcWxqcVRr',
+		'twitter_app_consumer_key'       => 'Q25GVjVNdWN3MzRYQjZNRU0yblhDeVpJTg==',
+		'twitter_app_consumer_secret'    => 'djZxSFNNczE1MlVqeld5SkNGT2FYSEtoYnE1V2U5NGJmMXIzZTRRdGwyYXEybnNwS0U=',
+		'twitter_app_url'                => 'https://api.codesupply.co/twitter-connect.php',
+		'twitter_app_oauth_token'        => '',
+		'twitter_app_oauth_token_secret' => '',
+		'twitter_app_user_id'            => '',
+		'twitter_app_screen_name'        => '',
+		'youtube_key'                    => 'QUl6YVN5RFBYNkNOMVpxQ0N1S2hEallqc1BLZDZZOC1SRXpNZ04w',
+		'telegram_token'                 => 'NTM1NTAwMjM4OkFBR3dUVDBOMDhoeHFPamxHYVhDVDFGa01mb2c2blRnQ2ZR',
+		'soundcloud_client_id'           => 'OTcyMjBmYjM0YWQwMzRiNWQ0YjU5Yjk2N2ZkMTcxN2U=',
+		'dribbble_token'                 => '',
+		'vimeo_token'                    => 'ODhiMDU4NjA4YWViMmU2MjdiYjc4MmY2MzNkNjVjNjQ=',
+		'behance_client_id'              => 'R0QxcmhQcUpvaWdaN0xqcFFEVEltMkZjOGdPemkxajQ=',
+		'github_client_id'               => 'Y2I3M2Q3NDczZTg1MDRhNzlmMDQ=',
+		'github_client_secret'           => 'ZDI5OTdhNjZhZmRjZmFmZWQ4OGRhNjhhMzYyZWRmZTE4OTNlNjgwYQ==',
+		'twitch_client_id'               => 'dmk0MDZ5OWhhNDV5MmRzcmtzcDZvMTd1bWt5NTR3',
+		'ok_application_key'             => 'Q0JBREVPQU5FQkFCQUJBQkE=',
+		'ok_access_token'                => 'dGtuMWNmTTJZcWZFRTBob2VxMVNHSlZrcFI1ckh0NlNuTmRtanQ0VmM1SzJ1WXpwcmF1ajNKUVZYN2J2SXI5elNwNVlw',
+		'ok_session_secret_key'          => 'ZGFmYTEzZWMyMjA4NGE2MDEwMTliN2Y2ZGRhZGQ0MzU=',
+		'vk_token'                       => 'ZWRkNjQ1ZGU3ZDQ1OTQwZjllMTMyYTMyNmIxM2MxNWJjNWYxMWNhMzRkY2MzYTc1MGE2MmQxOTI4YjY5MjExZThmNTU0Nzc5ZWU3OTNmMTk2YTJiNw==',
 	);
 
 	$name = str_replace( 'powerkit_connect_', '', $name );
 
 	// Set value by slug.
-	$value = get_option( 'powerkit_connect_' . $name );
+	$value = get_transient( 'powerkit_connect_' . $name );
+
+	// Set value by slug.
+	$value = $value ? $value : get_option( 'powerkit_connect_' . $name );
 
 	// Set default value.
 	if ( ! $value && key_exists( $name, $default ) ) {
-		$value = base64_decode( $default[ $name ] );
+
+		if ( base64_encode( base64_decode( $default[ $name ], true ) ) === $default[ $name ] ) {
+			$value = base64_decode( $default[ $name ] );
+		} else {
+			$value = $default[ $name ];
+		}
 	}
+
+	$value = apply_filters( 'powerkit_connect_return', $name, $value );
 
 	return $value;
 }
